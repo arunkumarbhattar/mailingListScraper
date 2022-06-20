@@ -1,0 +1,2326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<emails><email><emailId>20160901233101</emailId><senderName>Aaron Fabbri</senderName><senderEmail>fabbri@cloudera.com</senderEmail><timestampReceived>2016-09-01 23:31:01-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
++1, non-binding.
+
+I built everything on OS X and ran the s3a contract tests successfully:
+
+mvn test -Dtest=org.apache.hadoop.fs.contract.s3a.\*
+
+...
+
+Results :
+
+
+Tests run: 78, Failures: 0, Errors: 0, Skipped: 1
+
+
+[INFO]
+------------------------------------------------------------------------
+
+[INFO] BUILD SUCCESS
+
+[INFO]
+------------------------------------------------------------------------
+
+On Thu, Sep 1, 2016 at 3:39 PM, Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+wrote:
+
+&gt; Good point Allen, I forgot about `hadoop version`. Since it's populated by
+&gt; a version-info.properties file, people can always cat that file.
+&gt;
+&gt; On Thu, Sep 1, 2016 at 3:21 PM, Allen Wittenauer &lt;aw@effectivemachines.com
+&gt; &gt;
+&gt; wrote:
+&gt;
+&gt; &gt;
+&gt; &gt; &gt; On Sep 1, 2016, at 3:18 PM, Allen Wittenauer &lt;aw@effectivemachines.com
+&gt; &gt;
+&gt; &gt; wrote:
+&gt; &gt; &gt;
+&gt; &gt; &gt;
+&gt; &gt; &gt;&gt; On Sep 1, 2016, at 2:57 PM, Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+&gt; &gt; wrote:
+&gt; &gt; &gt;&gt;
+&gt; &gt; &gt;&gt; Steve requested a git hash for this release. This led us into a brief
+&gt; &gt; &gt;&gt; discussion of our use of git tags, wherein we realized that although
+&gt; &gt; &gt;&gt; release tags are immutable (start with "rel/"), RC tags are not. This
+&gt; is
+&gt; &gt; &gt;&gt; based on the HowToRelease instructions.
+&gt; &gt; &gt;
+&gt; &gt; &gt;       We should probably embed the git hash in one of the files that
+&gt; &gt; gets gpg signed.  That's an easy change to create-release.
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;         (Well, one more easily accessible than 'hadoop version')
+&gt;
+
+
+</body></email><email><emailId>20160902033247</emailId><senderName>Arun Suresh</senderName><senderEmail>asuresh@apache.org</senderEmail><timestampReceived>2016-09-02 03:32:47-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
++1 (binding).
+
+Thanks for driving this Andrew..
+
+* Download and built from source.
+* Setup a 5 mode cluster.
+* Verified that MR works with opportunistic containers
+* Verified that the AMRMClient supports 'allocationRequestId'
+
+Cheers
+-Arun
+
+On Thu, Sep 1, 2016 at 4:31 PM, Aaron Fabbri &lt;fabbri@cloudera.com&gt; wrote:
+
+&gt; +1, non-binding.
+&gt;
+&gt; I built everything on OS X and ran the s3a contract tests successfully:
+&gt;
+&gt; mvn test -Dtest=org.apache.hadoop.fs.contract.s3a.\*
+&gt;
+&gt; ...
+&gt;
+&gt; Results :
+&gt;
+&gt;
+&gt; Tests run: 78, Failures: 0, Errors: 0, Skipped: 1
+&gt;
+&gt;
+&gt; [INFO]
+&gt; ------------------------------------------------------------------------
+&gt;
+&gt; [INFO] BUILD SUCCESS
+&gt;
+&gt; [INFO]
+&gt; ------------------------------------------------------------------------
+&gt;
+&gt; On Thu, Sep 1, 2016 at 3:39 PM, Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+&gt; wrote:
+&gt;
+&gt; &gt; Good point Allen, I forgot about `hadoop version`. Since it's populated
+&gt; by
+&gt; &gt; a version-info.properties file, people can always cat that file.
+&gt; &gt;
+&gt; &gt; On Thu, Sep 1, 2016 at 3:21 PM, Allen Wittenauer &lt;
+&gt; aw@effectivemachines.com
+&gt; &gt; &gt;
+&gt; &gt; wrote:
+&gt; &gt;
+&gt; &gt; &gt;
+&gt; &gt; &gt; &gt; On Sep 1, 2016, at 3:18 PM, Allen Wittenauer &lt;
+&gt; aw@effectivemachines.com
+&gt; &gt; &gt;
+&gt; &gt; &gt; wrote:
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;&gt; On Sep 1, 2016, at 2:57 PM, Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+&gt; &gt; &gt; wrote:
+&gt; &gt; &gt; &gt;&gt;
+&gt; &gt; &gt; &gt;&gt; Steve requested a git hash for this release. This led us into a
+&gt; brief
+&gt; &gt; &gt; &gt;&gt; discussion of our use of git tags, wherein we realized that although
+&gt; &gt; &gt; &gt;&gt; release tags are immutable (start with "rel/"), RC tags are not.
+&gt; This
+&gt; &gt; is
+&gt; &gt; &gt; &gt;&gt; based on the HowToRelease instructions.
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;       We should probably embed the git hash in one of the files that
+&gt; &gt; &gt; gets gpg signed.  That's an easy change to create-release.
+&gt; &gt; &gt;
+&gt; &gt; &gt;
+&gt; &gt; &gt;         (Well, one more easily accessible than 'hadoop version')
+&gt; &gt;
+&gt;
+
+
+</body></email><email><emailId>20160902145606</emailId><senderName>Kuhu Shukla</senderName><senderEmail>kshukla@yahoo-inc.com.invalid</senderEmail><timestampReceived>2016-09-02 14:56:06-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
++1( non-binding)
+
+* Successfully downloaded and built from source.
+* Deployed to single node cluster.
+*   Ran Sleep and Wordcount jobs.
+Thanks Andrew for the effort!
+Regards,Kuhu 
+
+    On Thursday, September 1, 2016 10:32 PM, Arun Suresh &lt;asuresh@apache.org&gt; wrote:
+ 
+
+ +1 (binding).
+
+Thanks for driving this Andrew..
+
+* Download and built from source.
+* Setup a 5 mode cluster.
+* Verified that MR works with opportunistic containers
+* Verified that the AMRMClient supports 'allocationRequestId'
+
+Cheers
+-Arun
+
+On Thu, Sep 1, 2016 at 4:31 PM, Aaron Fabbri &lt;fabbri@cloudera.com&gt; wrote:
+
+&gt; +1, non-binding.
+&gt;
+&gt; I built everything on OS X and ran the s3a contract tests successfully:
+&gt;
+&gt; mvn test -Dtest=org.apache.hadoop.fs.contract.s3a.\*
+&gt;
+&gt; ...
+&gt;
+&gt; Results :
+&gt;
+&gt;
+&gt; Tests run: 78, Failures: 0, Errors: 0, Skipped: 1
+&gt;
+&gt;
+&gt; [INFO]
+&gt; ------------------------------------------------------------------------
+&gt;
+&gt; [INFO] BUILD SUCCESS
+&gt;
+&gt; [INFO]
+&gt; ------------------------------------------------------------------------
+&gt;
+&gt; On Thu, Sep 1, 2016 at 3:39 PM, Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+&gt; wrote:
+&gt;
+&gt; &gt; Good point Allen, I forgot about `hadoop version`. Since it's populated
+&gt; by
+&gt; &gt; a version-info.properties file, people can always cat that file.
+&gt; &gt;
+&gt; &gt; On Thu, Sep 1, 2016 at 3:21 PM, Allen Wittenauer &lt;
+&gt; aw@effectivemachines.com
+&gt; &gt; &gt;
+&gt; &gt; wrote:
+&gt; &gt;
+&gt; &gt; &gt;
+&gt; &gt; &gt; &gt; On Sep 1, 2016, at 3:18 PM, Allen Wittenauer &lt;
+&gt; aw@effectivemachines.com
+&gt; &gt; &gt;
+&gt; &gt; &gt; wrote:
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;&gt; On Sep 1, 2016, at 2:57 PM, Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+&gt; &gt; &gt; wrote:
+&gt; &gt; &gt; &gt;&gt;
+&gt; &gt; &gt; &gt;&gt; Steve requested a git hash for this release. This led us into a
+&gt; brief
+&gt; &gt; &gt; &gt;&gt; discussion of our use of git tags, wherein we realized that although
+&gt; &gt; &gt; &gt;&gt; release tags are immutable (start with "rel/"), RC tags are not.
+&gt; This
+&gt; &gt; is
+&gt; &gt; &gt; &gt;&gt; based on the HowToRelease instructions.
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;         We should probably embed the git hash in one of the files that
+&gt; &gt; &gt; gets gpg signed.   That's an easy change to create-release.
+&gt; &gt; &gt;
+&gt; &gt; &gt;
+&gt; &gt; &gt;            (Well, one more easily accessible than 'hadoop version')
+&gt; &gt;
+&gt;
+
+
+   
+
+</body></email><email><emailId>20160830155120</emailId><senderName>Andrew Wang</senderName><senderEmail>andrew.wang@cloudera.com</senderEmail><timestampReceived>2016-08-30 15:51:20-0400</timestampReceived><subject>[VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
+Hi all,
+
+Thanks to the combined work of many, many contributors, here's an RC0 for
+3.0.0-alpha1:
+
+http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+
+alpha1 is the first in a series of planned alpha releases leading up to GA.
+The objective is to get an artifact out to downstreams for testing and to
+iterate quickly based on their feedback. So, please keep that in mind when
+voting; hopefully most issues can be addressed by future alphas rather than
+future RCs.
+
+Sorry for getting this out on a Tuesday, but I'd still like this vote to
+run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll extend
+if we lack the votes.
+
+Please try it out and let me know what you think.
+
+Best,
+Andrew
+
+
+</body></email><email><emailId>20160830171707</emailId><senderName>Zhe Zhang</senderName><senderEmail>zhz@apache.org</senderEmail><timestampReceived>2016-08-30 17:17:07-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
+Thanks Andrew for the great work! It's really exciting to finally see a
+Hadoop 3 RC.
+
+I noticed CHANGES and RELEASENOTES markdown files which were not in
+previous RCs like 2.7.3. What are good tools to verify them? I tried
+reading them on IntelliJ but format looks odd.
+
+I'm still testing the RC:
+- Downloaded and verified checksum
+- Built from source
+- Will start small cluster and test simple programs, focusing on EC
+functionalities
+
+-- Zhe
+
+On Tue, Aug 30, 2016 at 8:51 AM Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+wrote:
+
+&gt; Hi all,
+&gt;
+&gt; Thanks to the combined work of many, many contributors, here's an RC0 for
+&gt; 3.0.0-alpha1:
+&gt;
+&gt; http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt;
+&gt; alpha1 is the first in a series of planned alpha releases leading up to GA.
+&gt; The objective is to get an artifact out to downstreams for testing and to
+&gt; iterate quickly based on their feedback. So, please keep that in mind when
+&gt; voting; hopefully most issues can be addressed by future alphas rather than
+&gt; future RCs.
+&gt;
+&gt; Sorry for getting this out on a Tuesday, but I'd still like this vote to
+&gt; run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll extend
+&gt; if we lack the votes.
+&gt;
+&gt; Please try it out and let me know what you think.
+&gt;
+&gt; Best,
+&gt; Andrew
+&gt;
+
+
+</body></email><email><emailId>20160830175732</emailId><senderName>Andrew Wang</senderName><senderEmail>andrew.wang@cloudera.com</senderEmail><timestampReceived>2016-08-30 17:57:32-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
+I'll put my own +1 on it:
+
+* Built from source
+* Started pseudo cluster and ran Pi job successfully
+
+On Tue, Aug 30, 2016 at 10:17 AM, Zhe Zhang &lt;zhz@apache.org&gt; wrote:
+
+&gt;
+&gt; Thanks Andrew for the great work! It's really exciting to finally see a
+&gt; Hadoop 3 RC.
+&gt;
+&gt; I noticed CHANGES and RELEASENOTES markdown files which were not in
+&gt; previous RCs like 2.7.3. What are good tools to verify them? I tried
+&gt; reading them on IntelliJ but format looks odd.
+&gt;
+&gt; I'm still testing the RC:
+&gt; - Downloaded and verified checksum
+&gt; - Built from source
+&gt; - Will start small cluster and test simple programs, focusing on EC
+&gt; functionalities
+&gt;
+&gt; -- Zhe
+&gt;
+&gt; On Tue, Aug 30, 2016 at 8:51 AM Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+&gt; wrote:
+&gt;
+&gt;&gt; Hi all,
+&gt;&gt;
+&gt;&gt; Thanks to the combined work of many, many contributors, here's an RC0 for
+&gt;&gt; 3.0.0-alpha1:
+&gt;&gt;
+&gt;&gt; http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt;&gt;
+&gt;&gt; alpha1 is the first in a series of planned alpha releases leading up to
+&gt;&gt; GA.
+&gt;&gt; The objective is to get an artifact out to downstreams for testing and to
+&gt;&gt; iterate quickly based on their feedback. So, please keep that in mind when
+&gt;&gt; voting; hopefully most issues can be addressed by future alphas rather
+&gt;&gt; than
+&gt;&gt; future RCs.
+&gt;&gt;
+&gt;&gt; Sorry for getting this out on a Tuesday, but I'd still like this vote to
+&gt;&gt; run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll extend
+&gt;&gt; if we lack the votes.
+&gt;&gt;
+&gt;&gt; Please try it out and let me know what you think.
+&gt;&gt;
+&gt;&gt; Best,
+&gt;&gt; Andrew
+&gt;&gt;
+&gt;
+
+
+</body></email><email><emailId>20160830181205</emailId><senderName>Allen Wittenauer</senderName><senderEmail>aw@effectivemachines.com</senderEmail><timestampReceived>2016-08-30 18:12:05-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
+&gt; On Aug 30, 2016, at 10:17 AM, Zhe Zhang &lt;zhz@apache.org&gt; wrote:
+&gt; 
+&gt; Thanks Andrew for the great work! It's really exciting to finally see a
+&gt; Hadoop 3 RC.
+&gt; 
+&gt; I noticed CHANGES and RELEASENOTES markdown files which were not in
+&gt; previous RCs like 2.7.3. What are good tools to verify them? I tried
+&gt; reading them on IntelliJ but format looks odd.
+
+
+	The site tarball has them converted to HTML.  I've also re-run the versions that I \
+keep on my gitlab account.  (Since the data comes from JIRA, the content should be \
+the same but the format and ordering might be different since I use the master branch \
+of Yetus.) https://gitlab.com/_a__w_/eco-release-metadata/tree/master/HADOOP/3.0.0-alpha1
+
+
+	It also looks like IntelliJ has a few different markdown plug-ins.  You'll want one \
+that supports what is generally referred to as MultiMarkdown or Github-Flavored \
+Markdown (GFM) since releasedocmaker uses the table extension format found in that \
+specification.  (It's an extremely common extension so I'm sure one of them supports \
+                it.)
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+
+</body></email><email><emailId>20160830210021</emailId><senderName>Eric Badger</senderName><senderEmail>ebadger@yahoo-inc.com.invalid</senderEmail><timestampReceived>2016-08-30 21:00:21-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
+All on OSX 10.11.6:
+Verified the hashes. However, Andrew, I don't know where to find your public key, so \
+I wasn't able to verify that they were signed by you.Built from sourceDeployed a \
+pseudo-distributed clusterRan a few sample jobsPoked around the RM UIPoked around the \
+attached website locally via the tarball I did find one odd thing, though. It could \
+be a misconfiguration on my system, but I've never had this problem before with other \
+releases (though I deal almost exclusively in 2.x and so I imagine things might be \
+different). When I run a sleep job, I do not see any diagnostics/logs/counters \
+printed out by the client. Initially I ran the job like I would on 2.7 and it failed \
+(because I had not set yarn.app.mapreduce.am.env and mapreduce.admin.user.env), but I \
+didn't see anything until I looked at the RM UI. There I was able to see all of the \
+logs for the failed job and diagnose the issue. Then, once I fixed my parameters and \
+ran the job again, I still didn't see any diagnostics/logs/counters. ebadger@foo: env \
+| grep HADOOPHADOOP_HOME=/Users/ebadger/Downloads/hadoop-3.0.0-alpha1-src/hadoop-dist/target/hadoop-3.0.0-alpha1/HADOOP_CONF_DIR=/Users/ebadger/confebadger@foo: \
+$HADOOP_HOME/bin/hadoop jar \
+$HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-3.0.0-alpha1-tests.jar \
+sleep -Dyarn.app.mapreduce.am.env="HADOOP_MAPRED_HOME=$HADOOP_HOME" \
+-Dmapreduce.admin.user.env="HADOOP_MAPRED_HOME=$HADOOP_HOME" -mt 1 -rt 1 -m 1 -r \
+1WARNING: log4j.properties is not found. HADOOP_CONF_DIR may be \
+incomplete.ebadger@foo: After running the above command, the RM UI showed a \
+successful job, but as you can see, I did not have anything printed onto the command \
+line. Hopefully this is just a misconfiguration on my part, but I figured that I \
+would point it out just in case. Thanks,
+Eric
+
+
+    On Tuesday, August 30, 2016 12:58 PM, Andrew Wang &lt;andrew.wang@cloudera.com&gt; \
+wrote:  
+
+ I'll put my own +1 on it:
+
+* Built from source
+* Started pseudo cluster and ran Pi job successfully
+
+On Tue, Aug 30, 2016 at 10:17 AM, Zhe Zhang &lt;zhz@apache.org&gt; wrote:
+
+&gt; 
+&gt; Thanks Andrew for the great work! It's really exciting to finally see a
+&gt; Hadoop 3 RC.
+&gt; 
+&gt; I noticed CHANGES and RELEASENOTES markdown files which were not in
+&gt; previous RCs like 2.7.3. What are good tools to verify them? I tried
+&gt; reading them on IntelliJ but format looks odd.
+&gt; 
+&gt; I'm still testing the RC:
+&gt; - Downloaded and verified checksum
+&gt; - Built from source
+&gt; - Will start small cluster and test simple programs, focusing on EC
+&gt; functionalities
+&gt; 
+&gt; -- Zhe
+&gt; 
+&gt; On Tue, Aug 30, 2016 at 8:51 AM Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+&gt; wrote:
+&gt; 
+&gt; &gt; Hi all,
+&gt; &gt; 
+&gt; &gt; Thanks to the combined work of many, many contributors, here's an RC0 for
+&gt; &gt; 3.0.0-alpha1:
+&gt; &gt; 
+&gt; &gt; http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt; &gt; 
+&gt; &gt; alpha1 is the first in a series of planned alpha releases leading up to
+&gt; &gt; GA.
+&gt; &gt; The objective is to get an artifact out to downstreams for testing and to
+&gt; &gt; iterate quickly based on their feedback. So, please keep that in mind when
+&gt; &gt; voting; hopefully most issues can be addressed by future alphas rather
+&gt; &gt; than
+&gt; &gt; future RCs.
+&gt; &gt; 
+&gt; &gt; Sorry for getting this out on a Tuesday, but I'd still like this vote to
+&gt; &gt; run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll extend
+&gt; &gt; if we lack the votes.
+&gt; &gt; 
+&gt; &gt; Please try it out and let me know what you think.
+&gt; &gt; 
+&gt; &gt; Best,
+&gt; &gt; Andrew
+&gt; &gt; 
+&gt; 
+
+
+   
+
+
+
+</body></email><email><emailId>20160830210652</emailId><senderName>Eric Badger</senderName><senderEmail>ebadger@yahoo-inc.com.invalid</senderEmail><timestampReceived>2016-08-30 21:06:52-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+I don't know why my email client keeps getting rid of all of my spacing. Resending \
+the same email so that it is actually legible...
+
+All on OSX 10.11.6:
+- Verified the hashes. However, Andrew, I don't know where to find your public key, \
+                so I wasn't able to verify that they were signed by you.
+- Built from source
+- Deployed a pseudo-distributed clusterRan a few sample jobs
+- Poked around the RM UI
+- Poked around the attached website locally via the tarball
+
+
+I did find one odd thing, though. It could be a misconfiguration on my system, but \
+I've never had this problem before with other releases (though I deal almost \
+exclusively in 2.x and so I imagine things might be different). When I run a sleep \
+job, I do not see any diagnostics/logs/counters printed out by the client. Initially \
+I ran the job like I would on 2.7 and it failed (because I had not set \
+yarn.app.mapreduce.am.env and mapreduce.admin.user.env), but I didn't see anything \
+until I looked at the RM UI. There I was able to see all of the logs for the failed \
+job and diagnose the issue. Then, once I fixed my parameters and ran the job again, I \
+still didn't see any diagnostics/logs/counters.
+
+
+ebadger@foo: env | grep HADOOP
+HADOOP_HOME=/Users/ebadger/Downloads/hadoop-3.0.0-alpha1-src/hadoop-dist/target/hadoop-3.0.0-alpha1/
+ HADOOP_CONF_DIR=/Users/ebadger/conf
+ebadger@foo: $HADOOP_HOME/bin/hadoop jar \
+$HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-3.0.0-alpha1-tests.jar \
+sleep -Dyarn.app.mapreduce.am.env="HADOOP_MAPRED_HOME=$HADOOP_HOME" \
+                -Dmapreduce.admin.user.env="HADOOP_MAPRED_HOME=$HADOOP_HOME" -mt 1 \
+                -rt 1 -m 1 -r 1
+WARNING: log4j.properties is not found. HADOOP_CONF_DIR may be incomplete.
+ebadger@foo:
+
+
+After running the above command, the RM UI showed a successful job, but as you can \
+see, I did not have anything printed onto the command line. Hopefully this is just a \
+misconfiguration on my part, but I figured that I would point it out just in case.
+
+
+Thanks,
+
+
+Eric
+
+
+
+On Tuesday, August 30, 2016 4:00 PM, Eric Badger &lt;ebadger@yahoo-inc.com.INVALID&gt; \
+wrote:
+
+
+
+All on OSX 10.11.6:
+Verified the hashes. However, Andrew, I don't know where to find your public key, so \
+I wasn't able to verify that they were signed by you.Built from sourceDeployed a \
+pseudo-distributed clusterRan a few sample jobsPoked around the RM UIPoked around the \
+attached website locally via the tarball I did find one odd thing, though. It could \
+be a misconfiguration on my system, but I've never had this problem before with other \
+releases (though I deal almost exclusively in 2.x and so I imagine things might be \
+different). When I run a sleep job, I do not see any diagnostics/logs/counters \
+printed out by the client. Initially I ran the job like I would on 2.7 and it failed \
+(because I had not set yarn.app.mapreduce.am.env and mapreduce.admin.user.env), but I \
+didn't see anything until I looked at the RM UI. There I was able to see all of the \
+logs for the failed job and diagnose the issue. Then, once I fixed my parameters and \
+ran the job again, I still didn't see any diagnostics/logs/counters. ebadger@foo: env \
+| grep HADOOPHADOOP_HOME=/Users/ebadger/Downloads/hadoop-3.0.0-alpha1-src/hadoop-dist/target/hadoop-3.0.0-alpha1/HADOOP_CONF_DIR=/Users/ebadger/confebadger@foo: \
+$HADOOP_HOME/bin/hadoop jar \
+$HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-3.0.0-alpha1-tests.jar \
+sleep -Dyarn.app.mapreduce.am.env="HADOOP_MAPRED_HOME=$HADOOP_HOME" \
+-Dmapreduce.admin.user.env="HADOOP_MAPRED_HOME=$HADOOP_HOME" -mt 1 -rt 1 -m 1 -r \
+1WARNING: log4j.properties is not found. HADOOP_CONF_DIR may be \
+incomplete.ebadger@foo: After running the above command, the RM UI showed a \
+successful job, but as you can see, I did not have anything printed onto the command \
+line. Hopefully this is just a misconfiguration on my part, but I figured that I \
+would point it out just in case. Thanks,
+Eric
+
+
+
+    On Tuesday, August 30, 2016 12:58 PM, Andrew Wang &lt;andrew.wang@cloudera.com&gt; \
+wrote:
+
+
+I'll put my own +1 on it:
+
+* Built from source
+* Started pseudo cluster and ran Pi job successfully
+
+On Tue, Aug 30, 2016 at 10:17 AM, Zhe Zhang &lt;zhz@apache.org&gt; wrote:
+
+&gt; 
+&gt; Thanks Andrew for the great work! It's really exciting to finally see a
+&gt; Hadoop 3 RC.
+&gt; 
+&gt; I noticed CHANGES and RELEASENOTES markdown files which were not in
+&gt; previous RCs like 2.7.3. What are good tools to verify them? I tried
+&gt; reading them on IntelliJ but format looks odd.
+&gt; 
+&gt; I'm still testing the RC:
+&gt; - Downloaded and verified checksum
+&gt; - Built from source
+&gt; - Will start small cluster and test simple programs, focusing on EC
+&gt; functionalities
+&gt; 
+&gt; -- Zhe
+&gt; 
+&gt; On Tue, Aug 30, 2016 at 8:51 AM Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+&gt; wrote:
+&gt; 
+&gt; &gt; Hi all,
+&gt; &gt; 
+&gt; &gt; Thanks to the combined work of many, many contributors, here's an RC0 for
+&gt; &gt; 3.0.0-alpha1:
+&gt; &gt; 
+&gt; &gt; http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt; &gt; 
+&gt; &gt; alpha1 is the first in a series of planned alpha releases leading up to
+&gt; &gt; GA.
+&gt; &gt; The objective is to get an artifact out to downstreams for testing and to
+&gt; &gt; iterate quickly based on their feedback. So, please keep that in mind when
+&gt; &gt; voting; hopefully most issues can be addressed by future alphas rather
+&gt; &gt; than
+&gt; &gt; future RCs.
+&gt; &gt; 
+&gt; &gt; Sorry for getting this out on a Tuesday, but I'd still like this vote to
+&gt; &gt; run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll extend
+&gt; &gt; if we lack the votes.
+&gt; &gt; 
+&gt; &gt; Please try it out and let me know what you think.
+&gt; &gt; 
+&gt; &gt; Best,
+&gt; &gt; Andrew
+&gt; &gt; 
+&gt; 
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+
+</body></email><email><emailId>20160830211152</emailId><senderName>Allen Wittenauer</senderName><senderEmail>aw@effectivemachines.com</senderEmail><timestampReceived>2016-08-30 21:11:52-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
+&gt; On Aug 30, 2016, at 2:06 PM, Eric Badger &lt;ebadger@yahoo-inc.com.INVALID&gt; wrote:
+&gt; 
+&gt; 
+&gt; WARNING: log4j.properties is not found. HADOOP_CONF_DIR may be incomplete.
+
+	^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+&gt; 
+&gt; After running the above command, the RM UI showed a successful job, but as you can \
+&gt; see, I did not have anything printed onto the command line. Hopefully this is just \
+&gt; a misconfiguration on my part, but I figured that I would point it out just in \
+&gt; case.
+
+
+	It gave you a very important message in the output ...
+
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+
+</body></email><email><emailId>20160830211245</emailId><senderName>Andrew Wang</senderName><senderEmail>andrew.wang@cloudera.com</senderEmail><timestampReceived>2016-08-30 21:12:45-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
+Hi Eric, thanks for trying this out,
+
+I tried this gpg command to get my key, seemed to work:
+
+# gpg --keyserver pgp.mit.edu --recv-keys 7501105C
+gpg: requesting key 7501105C from hkp server pgp.mit.edu
+gpg: /root/.gnupg/trustdb.gpg: trustdb created
+gpg: key 7501105C: public key "Andrew Wang (CODE SIGNING KEY) &lt;
+andrew.wang@cloudera.com&gt;" imported
+gpg: no ultimately trusted keys found
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+
+Also found via search:
+http://pgp.mit.edu/pks/lookup?search=wang%40apache.org&amp;op=index
+
+
+On Tue, Aug 30, 2016 at 2:06 PM, Eric Badger &lt;ebadger@yahoo-inc.com&gt; wrote:
+
+&gt; I don't know why my email client keeps getting rid of all of my spacing.
+&gt; Resending the same email so that it is actually legible...
+&gt;
+&gt; All on OSX 10.11.6:
+&gt; - Verified the hashes. However, Andrew, I don't know where to find your
+&gt; public key, so I wasn't able to verify that they were signed by you.
+&gt; - Built from source
+&gt; - Deployed a pseudo-distributed clusterRan a few sample jobs
+&gt; - Poked around the RM UI
+&gt; - Poked around the attached website locally via the tarball
+&gt;
+&gt;
+&gt; I did find one odd thing, though. It could be a misconfiguration on my
+&gt; system, but I've never had this problem before with other releases (though
+&gt; I deal almost exclusively in 2.x and so I imagine things might be
+&gt; different). When I run a sleep job, I do not see any
+&gt; diagnostics/logs/counters printed out by the client. Initially I ran the
+&gt; job like I would on 2.7 and it failed (because I had not set
+&gt; yarn.app.mapreduce.am.env and mapreduce.admin.user.env), but I didn't see
+&gt; anything until I looked at the RM UI. There I was able to see all of the
+&gt; logs for the failed job and diagnose the issue. Then, once I fixed my
+&gt; parameters and ran the job again, I still didn't see any
+&gt; diagnostics/logs/counters.
+&gt;
+&gt;
+&gt; ebadger@foo: env | grep HADOOP
+&gt; HADOOP_HOME=/Users/ebadger/Downloads/hadoop-3.0.0-alpha1-
+&gt; src/hadoop-dist/target/hadoop-3.0.0-alpha1/
+&gt; HADOOP_CONF_DIR=/Users/ebadger/conf
+&gt; ebadger@foo: $HADOOP_HOME/bin/hadoop jar $HADOOP_HOME/share/hadoop/
+&gt; mapreduce/hadoop-mapreduce-client-jobclient-3.0.0-alpha1-tests.jar sleep
+&gt; -Dyarn.app.mapreduce.am.env="HADOOP_MAPRED_HOME=$HADOOP_HOME"
+&gt; -Dmapreduce.admin.user.env="HADOOP_MAPRED_HOME=$HADOOP_HOME" -mt 1 -rt 1
+&gt; -m 1 -r 1
+&gt; WARNING: log4j.properties is not found. HADOOP_CONF_DIR may be incomplete.
+&gt; ebadger@foo:
+&gt;
+&gt;
+&gt; After running the above command, the RM UI showed a successful job, but as
+&gt; you can see, I did not have anything printed onto the command line.
+&gt; Hopefully this is just a misconfiguration on my part, but I figured that I
+&gt; would point it out just in case.
+&gt;
+&gt;
+&gt; Thanks,
+&gt;
+&gt;
+&gt; Eric
+&gt;
+&gt;
+&gt;
+&gt; On Tuesday, August 30, 2016 4:00 PM, Eric Badger
+&gt; &lt;ebadger@yahoo-inc.com.INVALID&gt; wrote:
+&gt;
+&gt;
+&gt;
+&gt; All on OSX 10.11.6:
+&gt; Verified the hashes. However, Andrew, I don't know where to find your
+&gt; public key, so I wasn't able to verify that they were signed by you.Built
+&gt; from sourceDeployed a pseudo-distributed clusterRan a few sample jobsPoked
+&gt; around the RM UIPoked around the attached website locally via the tarball
+&gt; I did find one odd thing, though. It could be a misconfiguration on my
+&gt; system, but I've never had this problem before with other releases (though
+&gt; I deal almost exclusively in 2.x and so I imagine things might be
+&gt; different). When I run a sleep job, I do not see any
+&gt; diagnostics/logs/counters printed out by the client. Initially I ran the
+&gt; job like I would on 2.7 and it failed (because I had not set
+&gt; yarn.app.mapreduce.am.env and mapreduce.admin.user.env), but I didn't see
+&gt; anything until I looked at the RM UI. There I was able to see all of the
+&gt; logs for the failed job and diagnose the issue. Then, once I fixed my
+&gt; parameters and ran the job again, I still didn't see any
+&gt; diagnostics/logs/counters.
+&gt; ebadger@foo: env | grep HADOOPHADOOP_HOME=/Users/
+&gt; ebadger/Downloads/hadoop-3.0.0-alpha1-src/hadoop-dist/
+&gt; target/hadoop-3.0.0-alpha1/HADOOP_CONF_DIR=/Users/ebadger/confebadger@foo:
+&gt; $HADOOP_HOME/bin/hadoop jar $HADOOP_HOME/share/hadoop/
+&gt; mapreduce/hadoop-mapreduce-client-jobclient-3.0.0-alpha1-tests.jar sleep
+&gt; -Dyarn.app.mapreduce.am.env="HADOOP_MAPRED_HOME=$HADOOP_HOME"
+&gt; -Dmapreduce.admin.user.env="HADOOP_MAPRED_HOME=$HADOOP_HOME" -mt 1 -rt 1
+&gt; -m 1 -r 1WARNING: log4j.properties is not found. HADOOP_CONF_DIR may be
+&gt; incomplete.ebadger@foo:
+&gt; After running the above command, the RM UI showed a successful job, but as
+&gt; you can see, I did not have anything printed onto the command line.
+&gt; Hopefully this is just a misconfiguration on my part, but I figured that I
+&gt; would point it out just in case.
+&gt; Thanks,
+&gt; Eric
+&gt;
+&gt;
+&gt;
+&gt;     On Tuesday, August 30, 2016 12:58 PM, Andrew Wang &lt;
+&gt; andrew.wang@cloudera.com&gt; wrote:
+&gt;
+&gt;
+&gt; I'll put my own +1 on it:
+&gt;
+&gt; * Built from source
+&gt; * Started pseudo cluster and ran Pi job successfully
+&gt;
+&gt; On Tue, Aug 30, 2016 at 10:17 AM, Zhe Zhang &lt;zhz@apache.org&gt; wrote:
+&gt;
+&gt; &gt;
+&gt; &gt; Thanks Andrew for the great work! It's really exciting to finally see a
+&gt; &gt; Hadoop 3 RC.
+&gt; &gt;
+&gt; &gt; I noticed CHANGES and RELEASENOTES markdown files which were not in
+&gt; &gt; previous RCs like 2.7.3. What are good tools to verify them? I tried
+&gt; &gt; reading them on IntelliJ but format looks odd.
+&gt; &gt;
+&gt; &gt; I'm still testing the RC:
+&gt; &gt; - Downloaded and verified checksum
+&gt; &gt; - Built from source
+&gt; &gt; - Will start small cluster and test simple programs, focusing on EC
+&gt; &gt; functionalities
+&gt; &gt;
+&gt; &gt; -- Zhe
+&gt; &gt;
+&gt; &gt; On Tue, Aug 30, 2016 at 8:51 AM Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+&gt; &gt; wrote:
+&gt; &gt;
+&gt; &gt;&gt; Hi all,
+&gt; &gt;&gt;
+&gt; &gt;&gt; Thanks to the combined work of many, many contributors, here's an RC0
+&gt; for
+&gt; &gt;&gt; 3.0.0-alpha1:
+&gt; &gt;&gt;
+&gt; &gt;&gt; http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt; &gt;&gt;
+&gt; &gt;&gt; alpha1 is the first in a series of planned alpha releases leading up to
+&gt; &gt;&gt; GA.
+&gt; &gt;&gt; The objective is to get an artifact out to downstreams for testing and
+&gt; to
+&gt; &gt;&gt; iterate quickly based on their feedback. So, please keep that in mind
+&gt; when
+&gt; &gt;&gt; voting; hopefully most issues can be addressed by future alphas rather
+&gt; &gt;&gt; than
+&gt; &gt;&gt; future RCs.
+&gt; &gt;&gt;
+&gt; &gt;&gt; Sorry for getting this out on a Tuesday, but I'd still like this vote to
+&gt; &gt;&gt; run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll
+&gt; extend
+&gt; &gt;&gt; if we lack the votes.
+&gt; &gt;&gt;
+&gt; &gt;&gt; Please try it out and let me know what you think.
+&gt; &gt;&gt;
+&gt; &gt;&gt; Best,
+&gt; &gt;&gt; Andrew
+&gt; &gt;&gt;
+&gt; &gt;
+&gt;
+
+
+</body></email><email><emailId>20160830212027</emailId><senderName>Eric Badger</senderName><senderEmail>ebadger@yahoo-inc.com.invalid</senderEmail><timestampReceived>2016-08-30 21:20:27-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+Well that's embarrassing. I had accidentally slightly renamed my log4j.properties \
+file in my conf directory, so it was there, just not being read. Apologies for the \
+unnecessary spam. With this and the public key from Andrew, I give my non-binding +1. \
+
+
+Eric
+
+
+
+On Tuesday, August 30, 2016 4:11 PM, Allen Wittenauer &lt;aw@effectivemachines.com&gt; \
+wrote:
+
+
+&gt; On Aug 30, 2016, at 2:06 PM, Eric Badger &lt;ebadger@yahoo-inc.com.INVALID&gt; wrote:
+&gt; 
+&gt; 
+&gt; WARNING: log4j.properties is not found. HADOOP_CONF_DIR may be incomplete.
+
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+&gt; 
+&gt; After running the above command, the RM UI showed a successful job, but as you can \
+&gt; see, I did not have anything printed onto the command line. Hopefully this is just \
+&gt; a misconfiguration on my part, but I figured that I would point it out just in \
+&gt; case.
+
+
+    It gave you a very important message in the output ...
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+
+</body></email><email><emailId>20160830212602</emailId><senderName>Allen Wittenauer</senderName><senderEmail>aw@effectivemachines.com</senderEmail><timestampReceived>2016-08-30 21:26:02-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
+&gt; On Aug 30, 2016, at 2:20 PM, Eric Badger &lt;ebadger@yahoo-inc.com&gt; wrote:
+&gt; 
+&gt; Well that's embarrassing. I had accidentally slightly renamed my log4j.properties \
+&gt; file in my conf directory, so it was there, just not being read.
+
+	Nah.  You were just testing out the shell rewrite's ability to detect a common \
+error. ;) 
+
+	BTW, something else.. instead of doing env|grep HADOOP, you can do 'hadoop envvars' \
+                to get most of the good stuff.
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+
+</body></email><email><emailId>20160830221250</emailId><senderName>Zhe Zhang</senderName><senderEmail>zhz@apache.org</senderEmail><timestampReceived>2016-08-30 22:12:50-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
++1 (non-binding)
+
+Did the following on 7 RHEL 6.6 servers
+- Downloaded and built from source
+- Downloaded and verified checksum of the binary tar.gz file
+- Setup a cluster with 1 NN and 6 DNs
+- Tried regular HDFS commands
+- Tried EC commands (listPolicies, getPolicy, setPolicy), they work fine
+- Verified that with a 3-2 policy, 1.67x capacity is used. Below is the
+output after copying the binary tar.gz file into an EC folder. The file is
+318MB.
+
+Configured Capacity: 3221225472 (3 GB)
+Present Capacity: 3215348743 (2.99 GB)
+DFS Remaining: 2655666176 (2.47 GB)
+DFS Used: 559682567 (533.75 MB)
+
+Thanks Allen for clarifying on the markdown files. I also verified the site
+html files (content of the index.html, randomly selected some links).
+
+
+On Tue, Aug 30, 2016 at 2:20 PM Eric Badger &lt;ebadger@yahoo-inc.com.invalid&gt;
+wrote:
+
+&gt; Well that's embarrassing. I had accidentally slightly renamed my
+&gt; log4j.properties file in my conf directory, so it was there, just not being
+&gt; read. Apologies for the unnecessary spam. With this and the public key from
+&gt; Andrew, I give my non-binding +1.
+&gt;
+&gt; Eric
+&gt;
+&gt;
+&gt;
+&gt; On Tuesday, August 30, 2016 4:11 PM, Allen Wittenauer &lt;
+&gt; aw@effectivemachines.com&gt; wrote:
+&gt;
+&gt;
+&gt; &gt; On Aug 30, 2016, at 2:06 PM, Eric Badger &lt;ebadger@yahoo-inc.com.INVALID&gt;
+&gt; wrote:
+&gt; &gt;
+&gt; &gt;
+&gt; &gt; WARNING: log4j.properties is not found. HADOOP_CONF_DIR may be
+&gt; incomplete.
+&gt;
+&gt;     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+&gt;
+&gt;
+&gt; &gt;
+&gt; &gt; After running the above command, the RM UI showed a successful job, but
+&gt; as you can see, I did not have anything printed onto the command line.
+&gt; Hopefully this is just a misconfiguration on my part, but I figured that I
+&gt; would point it out just in case.
+&gt;
+&gt;
+&gt;     It gave you a very important message in the output ...
+&gt;
+&gt; ---------------------------------------------------------------------
+&gt; To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+&gt; For additional commands, e-mail: common-dev-help@hadoop.apache.org
+&gt;
+&gt;
+
+
+</body></email><email><emailId>20160831143129</emailId><senderName>Sean Busbey</senderName><senderEmail>busbey@cloudera.com</senderEmail><timestampReceived>2016-08-31 14:31:29-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+It's also the key Andrew has in the project's KEYS file:
+
+http://www.apache.org/dist/hadoop/common/KEYS
+
+
+
+On Tue, Aug 30, 2016 at 4:12 PM, Andrew Wang &lt;andrew.wang@cloudera.com&gt; wrote:
+&gt; Hi Eric, thanks for trying this out,
+&gt;
+&gt; I tried this gpg command to get my key, seemed to work:
+&gt;
+&gt; # gpg --keyserver pgp.mit.edu --recv-keys 7501105C
+&gt; gpg: requesting key 7501105C from hkp server pgp.mit.edu
+&gt; gpg: /root/.gnupg/trustdb.gpg: trustdb created
+&gt; gpg: key 7501105C: public key "Andrew Wang (CODE SIGNING KEY) &lt;
+&gt; andrew.wang@cloudera.com&gt;" imported
+&gt; gpg: no ultimately trusted keys found
+&gt; gpg: Total number processed: 1
+&gt; gpg:               imported: 1  (RSA: 1)
+&gt;
+&gt; Also found via search:
+&gt; http://pgp.mit.edu/pks/lookup?search=wang%40apache.org&amp;op=index
+&gt;
+&gt;
+&gt; On Tue, Aug 30, 2016 at 2:06 PM, Eric Badger &lt;ebadger@yahoo-inc.com&gt; wrote:
+&gt;
+&gt;&gt; I don't know why my email client keeps getting rid of all of my spacing.
+&gt;&gt; Resending the same email so that it is actually legible...
+&gt;&gt;
+&gt;&gt; All on OSX 10.11.6:
+&gt;&gt; - Verified the hashes. However, Andrew, I don't know where to find your
+&gt;&gt; public key, so I wasn't able to verify that they were signed by you.
+&gt;&gt; - Built from source
+&gt;&gt; - Deployed a pseudo-distributed clusterRan a few sample jobs
+&gt;&gt; - Poked around the RM UI
+&gt;&gt; - Poked around the attached website locally via the tarball
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; I did find one odd thing, though. It could be a misconfiguration on my
+&gt;&gt; system, but I've never had this problem before with other releases (though
+&gt;&gt; I deal almost exclusively in 2.x and so I imagine things might be
+&gt;&gt; different). When I run a sleep job, I do not see any
+&gt;&gt; diagnostics/logs/counters printed out by the client. Initially I ran the
+&gt;&gt; job like I would on 2.7 and it failed (because I had not set
+&gt;&gt; yarn.app.mapreduce.am.env and mapreduce.admin.user.env), but I didn't see
+&gt;&gt; anything until I looked at the RM UI. There I was able to see all of the
+&gt;&gt; logs for the failed job and diagnose the issue. Then, once I fixed my
+&gt;&gt; parameters and ran the job again, I still didn't see any
+&gt;&gt; diagnostics/logs/counters.
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; ebadger@foo: env | grep HADOOP
+&gt;&gt; HADOOP_HOME=/Users/ebadger/Downloads/hadoop-3.0.0-alpha1-
+&gt;&gt; src/hadoop-dist/target/hadoop-3.0.0-alpha1/
+&gt;&gt; HADOOP_CONF_DIR=/Users/ebadger/conf
+&gt;&gt; ebadger@foo: $HADOOP_HOME/bin/hadoop jar $HADOOP_HOME/share/hadoop/
+&gt;&gt; mapreduce/hadoop-mapreduce-client-jobclient-3.0.0-alpha1-tests.jar sleep
+&gt;&gt; -Dyarn.app.mapreduce.am.env="HADOOP_MAPRED_HOME=$HADOOP_HOME"
+&gt;&gt; -Dmapreduce.admin.user.env="HADOOP_MAPRED_HOME=$HADOOP_HOME" -mt 1 -rt 1
+&gt;&gt; -m 1 -r 1
+&gt;&gt; WARNING: log4j.properties is not found. HADOOP_CONF_DIR may be incomplete.
+&gt;&gt; ebadger@foo:
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; After running the above command, the RM UI showed a successful job, but as
+&gt;&gt; you can see, I did not have anything printed onto the command line.
+&gt;&gt; Hopefully this is just a misconfiguration on my part, but I figured that I
+&gt;&gt; would point it out just in case.
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; Thanks,
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; Eric
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; On Tuesday, August 30, 2016 4:00 PM, Eric Badger
+&gt;&gt; &lt;ebadger@yahoo-inc.com.INVALID&gt; wrote:
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; All on OSX 10.11.6:
+&gt;&gt; Verified the hashes. However, Andrew, I don't know where to find your
+&gt;&gt; public key, so I wasn't able to verify that they were signed by you.Built
+&gt;&gt; from sourceDeployed a pseudo-distributed clusterRan a few sample jobsPoked
+&gt;&gt; around the RM UIPoked around the attached website locally via the tarball
+&gt;&gt; I did find one odd thing, though. It could be a misconfiguration on my
+&gt;&gt; system, but I've never had this problem before with other releases (though
+&gt;&gt; I deal almost exclusively in 2.x and so I imagine things might be
+&gt;&gt; different). When I run a sleep job, I do not see any
+&gt;&gt; diagnostics/logs/counters printed out by the client. Initially I ran the
+&gt;&gt; job like I would on 2.7 and it failed (because I had not set
+&gt;&gt; yarn.app.mapreduce.am.env and mapreduce.admin.user.env), but I didn't see
+&gt;&gt; anything until I looked at the RM UI. There I was able to see all of the
+&gt;&gt; logs for the failed job and diagnose the issue. Then, once I fixed my
+&gt;&gt; parameters and ran the job again, I still didn't see any
+&gt;&gt; diagnostics/logs/counters.
+&gt;&gt; ebadger@foo: env | grep HADOOPHADOOP_HOME=/Users/
+&gt;&gt; ebadger/Downloads/hadoop-3.0.0-alpha1-src/hadoop-dist/
+&gt;&gt; target/hadoop-3.0.0-alpha1/HADOOP_CONF_DIR=/Users/ebadger/confebadger@foo:
+&gt;&gt; $HADOOP_HOME/bin/hadoop jar $HADOOP_HOME/share/hadoop/
+&gt;&gt; mapreduce/hadoop-mapreduce-client-jobclient-3.0.0-alpha1-tests.jar sleep
+&gt;&gt; -Dyarn.app.mapreduce.am.env="HADOOP_MAPRED_HOME=$HADOOP_HOME"
+&gt;&gt; -Dmapreduce.admin.user.env="HADOOP_MAPRED_HOME=$HADOOP_HOME" -mt 1 -rt 1
+&gt;&gt; -m 1 -r 1WARNING: log4j.properties is not found. HADOOP_CONF_DIR may be
+&gt;&gt; incomplete.ebadger@foo:
+&gt;&gt; After running the above command, the RM UI showed a successful job, but as
+&gt;&gt; you can see, I did not have anything printed onto the command line.
+&gt;&gt; Hopefully this is just a misconfiguration on my part, but I figured that I
+&gt;&gt; would point it out just in case.
+&gt;&gt; Thanks,
+&gt;&gt; Eric
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;     On Tuesday, August 30, 2016 12:58 PM, Andrew Wang &lt;
+&gt;&gt; andrew.wang@cloudera.com&gt; wrote:
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; I'll put my own +1 on it:
+&gt;&gt;
+&gt;&gt; * Built from source
+&gt;&gt; * Started pseudo cluster and ran Pi job successfully
+&gt;&gt;
+&gt;&gt; On Tue, Aug 30, 2016 at 10:17 AM, Zhe Zhang &lt;zhz@apache.org&gt; wrote:
+&gt;&gt;
+&gt;&gt; &gt;
+&gt;&gt; &gt; Thanks Andrew for the great work! It's really exciting to finally see a
+&gt;&gt; &gt; Hadoop 3 RC.
+&gt;&gt; &gt;
+&gt;&gt; &gt; I noticed CHANGES and RELEASENOTES markdown files which were not in
+&gt;&gt; &gt; previous RCs like 2.7.3. What are good tools to verify them? I tried
+&gt;&gt; &gt; reading them on IntelliJ but format looks odd.
+&gt;&gt; &gt;
+&gt;&gt; &gt; I'm still testing the RC:
+&gt;&gt; &gt; - Downloaded and verified checksum
+&gt;&gt; &gt; - Built from source
+&gt;&gt; &gt; - Will start small cluster and test simple programs, focusing on EC
+&gt;&gt; &gt; functionalities
+&gt;&gt; &gt;
+&gt;&gt; &gt; -- Zhe
+&gt;&gt; &gt;
+&gt;&gt; &gt; On Tue, Aug 30, 2016 at 8:51 AM Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+&gt;&gt; &gt; wrote:
+&gt;&gt; &gt;
+&gt;&gt; &gt;&gt; Hi all,
+&gt;&gt; &gt;&gt;
+&gt;&gt; &gt;&gt; Thanks to the combined work of many, many contributors, here's an RC0
+&gt;&gt; for
+&gt;&gt; &gt;&gt; 3.0.0-alpha1:
+&gt;&gt; &gt;&gt;
+&gt;&gt; &gt;&gt; http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt;&gt; &gt;&gt;
+&gt;&gt; &gt;&gt; alpha1 is the first in a series of planned alpha releases leading up to
+&gt;&gt; &gt;&gt; GA.
+&gt;&gt; &gt;&gt; The objective is to get an artifact out to downstreams for testing and
+&gt;&gt; to
+&gt;&gt; &gt;&gt; iterate quickly based on their feedback. So, please keep that in mind
+&gt;&gt; when
+&gt;&gt; &gt;&gt; voting; hopefully most issues can be addressed by future alphas rather
+&gt;&gt; &gt;&gt; than
+&gt;&gt; &gt;&gt; future RCs.
+&gt;&gt; &gt;&gt;
+&gt;&gt; &gt;&gt; Sorry for getting this out on a Tuesday, but I'd still like this vote to
+&gt;&gt; &gt;&gt; run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll
+&gt;&gt; extend
+&gt;&gt; &gt;&gt; if we lack the votes.
+&gt;&gt; &gt;&gt;
+&gt;&gt; &gt;&gt; Please try it out and let me know what you think.
+&gt;&gt; &gt;&gt;
+&gt;&gt; &gt;&gt; Best,
+&gt;&gt; &gt;&gt; Andrew
+&gt;&gt; &gt;&gt;
+&gt;&gt; &gt;
+&gt;&gt;
+
+
+
+-- 
+busbey
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+</body></email><email><emailId>20160831181418</emailId><senderName>"Aaron T. Myers"</senderName><senderEmail>atm@cloudera.com</senderEmail><timestampReceived>2016-08-31 18:14:18-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
++1 (binding) from me. Downloaded the source, built from source, set up a
+pseudo cluster, and ran a few of the sample jobs.
+
+Thanks a lot for doing all this release work, Andrew.
+
+--
+Aaron T. Myers
+Software Engineer, Cloudera
+
+On Tue, Aug 30, 2016 at 8:51 AM, Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+wrote:
+
+&gt; Hi all,
+&gt;
+&gt; Thanks to the combined work of many, many contributors, here's an RC0 for
+&gt; 3.0.0-alpha1:
+&gt;
+&gt; http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt;
+&gt; alpha1 is the first in a series of planned alpha releases leading up to GA.
+&gt; The objective is to get an artifact out to downstreams for testing and to
+&gt; iterate quickly based on their feedback. So, please keep that in mind when
+&gt; voting; hopefully most issues can be addressed by future alphas rather than
+&gt; future RCs.
+&gt;
+&gt; Sorry for getting this out on a Tuesday, but I'd still like this vote to
+&gt; run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll extend
+&gt; if we lack the votes.
+&gt;
+&gt; Please try it out and let me know what you think.
+&gt;
+&gt; Best,
+&gt; Andrew
+&gt;
+
+
+</body></email><email><emailId>20160831184659</emailId><senderName>"Gangumalla, Uma"</senderName><senderEmail>uma.gangumalla@intel.com</senderEmail><timestampReceived>2016-08-31 18:46:59-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
++1 (binding).
+
+Overall it=B9s a great effort, Andrew. Thank you for putting all the energy=
+.
+
+Downloaded and built.
+Ran some sample jobs.
+
+I would love to see all this efforts will lead to get the GA from Hadoop
+3.X soon.
+
+Regards,
+Uma
+
+
+On 8/30/16, 8:51 AM, "Andrew Wang" &lt;andrew.wang@cloudera.com&gt; wrote:
+
+&gt;Hi all,
+&gt;
+&gt;Thanks to the combined work of many, many contributors, here's an RC0 for
+&gt;3.0.0-alpha1:
+&gt;
+&gt;http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt;
+&gt;alpha1 is the first in a series of planned alpha releases leading up to
+&gt;GA.
+&gt;The objective is to get an artifact out to downstreams for testing and to
+&gt;iterate quickly based on their feedback. So, please keep that in mind when
+&gt;voting; hopefully most issues can be addressed by future alphas rather
+&gt;than
+&gt;future RCs.
+&gt;
+&gt;Sorry for getting this out on a Tuesday, but I'd still like this vote to
+&gt;run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll extend
+&gt;if we lack the votes.
+&gt;
+&gt;Please try it out and let me know what you think.
+&gt;
+&gt;Best,
+&gt;Andrew
+
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+</body></email><email><emailId>20160901004927</emailId><senderName>John Zhuge</senderName><senderEmail>jzhuge@cloudera.com</senderEmail><timestampReceived>2016-09-01 00:49:27-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
++1 (non-binding)
+
+- Build source with Java 1.8.0_101 on Centos 6.6 without native
+- Verify license and notice using the shell script in HADOOP-13374
+- Deploy a pseudo cluster
+- Run basic dfs, distcp, ACL, webhdfs commands
+- Run MapReduce workcount and pi examples
+- Run balancer
+
+Thanks,
+John
+
+John Zhuge
+Software Engineer, Cloudera
+
+On Wed, Aug 31, 2016 at 11:46 AM, Gangumalla, Uma &lt;uma.gangumalla@intel.com=
+&gt;
+wrote:
+
+&gt; +1 (binding).
+&gt;
+&gt; Overall it=C2=B9s a great effort, Andrew. Thank you for putting all the e=
+nergy.
+&gt;
+&gt; Downloaded and built.
+&gt; Ran some sample jobs.
+&gt;
+&gt; I would love to see all this efforts will lead to get the GA from Hadoop
+&gt; 3.X soon.
+&gt;
+&gt; Regards,
+&gt; Uma
+&gt;
+&gt;
+&gt; On 8/30/16, 8:51 AM, "Andrew Wang" &lt;andrew.wang@cloudera.com&gt; wrote:
+&gt;
+&gt; &gt;Hi all,
+&gt; &gt;
+&gt; &gt;Thanks to the combined work of many, many contributors, here's an RC0 fo=
+r
+&gt; &gt;3.0.0-alpha1:
+&gt; &gt;
+&gt; &gt;http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt; &gt;
+&gt; &gt;alpha1 is the first in a series of planned alpha releases leading up to
+&gt; &gt;GA.
+&gt; &gt;The objective is to get an artifact out to downstreams for testing and t=
+o
+&gt; &gt;iterate quickly based on their feedback. So, please keep that in mind wh=
+en
+&gt; &gt;voting; hopefully most issues can be addressed by future alphas rather
+&gt; &gt;than
+&gt; &gt;future RCs.
+&gt; &gt;
+&gt; &gt;Sorry for getting this out on a Tuesday, but I'd still like this vote to
+&gt; &gt;run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll exten=
+d
+&gt; &gt;if we lack the votes.
+&gt; &gt;
+&gt; &gt;Please try it out and let me know what you think.
+&gt; &gt;
+&gt; &gt;Best,
+&gt; &gt;Andrew
+&gt;
+&gt;
+&gt; ---------------------------------------------------------------------
+&gt; To unsubscribe, e-mail: hdfs-dev-unsubscribe@hadoop.apache.org
+&gt; For additional commands, e-mail: hdfs-dev-help@hadoop.apache.org
+&gt;
+&gt;
+
+
+</body></email><email><emailId>20160901043700</emailId><senderName>Rakesh Radhakrishnan</senderName><senderEmail>rakeshradr@gmail.com</senderEmail><timestampReceived>2016-09-01 04:37:00-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
+Thanks for getting this out.
+
++1 (non-binding)
+
+- downloaded and built tarball from source
+- deployed HDFS-HA cluster and tested few EC file operations
+- executed few hdfs commands including EC commands
+- viewed basic UI
+- ran some of the sample jobs
+
+
+Best Regards,
+Rakesh
+Intel
+
+On Thu, Sep 1, 2016 at 6:19 AM, John Zhuge &lt;jzhuge@cloudera.com&gt; wrote:
+
+&gt; +1 (non-binding)
+&gt;
+&gt; - Build source with Java 1.8.0_101 on Centos 6.6 without native
+&gt; - Verify license and notice using the shell script in HADOOP-13374
+&gt; - Deploy a pseudo cluster
+&gt; - Run basic dfs, distcp, ACL, webhdfs commands
+&gt; - Run MapReduce workcount and pi examples
+&gt; - Run balancer
+&gt;
+&gt; Thanks,
+&gt; John
+&gt;
+&gt; John Zhuge
+&gt; Software Engineer, Cloudera
+&gt;
+&gt; On Wed, Aug 31, 2016 at 11:46 AM, Gangumalla, Uma &lt;
+&gt; uma.gangumalla@intel.com&gt;
+&gt; wrote:
+&gt;
+&gt; &gt; +1 (binding).
+&gt; &gt;
+&gt; &gt; Overall it=C2=B9s a great effort, Andrew. Thank you for putting all the
+&gt; energy.
+&gt; &gt;
+&gt; &gt; Downloaded and built.
+&gt; &gt; Ran some sample jobs.
+&gt; &gt;
+&gt; &gt; I would love to see all this efforts will lead to get the GA from Hadoo=
+p
+&gt; &gt; 3.X soon.
+&gt; &gt;
+&gt; &gt; Regards,
+&gt; &gt; Uma
+&gt; &gt;
+&gt; &gt;
+&gt; &gt; On 8/30/16, 8:51 AM, "Andrew Wang" &lt;andrew.wang@cloudera.com&gt; wrote:
+&gt; &gt;
+&gt; &gt; &gt;Hi all,
+&gt; &gt; &gt;
+&gt; &gt; &gt;Thanks to the combined work of many, many contributors, here's an RC0
+&gt; for
+&gt; &gt; &gt;3.0.0-alpha1:
+&gt; &gt; &gt;
+&gt; &gt; &gt;http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt; &gt; &gt;
+&gt; &gt; &gt;alpha1 is the first in a series of planned alpha releases leading up t=
+o
+&gt; &gt; &gt;GA.
+&gt; &gt; &gt;The objective is to get an artifact out to downstreams for testing and
+&gt; to
+&gt; &gt; &gt;iterate quickly based on their feedback. So, please keep that in mind
+&gt; when
+&gt; &gt; &gt;voting; hopefully most issues can be addressed by future alphas rather
+&gt; &gt; &gt;than
+&gt; &gt; &gt;future RCs.
+&gt; &gt; &gt;
+&gt; &gt; &gt;Sorry for getting this out on a Tuesday, but I'd still like this vote =
+to
+&gt; &gt; &gt;run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll
+&gt; extend
+&gt; &gt; &gt;if we lack the votes.
+&gt; &gt; &gt;
+&gt; &gt; &gt;Please try it out and let me know what you think.
+&gt; &gt; &gt;
+&gt; &gt; &gt;Best,
+&gt; &gt; &gt;Andrew
+&gt; &gt;
+&gt; &gt;
+&gt; &gt; ---------------------------------------------------------------------
+&gt; &gt; To unsubscribe, e-mail: hdfs-dev-unsubscribe@hadoop.apache.org
+&gt; &gt; For additional commands, e-mail: hdfs-dev-help@hadoop.apache.org
+&gt; &gt;
+&gt; &gt;
+&gt;
+
+
+</body></email><email><emailId>20160901060638</emailId><senderName>Xiao Chen</senderName><senderEmail>xiao@cloudera.com</senderEmail><timestampReceived>2016-09-01 06:06:38-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
++1 (non-binding)
+
+Thanks Andrew for putting this up! Super excited to see a Hadoop 3 RC.
+
+Verifications done on OS X:
+- Verified md5 on all files
+- Spot checked release notes and changes
+- Built from source
+- Verified LICENSE and NOTICE are correctly contained in the jars built
+- Started pseudo-distributed HDFS, verified basic operations work.
+- Started KMS service, verified basic KMS operations work, a simple
+encryption zone works.
+- Sanity checked NN webui.
+
+Best,
+-Xiao
+
+On Wed, Aug 31, 2016 at 9:25 PM, Rakesh Radhakrishnan &lt;rakeshradr@gmail.com=
+&gt;
+wrote:
+
+&gt; Thanks for getting this out.
+&gt;
+&gt; +1 (non-binding)
+&gt;
+&gt; - downloaded and built tarball from source
+&gt; - deployed HDFS-HA cluster and tested few EC file operations
+&gt; - executed few hdfs commands including EC commands
+&gt; - viewed basic UI
+&gt; - ran some of the sample jobs
+&gt;
+&gt;
+&gt; Best Regards,
+&gt; Rakesh
+&gt; Intel
+&gt;
+&gt; On Thu, Sep 1, 2016 at 6:19 AM, John Zhuge &lt;jzhuge@cloudera.com&gt; wrote:
+&gt;
+&gt; &gt; +1 (non-binding)
+&gt; &gt;
+&gt; &gt; - Build source with Java 1.8.0_101 on Centos 6.6 without native
+&gt; &gt; - Verify license and notice using the shell script in HADOOP-13374
+&gt; &gt; - Deploy a pseudo cluster
+&gt; &gt; - Run basic dfs, distcp, ACL, webhdfs commands
+&gt; &gt; - Run MapReduce workcount and pi examples
+&gt; &gt; - Run balancer
+&gt; &gt;
+&gt; &gt; Thanks,
+&gt; &gt; John
+&gt; &gt;
+&gt; &gt; John Zhuge
+&gt; &gt; Software Engineer, Cloudera
+&gt; &gt;
+&gt; &gt; On Wed, Aug 31, 2016 at 11:46 AM, Gangumalla, Uma &lt;
+&gt; &gt; uma.gangumalla@intel.com&gt;
+&gt; &gt; wrote:
+&gt; &gt;
+&gt; &gt; &gt; +1 (binding).
+&gt; &gt; &gt;
+&gt; &gt; &gt; Overall it=C2=B9s a great effort, Andrew. Thank you for putting all t=
+he
+&gt; &gt; energy.
+&gt; &gt; &gt;
+&gt; &gt; &gt; Downloaded and built.
+&gt; &gt; &gt; Ran some sample jobs.
+&gt; &gt; &gt;
+&gt; &gt; &gt; I would love to see all this efforts will lead to get the GA from
+&gt; Hadoop
+&gt; &gt; &gt; 3.X soon.
+&gt; &gt; &gt;
+&gt; &gt; &gt; Regards,
+&gt; &gt; &gt; Uma
+&gt; &gt; &gt;
+&gt; &gt; &gt;
+&gt; &gt; &gt; On 8/30/16, 8:51 AM, "Andrew Wang" &lt;andrew.wang@cloudera.com&gt; wrote:
+&gt; &gt; &gt;
+&gt; &gt; &gt; &gt;Hi all,
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;Thanks to the combined work of many, many contributors, here's an RC=
+0
+&gt; &gt; for
+&gt; &gt; &gt; &gt;3.0.0-alpha1:
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;alpha1 is the first in a series of planned alpha releases leading up
+&gt; to
+&gt; &gt; &gt; &gt;GA.
+&gt; &gt; &gt; &gt;The objective is to get an artifact out to downstreams for testing a=
+nd
+&gt; &gt; to
+&gt; &gt; &gt; &gt;iterate quickly based on their feedback. So, please keep that in min=
+d
+&gt; &gt; when
+&gt; &gt; &gt; &gt;voting; hopefully most issues can be addressed by future alphas rath=
+er
+&gt; &gt; &gt; &gt;than
+&gt; &gt; &gt; &gt;future RCs.
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;Sorry for getting this out on a Tuesday, but I'd still like this vot=
+e
+&gt; to
+&gt; &gt; &gt; &gt;run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll
+&gt; &gt; extend
+&gt; &gt; &gt; &gt;if we lack the votes.
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;Please try it out and let me know what you think.
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;Best,
+&gt; &gt; &gt; &gt;Andrew
+&gt; &gt; &gt;
+&gt; &gt; &gt;
+&gt; &gt; &gt; ---------------------------------------------------------------------
+&gt; &gt; &gt; To unsubscribe, e-mail: hdfs-dev-unsubscribe@hadoop.apache.org
+&gt; &gt; &gt; For additional commands, e-mail: hdfs-dev-help@hadoop.apache.org
+&gt; &gt; &gt;
+&gt; &gt; &gt;
+&gt; &gt;
+&gt;
+
+
+</body></email><email><emailId>20160901215750</emailId><senderName>Andrew Wang</senderName><senderEmail>andrew.wang@cloudera.com</senderEmail><timestampReceived>2016-09-01 21:57:50-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
+Steve requested a git hash for this release. This led us into a brief
+discussion of our use of git tags, wherein we realized that although
+release tags are immutable (start with "rel/"), RC tags are not. This is
+based on the HowToRelease instructions.
+
+I asked in infra.chat about this, and filed a JIRA per their request. I'll
+update the tags and release instructions once we have guidance.
+
+https://issues.apache.org/jira/browse/INFRA-12552
+
+For now though, here's the tag I pushed (email is immutable):
+
+object a990d2ebcd6de5d7dc2d3684930759b0f0ea4dc3
+type commit
+tag release-3.0.0-alpha1-RC0
+tagger Andrew Wang &lt;wang@apache.org&gt; 1472541776 -0700
+
+Release candidate - 3.0.0-alpha1-RC0
+gpg: Signature made Tue 30 Aug 2016 12:22:56 AM PDT using RSA key ID
+7501105C
+gpg: Good signature from "Andrew Wang (CODE SIGNING KEY) &lt;
+andrew.wang@cloudera.com&gt;"
+gpg:                 aka "Andrew Wang (CODE SIGNING KEY) &lt;wang@apache.org&gt;"
+
+
+On Tue, Aug 30, 2016 at 8:51 AM, Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+wrote:
+
+&gt; Hi all,
+&gt;
+&gt; Thanks to the combined work of many, many contributors, here's an RC0 for
+&gt; 3.0.0-alpha1:
+&gt;
+&gt; http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt;
+&gt; alpha1 is the first in a series of planned alpha releases leading up to
+&gt; GA. The objective is to get an artifact out to downstreams for testing and
+&gt; to iterate quickly based on their feedback. So, please keep that in mind
+&gt; when voting; hopefully most issues can be addressed by future alphas rather
+&gt; than future RCs.
+&gt;
+&gt; Sorry for getting this out on a Tuesday, but I'd still like this vote to
+&gt; run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll extend
+&gt; if we lack the votes.
+&gt;
+&gt; Please try it out and let me know what you think.
+&gt;
+&gt; Best,
+&gt; Andrew
+&gt;
+
+
+</body></email><email><emailId>20160901220157</emailId><senderName>Chen He</senderName><senderEmail>airbots@gmail.com</senderEmail><timestampReceived>2016-09-01 22:01:57-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
++1 non-binding
+
+download source and build successfully;
+deploy to single node cluster;
+run wordcount and loadgen passed;
+Verified that MR-6336 is there and FileOutputCommitter is using algorithm 2
+by default.
+
+Best Regards!
+
+Chen
+
+
+On Wed, Aug 31, 2016 at 9:25 PM, Rakesh Radhakrishnan &lt;rakeshradr@gmail.com=
+&gt;
+wrote:
+
+&gt; Thanks for getting this out.
+&gt;
+&gt; +1 (non-binding)
+&gt;
+&gt; - downloaded and built tarball from source
+&gt; - deployed HDFS-HA cluster and tested few EC file operations
+&gt; - executed few hdfs commands including EC commands
+&gt; - viewed basic UI
+&gt; - ran some of the sample jobs
+&gt;
+&gt;
+&gt; Best Regards,
+&gt; Rakesh
+&gt; Intel
+&gt;
+&gt; On Thu, Sep 1, 2016 at 6:19 AM, John Zhuge &lt;jzhuge@cloudera.com&gt; wrote:
+&gt;
+&gt; &gt; +1 (non-binding)
+&gt; &gt;
+&gt; &gt; - Build source with Java 1.8.0_101 on Centos 6.6 without native
+&gt; &gt; - Verify license and notice using the shell script in HADOOP-13374
+&gt; &gt; - Deploy a pseudo cluster
+&gt; &gt; - Run basic dfs, distcp, ACL, webhdfs commands
+&gt; &gt; - Run MapReduce workcount and pi examples
+&gt; &gt; - Run balancer
+&gt; &gt;
+&gt; &gt; Thanks,
+&gt; &gt; John
+&gt; &gt;
+&gt; &gt; John Zhuge
+&gt; &gt; Software Engineer, Cloudera
+&gt; &gt;
+&gt; &gt; On Wed, Aug 31, 2016 at 11:46 AM, Gangumalla, Uma &lt;
+&gt; &gt; uma.gangumalla@intel.com&gt;
+&gt; &gt; wrote:
+&gt; &gt;
+&gt; &gt; &gt; +1 (binding).
+&gt; &gt; &gt;
+&gt; &gt; &gt; Overall it=C2=B9s a great effort, Andrew. Thank you for putting all t=
+he
+&gt; &gt; energy.
+&gt; &gt; &gt;
+&gt; &gt; &gt; Downloaded and built.
+&gt; &gt; &gt; Ran some sample jobs.
+&gt; &gt; &gt;
+&gt; &gt; &gt; I would love to see all this efforts will lead to get the GA from
+&gt; Hadoop
+&gt; &gt; &gt; 3.X soon.
+&gt; &gt; &gt;
+&gt; &gt; &gt; Regards,
+&gt; &gt; &gt; Uma
+&gt; &gt; &gt;
+&gt; &gt; &gt;
+&gt; &gt; &gt; On 8/30/16, 8:51 AM, "Andrew Wang" &lt;andrew.wang@cloudera.com&gt; wrote:
+&gt; &gt; &gt;
+&gt; &gt; &gt; &gt;Hi all,
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;Thanks to the combined work of many, many contributors, here's an RC=
+0
+&gt; &gt; for
+&gt; &gt; &gt; &gt;3.0.0-alpha1:
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;alpha1 is the first in a series of planned alpha releases leading up
+&gt; to
+&gt; &gt; &gt; &gt;GA.
+&gt; &gt; &gt; &gt;The objective is to get an artifact out to downstreams for testing a=
+nd
+&gt; &gt; to
+&gt; &gt; &gt; &gt;iterate quickly based on their feedback. So, please keep that in min=
+d
+&gt; &gt; when
+&gt; &gt; &gt; &gt;voting; hopefully most issues can be addressed by future alphas rath=
+er
+&gt; &gt; &gt; &gt;than
+&gt; &gt; &gt; &gt;future RCs.
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;Sorry for getting this out on a Tuesday, but I'd still like this vot=
+e
+&gt; to
+&gt; &gt; &gt; &gt;run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll
+&gt; &gt; extend
+&gt; &gt; &gt; &gt;if we lack the votes.
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;Please try it out and let me know what you think.
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;Best,
+&gt; &gt; &gt; &gt;Andrew
+&gt; &gt; &gt;
+&gt; &gt; &gt;
+&gt; &gt; &gt; ---------------------------------------------------------------------
+&gt; &gt; &gt; To unsubscribe, e-mail: hdfs-dev-unsubscribe@hadoop.apache.org
+&gt; &gt; &gt; For additional commands, e-mail: hdfs-dev-help@hadoop.apache.org
+&gt; &gt; &gt;
+&gt; &gt; &gt;
+&gt; &gt;
+&gt;
+
+
+</body></email><email><emailId>20160901221829</emailId><senderName>Allen Wittenauer</senderName><senderEmail>aw@effectivemachines.com</senderEmail><timestampReceived>2016-09-01 22:18:29-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
+&gt; On Sep 1, 2016, at 2:57 PM, Andrew Wang &lt;andrew.wang@cloudera.com&gt; wrote:
+&gt; 
+&gt; Steve requested a git hash for this release. This led us into a brief
+&gt; discussion of our use of git tags, wherein we realized that although
+&gt; release tags are immutable (start with "rel/"), RC tags are not. This is
+&gt; based on the HowToRelease instructions.
+
+	We should probably embed the git hash in one of the files that gets gpg signed.  \
+That's an easy change to create-release.
+
+
+
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+
+</body></email><email><emailId>20160901222112</emailId><senderName>Allen Wittenauer</senderName><senderEmail>aw@effectivemachines.com</senderEmail><timestampReceived>2016-09-01 22:21:12-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
+&gt; On Sep 1, 2016, at 3:18 PM, Allen Wittenauer &lt;aw@effectivemachines.com&gt; wrote:
+&gt; 
+&gt; 
+&gt; &gt; On Sep 1, 2016, at 2:57 PM, Andrew Wang &lt;andrew.wang@cloudera.com&gt; wrote:
+&gt; &gt; 
+&gt; &gt; Steve requested a git hash for this release. This led us into a brief
+&gt; &gt; discussion of our use of git tags, wherein we realized that although
+&gt; &gt; release tags are immutable (start with "rel/"), RC tags are not. This is
+&gt; &gt; based on the HowToRelease instructions.
+&gt; 
+&gt; 	We should probably embed the git hash in one of the files that gets gpg signed.  \
+&gt; That's an easy change to create-release.
+
+
+	(Well, one more easily accessible than 'hadoop version')
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+
+</body></email><email><emailId>20160901223903</emailId><senderName>Andrew Wang</senderName><senderEmail>andrew.wang@cloudera.com</senderEmail><timestampReceived>2016-09-01 22:39:03-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
+Good point Allen, I forgot about `hadoop version`. Since it's populated by
+a version-info.properties file, people can always cat that file.
+
+On Thu, Sep 1, 2016 at 3:21 PM, Allen Wittenauer &lt;aw@effectivemachines.com&gt;
+wrote:
+
+&gt;
+&gt; &gt; On Sep 1, 2016, at 3:18 PM, Allen Wittenauer &lt;aw@effectivemachines.com&gt;
+&gt; wrote:
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;&gt; On Sep 1, 2016, at 2:57 PM, Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+&gt; wrote:
+&gt; &gt;&gt;
+&gt; &gt;&gt; Steve requested a git hash for this release. This led us into a brief
+&gt; &gt;&gt; discussion of our use of git tags, wherein we realized that although
+&gt; &gt;&gt; release tags are immutable (start with "rel/"), RC tags are not. This is
+&gt; &gt;&gt; based on the HowToRelease instructions.
+&gt; &gt;
+&gt; &gt;       We should probably embed the git hash in one of the files that
+&gt; gets gpg signed.  That's an easy change to create-release.
+&gt;
+&gt;
+&gt;         (Well, one more easily accessible than 'hadoop version')
+
+
+</body></email><email><emailId>20160902165316</emailId><senderName>Tsuyoshi Ozawa</senderName><senderEmail>ozawa@apache.org</senderEmail><timestampReceived>2016-09-02 16:53:16-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+Thanks for making this forward hardly, Andrew!
+
+In fact, I hit an error similar to Eric's one regardless of
+configuring yarn.app.mapreduce.am.env and mapreduce.admin.user.env...
+does anyone hit same error?
+
+
+2016-09-02 16:49:35,223 INFO mapreduce.Job: The url to track the job:
+http://ip-172-31-7-124.ap-northeast-1.compute.internal:23188/proxy/application_1472832909785_0013/
+
+
+2016-09-02 16:49:35,224 INFO mapreduce.Job: Running job: job_1472832909785_0013
+
+2016-09-02 16:49:48,282 INFO mapreduce.Job: Job job_1472832909785_0013
+running in uber mode : false
+
+2016-09-02 16:49:48,283 INFO mapreduce.Job:  map 0% reduce 0%
+
+2016-09-02 16:49:48,293 INFO mapreduce.Job: Job job_1472832909785_0013
+failed with state FAILED due to: Application
+application_1472832909785_0013 failed 2 times due to AM Container for
+appattempt_1472832909785_0013_000002 exited with  exitCode: 1
+
+Failing this attempt.Diagnostics: Exception from container-launch.
+
+Container id: container_e02_1472832909785_0013_02_000001
+
+Exit code: 1
+
+Stack trace: ExitCodeException exitCode=1:
+
+        at org.apache.hadoop.util.Shell.runCommand(Shell.java:974)
+
+        at org.apache.hadoop.util.Shell.run(Shell.java:878)
+
+        at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:1172)
+
+        at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:237)
+
+
+        at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.launchContainer(ContainerLaunch.java:419)
+
+
+        at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:284)
+
+
+        at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:88)
+
+
+        at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+
+
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+
+
+        at java.lang.Thread.run(Thread.java:745)
+
+Best,
+- Tsuyoshi
+
+On Wed, Aug 31, 2016 at 12:51 AM, Andrew Wang &lt;andrew.wang@cloudera.com&gt; wrote:
+&gt; Hi all,
+&gt; 
+&gt; Thanks to the combined work of many, many contributors, here's an RC0 for
+&gt; 3.0.0-alpha1:
+&gt; 
+&gt; http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt; 
+&gt; alpha1 is the first in a series of planned alpha releases leading up to GA.
+&gt; The objective is to get an artifact out to downstreams for testing and to
+&gt; iterate quickly based on their feedback. So, please keep that in mind when
+&gt; voting; hopefully most issues can be addressed by future alphas rather than
+&gt; future RCs.
+&gt; 
+&gt; Sorry for getting this out on a Tuesday, but I'd still like this vote to
+&gt; run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll extend
+&gt; if we lack the votes.
+&gt; 
+&gt; Please try it out and let me know what you think.
+&gt; 
+&gt; Best,
+&gt; Andrew
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+
+</body></email><email><emailId>20160902165428</emailId><senderName>Tsuyoshi Ozawa</senderName><senderEmail>ozawa@apache.org</senderEmail><timestampReceived>2016-09-02 16:54:28-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+I'm sorry, very big typo I did... s/hardly/very hard/
+
+Best
+- Tsuyoshi
+
+On Sat, Sep 3, 2016 at 1:53 AM, Tsuyoshi Ozawa &lt;ozawa@apache.org&gt; wrote:
+&gt; Thanks for making this forward hardly, Andrew!
+&gt; 
+&gt; In fact, I hit an error similar to Eric's one regardless of
+&gt; configuring yarn.app.mapreduce.am.env and mapreduce.admin.user.env...
+&gt; does anyone hit same error?
+&gt; 
+&gt; 
+&gt; 2016-09-02 16:49:35,223 INFO mapreduce.Job: The url to track the job:
+&gt; http://ip-172-31-7-124.ap-northeast-1.compute.internal:23188/proxy/application_1472832909785_0013/
+&gt;  
+&gt; 2016-09-02 16:49:35,224 INFO mapreduce.Job: Running job: job_1472832909785_0013
+&gt; 
+&gt; 2016-09-02 16:49:48,282 INFO mapreduce.Job: Job job_1472832909785_0013
+&gt; running in uber mode : false
+&gt; 
+&gt; 2016-09-02 16:49:48,283 INFO mapreduce.Job:  map 0% reduce 0%
+&gt; 
+&gt; 2016-09-02 16:49:48,293 INFO mapreduce.Job: Job job_1472832909785_0013
+&gt; failed with state FAILED due to: Application
+&gt; application_1472832909785_0013 failed 2 times due to AM Container for
+&gt; appattempt_1472832909785_0013_000002 exited with  exitCode: 1
+&gt; 
+&gt; Failing this attempt.Diagnostics: Exception from container-launch.
+&gt; 
+&gt; Container id: container_e02_1472832909785_0013_02_000001
+&gt; 
+&gt; Exit code: 1
+&gt; 
+&gt; Stack trace: ExitCodeException exitCode=1:
+&gt; 
+&gt; at org.apache.hadoop.util.Shell.runCommand(Shell.java:974)
+&gt; 
+&gt; at org.apache.hadoop.util.Shell.run(Shell.java:878)
+&gt; 
+&gt; at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:1172)
+&gt; 
+&gt; at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:237)
+&gt;  
+&gt; at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.launchContainer(ContainerLaunch.java:419)
+&gt;  
+&gt; at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:284)
+&gt;  
+&gt; at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:88)
+&gt;  
+&gt; at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+&gt; 
+&gt; at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+&gt; 
+&gt; at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+&gt; 
+&gt; at java.lang.Thread.run(Thread.java:745)
+&gt; 
+&gt; Best,
+&gt; - Tsuyoshi
+&gt; 
+&gt; On Wed, Aug 31, 2016 at 12:51 AM, Andrew Wang &lt;andrew.wang@cloudera.com&gt; wrote:
+&gt; &gt; Hi all,
+&gt; &gt; 
+&gt; &gt; Thanks to the combined work of many, many contributors, here's an RC0 for
+&gt; &gt; 3.0.0-alpha1:
+&gt; &gt; 
+&gt; &gt; http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt; &gt; 
+&gt; &gt; alpha1 is the first in a series of planned alpha releases leading up to GA.
+&gt; &gt; The objective is to get an artifact out to downstreams for testing and to
+&gt; &gt; iterate quickly based on their feedback. So, please keep that in mind when
+&gt; &gt; voting; hopefully most issues can be addressed by future alphas rather than
+&gt; &gt; future RCs.
+&gt; &gt; 
+&gt; &gt; Sorry for getting this out on a Tuesday, but I'd still like this vote to
+&gt; &gt; run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll extend
+&gt; &gt; if we lack the votes.
+&gt; &gt; 
+&gt; &gt; Please try it out and let me know what you think.
+&gt; &gt; 
+&gt; &gt; Best,
+&gt; &gt; Andrew
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+
+</body></email><email><emailId>20160902231131</emailId><senderName>"Zheng, Kai"</senderName><senderEmail>kai.zheng@intel.com</senderEmail><timestampReceived>2016-09-02 23:11:31-0400</timestampReceived><subject>RE: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+VGhhbmtzIFNhbW1pLg0KDQpNeSBub24tYmluZGluZyArMSB0byBtYWtlIHRoZSByZWxlYXNlIGNh
+bmRpZGF0ZS4NCg0KUmVnYXJkcywNCkthaQ0KDQotLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0K
+RnJvbTogQ2hlbiwgU2FtbWkgDQpTZW50OiBGcmlkYXksIFNlcHRlbWJlciAwMiwgMjAxNiA0OjU5
+IFBNDQpUbzogWmhlbmcsIEthaSA8a2FpLnpoZW5nQGludGVsLmNvbT47IEFuZHJldyBXYW5nIDxh
+bmRyZXcud2FuZ0BjbG91ZGVyYS5jb20+OyBBcnVuIFN1cmVzaCA8YXN1cmVzaEBhcGFjaGUub3Jn
+Pg0KQ2M6IGNvbW1vbi1kZXZAaGFkb29wLmFwYWNoZS5vcmc7IGhkZnMtZGV2QGhhZG9vcC5hcGFj
+aGUub3JnOyBtYXByZWR1Y2UtZGV2QGhhZG9vcC5hcGFjaGUub3JnOyB5YXJuLWRldkBoYWRvb3Au
+YXBhY2hlLm9yZzsgQ2hlbiwgU2FtbWkgPHNhbW1pLmNoZW5AaW50ZWwuY29tPg0KU3ViamVjdDog
+UkU6IFtWT1RFXSBSZWxlYXNlIEFwYWNoZSBIYWRvb3AgMy4wLjAtYWxwaGExIFJDMA0KDQorMSAo
+bm9uLWJpbmRpbmcpLg0KDQpUaGFua3MgZm9yIGRyaXZpbmcgdGhpcyBBbmRyZXchDQoNCiogRG93
+bmxvYWQgYW5kIGJ1aWx0IGZyb20gc291cmNlLg0KKiBTZXR1cCBhIDEwIG5vZGUgY2x1c3RlciAo
+MSBuYW1lIG5vZGUgKyA5IGRhdGEgbm9kZXMpDQoqIFZlcmlmaWVkIG5vcm1hbCBIREZTIGZpbGUg
+cHV0L2dldCBvcGVyYXRpb24gd2l0aCAzeCByZXBsaWNhdGlvbg0KKiBXaXRoIDIgZGF0YSBub2Rl
+cyBmYWlsdXJlLCB2ZXJpZmllZCBIREZTIGZpbGUgcHV0L2dldCBvcGVyYXRpb24gd2l0aCAzeCBy
+ZXBsaWNhdGlvbiwgZmlsZSBpbnRlZ3JpdHkgaXMgT0sNCiogRW5hYmxlIEVyYXN1cmUgQ29kZSBw
+b2xpY3kgIlJTLURFRkFVTFQtNi0zLTY0ayIsIHZlcmlmaWVkIEhERlMgZmlsZSBwdXQvZ2V0IG9w
+ZXJhdGlvbg0KKiBFbmFibGUgRXJhc3VyZSBDb2RlIHBvbGljeSAiUlMtREVGQVVMVC02LTMtNjRr
+Iiwgd2l0aCAzIGRhdGEgbm9kZXMgZmFpbHVyZSwgdmVyaWZpZWQgSERGUyBmaWxlIHB1dC9nZXQg
+b3BlcmF0aW9uLCBmaWxlIGludGVncml0eSBpcyBPSw0KDQpDaGVlcnMNCi1TYW1taQ0KDQotLS0t
+LU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KRnJvbTogWmhlbmcsIEthaQ0KU2VudDogRnJpZGF5LCBT
+ZXB0ZW1iZXIgMDIsIDIwMTYgMzoyNSBQTQ0KVG86IENoZW4sIFNhbW1pDQpTdWJqZWN0OiBGVzog
+W1ZPVEVdIFJlbGVhc2UgQXBhY2hlIEhhZG9vcCAzLjAuMC1hbHBoYTEgUkMwDQoNCkhpIFNhbW1p
+LA0KDQpDb3VsZCB5b3UgaGVscCBwcm92aWRlIG91ciBmZWVkYmFjaz8gSSBrbm93IHlvdSBkaWQg
+bG90cyBvZiB0ZXN0cy4gVGhhbmtzIQ0KDQpSZWdhcmRzLA0KS2FpDQoNCi0tLS0tT3JpZ2luYWwg
+TWVzc2FnZS0tLS0tDQpGcm9tOiBBcnVuIFN1cmVzaCBbbWFpbHRvOmFzdXJlc2hAYXBhY2hlLm9y
+Z10NClNlbnQ6IEZyaWRheSwgU2VwdGVtYmVyIDAyLCAyMDE2IDExOjMzIEFNDQpUbzogQW5kcmV3
+IFdhbmcgPGFuZHJldy53YW5nQGNsb3VkZXJhLmNvbT4NCkNjOiBjb21tb24tZGV2QGhhZG9vcC5h
+cGFjaGUub3JnOyBoZGZzLWRldkBoYWRvb3AuYXBhY2hlLm9yZzsgbWFwcmVkdWNlLWRldkBoYWRv
+b3AuYXBhY2hlLm9yZzsgeWFybi1kZXZAaGFkb29wLmFwYWNoZS5vcmcNClN1YmplY3Q6IFJlOiBb
+Vk9URV0gUmVsZWFzZSBBcGFjaGUgSGFkb29wIDMuMC4wLWFscGhhMSBSQzANCg0KKzEgKGJpbmRp
+bmcpLg0KDQpUaGFua3MgZm9yIGRyaXZpbmcgdGhpcyBBbmRyZXcuLg0KDQoqIERvd25sb2FkIGFu
+ZCBidWlsdCBmcm9tIHNvdXJjZS4NCiogU2V0dXAgYSA1IG1vZGUgY2x1c3Rlci4NCiogVmVyaWZp
+ZWQgdGhhdCBNUiB3b3JrcyB3aXRoIG9wcG9ydHVuaXN0aWMgY29udGFpbmVycw0KKiBWZXJpZmll
+ZCB0aGF0IHRoZSBBTVJNQ2xpZW50IHN1cHBvcnRzICdhbGxvY2F0aW9uUmVxdWVzdElkJw0KDQpD
+aGVlcnMNCi1BcnVuDQoNCk9uIFRodSwgU2VwIDEsIDIwMTYgYXQgNDozMSBQTSwgQWFyb24gRmFi
+YnJpIDxmYWJicmlAY2xvdWRlcmEuY29tPiB3cm90ZToNCg0KPiArMSwgbm9uLWJpbmRpbmcuDQo+
+DQo+IEkgYnVpbHQgZXZlcnl0aGluZyBvbiBPUyBYIGFuZCByYW4gdGhlIHMzYSBjb250cmFjdCB0
+ZXN0cyBzdWNjZXNzZnVsbHk6DQo+DQo+IG12biB0ZXN0IC1EdGVzdD1vcmcuYXBhY2hlLmhhZG9v
+cC5mcy5jb250cmFjdC5zM2EuXCoNCj4NCj4gLi4uDQo+DQo+IFJlc3VsdHMgOg0KPg0KPg0KPiBU
+ZXN0cyBydW46IDc4LCBGYWlsdXJlczogMCwgRXJyb3JzOiAwLCBTa2lwcGVkOiAxDQo+DQo+DQo+
+IFtJTkZPXQ0KPiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQo+IC0tDQo+DQo+IFtJTkZPXSBCVUlMRCBTVUNDRVNT
+DQo+DQo+IFtJTkZPXQ0KPiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQo+IC0tDQo+DQo+IE9uIFRodSwgU2VwIDEs
+IDIwMTYgYXQgMzozOSBQTSwgQW5kcmV3IFdhbmcgPGFuZHJldy53YW5nQGNsb3VkZXJhLmNvbT4N
+Cj4gd3JvdGU6DQo+DQo+ID4gR29vZCBwb2ludCBBbGxlbiwgSSBmb3Jnb3QgYWJvdXQgYGhhZG9v
+cCB2ZXJzaW9uYC4gU2luY2UgaXQncyANCj4gPiBwb3B1bGF0ZWQNCj4gYnkNCj4gPiBhIHZlcnNp
+b24taW5mby5wcm9wZXJ0aWVzIGZpbGUsIHBlb3BsZSBjYW4gYWx3YXlzIGNhdCB0aGF0IGZpbGUu
+DQo+ID4NCj4gPiBPbiBUaHUsIFNlcCAxLCAyMDE2IGF0IDM6MjEgUE0sIEFsbGVuIFdpdHRlbmF1
+ZXIgPA0KPiBhd0BlZmZlY3RpdmVtYWNoaW5lcy5jb20NCj4gPiA+DQo+ID4gd3JvdGU6DQo+ID4N
+Cj4gPiA+DQo+ID4gPiA+IE9uIFNlcCAxLCAyMDE2LCBhdCAzOjE4IFBNLCBBbGxlbiBXaXR0ZW5h
+dWVyIDwNCj4gYXdAZWZmZWN0aXZlbWFjaGluZXMuY29tDQo+ID4gPg0KPiA+ID4gd3JvdGU6DQo+
+ID4gPiA+DQo+ID4gPiA+DQo+ID4gPiA+PiBPbiBTZXAgMSwgMjAxNiwgYXQgMjo1NyBQTSwgQW5k
+cmV3IFdhbmcgDQo+ID4gPiA+PiA8YW5kcmV3LndhbmdAY2xvdWRlcmEuY29tPg0KPiA+ID4gd3Jv
+dGU6DQo+ID4gPiA+Pg0KPiA+ID4gPj4gU3RldmUgcmVxdWVzdGVkIGEgZ2l0IGhhc2ggZm9yIHRo
+aXMgcmVsZWFzZS4gVGhpcyBsZWQgdXMgaW50byBhDQo+IGJyaWVmDQo+ID4gPiA+PiBkaXNjdXNz
+aW9uIG9mIG91ciB1c2Ugb2YgZ2l0IHRhZ3MsIHdoZXJlaW4gd2UgcmVhbGl6ZWQgdGhhdCANCj4g
+PiA+ID4+IGFsdGhvdWdoIHJlbGVhc2UgdGFncyBhcmUgaW1tdXRhYmxlIChzdGFydCB3aXRoICJy
+ZWwvIiksIFJDIHRhZ3MgYXJlIG5vdC4NCj4gVGhpcw0KPiA+IGlzDQo+ID4gPiA+PiBiYXNlZCBv
+biB0aGUgSG93VG9SZWxlYXNlIGluc3RydWN0aW9ucy4NCj4gPiA+ID4NCj4gPiA+ID4gICAgICAg
+V2Ugc2hvdWxkIHByb2JhYmx5IGVtYmVkIHRoZSBnaXQgaGFzaCBpbiBvbmUgb2YgdGhlIGZpbGVz
+IA0KPiA+ID4gPiB0aGF0DQo+ID4gPiBnZXRzIGdwZyBzaWduZWQuICBUaGF0J3MgYW4gZWFzeSBj
+aGFuZ2UgdG8gY3JlYXRlLXJlbGVhc2UuDQo+ID4gPg0KPiA+ID4NCj4gPiA+ICAgICAgICAgKFdl
+bGwsIG9uZSBtb3JlIGVhc2lseSBhY2Nlc3NpYmxlIHRoYW4gJ2hhZG9vcCB2ZXJzaW9uJykNCj4g
+Pg0KPg0K
+DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0NClRvIHVuc3Vic2NyaWJlLCBlLW1haWw6IGNvbW1vbi1kZXYt
+dW5zdWJzY3JpYmVAaGFkb29wLmFwYWNoZS5vcmcNCkZvciBhZGRpdGlvbmFsIGNvbW1hbmRz
+LCBlLW1haWw6IGNvbW1vbi1kZXYtaGVscEBoYWRvb3AuYXBhY2hlLm9yZw0K
+</body></email><email><emailId>20160903153758</emailId><senderName>Tsuyoshi Ozawa</senderName><senderEmail>ozawa@apache.org</senderEmail><timestampReceived>2016-09-03 15:37:58-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
++1(binding)
+
+* Compiling source code.
+* Verified checksums.
+* Running RM-HA cluster with ZooKeeper 3.4.8 and ran MR job with
+native libraries. It worked well.
+
+Again, I'm very happy to move 3.0.0 release forward :-)
+Thanks, Andrew!
+
+FYI:
+
+&gt; In fact, I hit an error similar to Eric's one regardless of
+configuring yarn.app.mapreduce.am.env and mapreduce.admin.user.env...
+does anyone hit same error?
+
+This was because of completely my wrong configuration. Please ignore this.
+
+Best,
+- Tsuyoshi
+
+
+On Sat, Sep 3, 2016 at 1:53 AM, Tsuyoshi Ozawa &lt;ozawa@apache.org&gt; wrote:
+&gt; Thanks for making this forward hardly, Andrew!
+&gt; 
+&gt; In fact, I hit an error similar to Eric's one regardless of
+&gt; configuring yarn.app.mapreduce.am.env and mapreduce.admin.user.env...
+&gt; does anyone hit same error?
+&gt; 
+&gt; 
+&gt; 2016-09-02 16:49:35,223 INFO mapreduce.Job: The url to track the job:
+&gt; http://ip-172-31-7-124.ap-northeast-1.compute.internal:23188/proxy/application_1472832909785_0013/
+&gt;  
+&gt; 2016-09-02 16:49:35,224 INFO mapreduce.Job: Running job: job_1472832909785_0013
+&gt; 
+&gt; 2016-09-02 16:49:48,282 INFO mapreduce.Job: Job job_1472832909785_0013
+&gt; running in uber mode : false
+&gt; 
+&gt; 2016-09-02 16:49:48,283 INFO mapreduce.Job:  map 0% reduce 0%
+&gt; 
+&gt; 2016-09-02 16:49:48,293 INFO mapreduce.Job: Job job_1472832909785_0013
+&gt; failed with state FAILED due to: Application
+&gt; application_1472832909785_0013 failed 2 times due to AM Container for
+&gt; appattempt_1472832909785_0013_000002 exited with  exitCode: 1
+&gt; 
+&gt; Failing this attempt.Diagnostics: Exception from container-launch.
+&gt; 
+&gt; Container id: container_e02_1472832909785_0013_02_000001
+&gt; 
+&gt; Exit code: 1
+&gt; 
+&gt; Stack trace: ExitCodeException exitCode=1:
+&gt; 
+&gt; at org.apache.hadoop.util.Shell.runCommand(Shell.java:974)
+&gt; 
+&gt; at org.apache.hadoop.util.Shell.run(Shell.java:878)
+&gt; 
+&gt; at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:1172)
+&gt; 
+&gt; at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:237)
+&gt;  
+&gt; at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.launchContainer(ContainerLaunch.java:419)
+&gt;  
+&gt; at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:284)
+&gt;  
+&gt; at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:88)
+&gt;  
+&gt; at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+&gt; 
+&gt; at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+&gt; 
+&gt; at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+&gt; 
+&gt; at java.lang.Thread.run(Thread.java:745)
+&gt; 
+&gt; Best,
+&gt; - Tsuyoshi
+&gt; 
+&gt; On Wed, Aug 31, 2016 at 12:51 AM, Andrew Wang &lt;andrew.wang@cloudera.com&gt; wrote:
+&gt; &gt; Hi all,
+&gt; &gt; 
+&gt; &gt; Thanks to the combined work of many, many contributors, here's an RC0 for
+&gt; &gt; 3.0.0-alpha1:
+&gt; &gt; 
+&gt; &gt; http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt; &gt; 
+&gt; &gt; alpha1 is the first in a series of planned alpha releases leading up to GA.
+&gt; &gt; The objective is to get an artifact out to downstreams for testing and to
+&gt; &gt; iterate quickly based on their feedback. So, please keep that in mind when
+&gt; &gt; voting; hopefully most issues can be addressed by future alphas rather than
+&gt; &gt; future RCs.
+&gt; &gt; 
+&gt; &gt; Sorry for getting this out on a Tuesday, but I'd still like this vote to
+&gt; &gt; run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll extend
+&gt; &gt; if we lack the votes.
+&gt; &gt; 
+&gt; &gt; Please try it out and let me know what you think.
+&gt; &gt; 
+&gt; &gt; Best,
+&gt; &gt; Andrew
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+
+</body></email><email><emailId>20160904000656</emailId><senderName>Eric Payne</senderName><senderEmail>eric.payne1000@yahoo.com.invalid</senderEmail><timestampReceived>2016-09-04 00:06:56-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+Thank you very much, Andrew.
+
++1 (non-binding)
+
+- Downloaded source and built native
+- Installed on 3-node, non-secure cluster
+- Ran sleep jobs
+- Ensured preemption works as expected
+
+-Eric Payne
+
+
+----- Original Message -----
+From: Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+To: "common-dev@hadoop.apache.org" &lt;common-dev@hadoop.apache.org&gt;; \
+"hdfs-dev@hadoop.apache.org" &lt;hdfs-dev@hadoop.apache.org&gt;; \
+"mapreduce-dev@hadoop.apache.org" &lt;mapreduce-dev@hadoop.apache.org&gt;; \
+                "yarn-dev@hadoop.apache.org" &lt;yarn-dev@hadoop.apache.org&gt;
+Sent: Tuesday, August 30, 2016 10:51 AM
+Subject: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0
+
+Hi all,
+
+Thanks to the combined work of many, many contributors, here's an RC0 for
+3.0.0-alpha1:
+
+http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+
+alpha1 is the first in a series of planned alpha releases leading up to GA.
+The objective is to get an artifact out to downstreams for testing and to
+iterate quickly based on their feedback. So, please keep that in mind when
+voting; hopefully most issues can be addressed by future alphas rather than
+future RCs.
+
+Sorry for getting this out on a Tuesday, but I'd still like this vote to
+run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll extend
+if we lack the votes.
+
+Please try it out and let me know what you think.
+
+Best,
+Andrew
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+
+</body></email><email><emailId>20160904015535</emailId><senderName>Akira Ajisaka</senderName><senderEmail>ajisakaa@oss.nttdata.co.jp</senderEmail><timestampReceived>2016-09-04 01:55:35-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+Thanks Andrew for the great work.
+
++1 (binding)
+
+- Downloaded source and verified checksum and signature
+- Compiled with -Pnative @ CentOS 7.2 and OpenJDK 8u101
+- Ran some MapReduce jobs successfully
+- Checked Web UIs and logs
+- hdfs/yarn/mapred "--daemon" option works as expected
+
+Regards,
+Akira
+
+On 9/4/16 09:06, Eric Payne wrote:
+&gt; Thank you very much, Andrew.
+&gt; 
+&gt; +1 (non-binding)
+&gt; 
+&gt; - Downloaded source and built native
+&gt; - Installed on 3-node, non-secure cluster
+&gt; - Ran sleep jobs
+&gt; - Ensured preemption works as expected
+&gt; 
+&gt; -Eric Payne
+&gt; 
+&gt; 
+&gt; ----- Original Message -----
+&gt; From: Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+&gt; To: "common-dev@hadoop.apache.org" &lt;common-dev@hadoop.apache.org&gt;; \
+&gt; "hdfs-dev@hadoop.apache.org" &lt;hdfs-dev@hadoop.apache.org&gt;; \
+&gt; "mapreduce-dev@hadoop.apache.org" &lt;mapreduce-dev@hadoop.apache.org&gt;; \
+&gt;                 "yarn-dev@hadoop.apache.org" &lt;yarn-dev@hadoop.apache.org&gt;
+&gt; Sent: Tuesday, August 30, 2016 10:51 AM
+&gt; Subject: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0
+&gt; 
+&gt; Hi all,
+&gt; 
+&gt; Thanks to the combined work of many, many contributors, here's an RC0 for
+&gt; 3.0.0-alpha1:
+&gt; 
+&gt; http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt; 
+&gt; alpha1 is the first in a series of planned alpha releases leading up to GA.
+&gt; The objective is to get an artifact out to downstreams for testing and to
+&gt; iterate quickly based on their feedback. So, please keep that in mind when
+&gt; voting; hopefully most issues can be addressed by future alphas rather than
+&gt; future RCs.
+&gt; 
+&gt; Sorry for getting this out on a Tuesday, but I'd still like this vote to
+&gt; run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll extend
+&gt; if we lack the votes.
+&gt; 
+&gt; Please try it out and let me know what you think.
+&gt; 
+&gt; Best,
+&gt; Andrew
+&gt; 
+&gt; ---------------------------------------------------------------------
+&gt; To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+&gt; For additional commands, e-mail: common-dev-help@hadoop.apache.org
+&gt; 
+
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+
+</body></email><email><emailId>20160906163052</emailId><senderName>Andrew Wang</senderName><senderEmail>andrew.wang@cloudera.com</senderEmail><timestampReceived>2016-09-06 16:30:52-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>
+
+
+Thanks everyone for voting and helping to validate alpha1. The VOTE closes
+with 16 +1s, 6 of them binding PMC votes, and no -1s.
+
+I'll go ahead and wrap up the release, will send an announcement out likely
+tomorrow once the mirrors have caught up.
+
+Best,
+Andrew
+
+On Sat, Sep 3, 2016 at 6:55 PM, Akira Ajisaka &lt;ajisakaa@oss.nttdata.co.jp&gt;
+wrote:
+
+&gt; Thanks Andrew for the great work.
+&gt;
+&gt; +1 (binding)
+&gt;
+&gt; - Downloaded source and verified checksum and signature
+&gt; - Compiled with -Pnative @ CentOS 7.2 and OpenJDK 8u101
+&gt; - Ran some MapReduce jobs successfully
+&gt; - Checked Web UIs and logs
+&gt; - hdfs/yarn/mapred "--daemon" option works as expected
+&gt;
+&gt; Regards,
+&gt; Akira
+&gt;
+&gt;
+&gt; On 9/4/16 09:06, Eric Payne wrote:
+&gt;
+&gt;&gt; Thank you very much, Andrew.
+&gt;&gt;
+&gt;&gt; +1 (non-binding)
+&gt;&gt;
+&gt;&gt; - Downloaded source and built native
+&gt;&gt; - Installed on 3-node, non-secure cluster
+&gt;&gt; - Ran sleep jobs
+&gt;&gt; - Ensured preemption works as expected
+&gt;&gt;
+&gt;&gt; -Eric Payne
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; ----- Original Message -----
+&gt;&gt; From: Andrew Wang &lt;andrew.wang@cloudera.com&gt;
+&gt;&gt; To: "common-dev@hadoop.apache.org" &lt;common-dev@hadoop.apache.org&gt;; "
+&gt;&gt; hdfs-dev@hadoop.apache.org" &lt;hdfs-dev@hadoop.apache.org&gt;; "
+&gt;&gt; mapreduce-dev@hadoop.apache.org" &lt;mapreduce-dev@hadoop.apache.org&gt;; "
+&gt;&gt; yarn-dev@hadoop.apache.org" &lt;yarn-dev@hadoop.apache.org&gt;
+&gt;&gt; Sent: Tuesday, August 30, 2016 10:51 AM
+&gt;&gt; Subject: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0
+&gt;&gt;
+&gt;&gt; Hi all,
+&gt;&gt;
+&gt;&gt; Thanks to the combined work of many, many contributors, here's an RC0 for
+&gt;&gt; 3.0.0-alpha1:
+&gt;&gt;
+&gt;&gt; http://home.apache.org/~wang/3.0.0-alpha1-RC0/
+&gt;&gt;
+&gt;&gt; alpha1 is the first in a series of planned alpha releases leading up to
+&gt;&gt; GA.
+&gt;&gt; The objective is to get an artifact out to downstreams for testing and to
+&gt;&gt; iterate quickly based on their feedback. So, please keep that in mind when
+&gt;&gt; voting; hopefully most issues can be addressed by future alphas rather
+&gt;&gt; than
+&gt;&gt; future RCs.
+&gt;&gt;
+&gt;&gt; Sorry for getting this out on a Tuesday, but I'd still like this vote to
+&gt;&gt; run the normal 5 days, thus ending Saturday (9/3) at 9AM PDT. I'll extend
+&gt;&gt; if we lack the votes.
+&gt;&gt;
+&gt;&gt; Please try it out and let me know what you think.
+&gt;&gt;
+&gt;&gt; Best,
+&gt;&gt; Andrew
+&gt;&gt;
+&gt;&gt; ---------------------------------------------------------------------
+&gt;&gt; To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+&gt;&gt; For additional commands, e-mail: common-dev-help@hadoop.apache.org
+&gt;&gt;
+&gt;&gt;
+&gt;
+&gt; ---------------------------------------------------------------------
+&gt; To unsubscribe, e-mail: hdfs-dev-unsubscribe@hadoop.apache.org
+&gt; For additional commands, e-mail: hdfs-dev-help@hadoop.apache.org
+&gt;
+&gt;
+
+
+</body></email><email><emailId>20160907123848</emailId><senderName>Steve Loughran</senderName><senderEmail>stevel@hortonworks.com</senderEmail><timestampReceived>2016-09-07 12:38:48-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.0-alpha1 RC0</subject><body>

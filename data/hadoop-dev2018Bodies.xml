@@ -1,0 +1,1875 @@
+<?xml version="1.0" encoding="utf-8"?>
+<emails><email><emailId>20180508174108</emailId><senderName>ä</senderName><senderEmail>junping_du@apache.org</senderEmail><timestampReceived>2018-05-08 17:41:08-0400</timestampReceived><subject>[VOTE] Release Apache Hadoop 2.8.4 (RC0)</subject><body>
+
+
+Hi all,
+     I've created the first release candidate (RC0) for Apache Hadoop
+2.8.4. This is our next maint release to follow up 2.8.3. It includes 77
+important fixes and improvements.
+
+    The RC artifacts are available at:
+http://home.apache.org/~junping_du/hadoop-2.8.4-RC0
+
+    The RC tag in git is: release-2.8.4-RC0
+
+    The maven artifacts are available via repository.apache.org&lt;
+http://repository.apache.org&gt; at:
+https://repository.apache.org/content/repositories/orgapachehadoop-1118
+
+    Please try the release and vote; the vote will run for the usual 5
+working days, ending on 5/14/2018 PST time.
+
+Thanks,
+
+Junping
+
+
+</body></email><email><emailId>20180109191756</emailId><senderName>Lei Xu</senderName><senderEmail>lei@cloudera.com</senderEmail><timestampReceived>2018-01-09 19:17:56-0400</timestampReceived><subject>Apache Hadoop 3.0.1 Release plan</subject><body>
+
+Hi, All
+
+We have released Apache Hadoop 3.0.0 in December [1]. To further
+improve the quality of release, we plan to cut branch-3.0.1 branch
+tomorrow for the preparation of Apache Hadoop 3.0.1 release. The focus
+of 3.0.1 will be fixing blockers (3), critical bugs (1) and bug fixes
+[2].  No new features and improvement should be included.
+
+We plan to cut branch-3.0.1 tomorrow (Jan 10th) and vote for RC on Feb
+1st, targeting for Feb 9th release.
+
+Please feel free to share your insights.
+
+[1] https://www.mail-archive.com/general@hadoop.apache.org/msg07757.html
+[2] https://issues.apache.org/jira/issues/?filter=12342842
+
+Best,
+-- 
+Lei (Eddy) Xu
+Software Engineer, Cloudera
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+</body></email><email><emailId>20180109193138</emailId><senderName>Andrew Wang</senderName><senderEmail>andrew.wang@cloudera.com</senderEmail><timestampReceived>2018-01-09 19:31:38-0400</timestampReceived><subject>Re: Apache Hadoop 3.0.1 Release plan</subject><body>
+
+
+Hi Eddy, thanks for taking this on,
+
+Historically we've waited for the first RC to cut the release branch since
+it keeps things simpler for committers.
+
+Also, could you check the permissions on your JIRA filter? It shows as
+private for me.
+
+Best,
+Andrew
+
+On Tue, Jan 9, 2018 at 11:17 AM, Lei Xu &lt;lei@cloudera.com&gt; wrote:
+
+&gt; Hi, All
+&gt;
+&gt; We have released Apache Hadoop 3.0.0 in December [1]. To further
+&gt; improve the quality of release, we plan to cut branch-3.0.1 branch
+&gt; tomorrow for the preparation of Apache Hadoop 3.0.1 release. The focus
+&gt; of 3.0.1 will be fixing blockers (3), critical bugs (1) and bug fixes
+&gt; [2].  No new features and improvement should be included.
+&gt;
+&gt; We plan to cut branch-3.0.1 tomorrow (Jan 10th) and vote for RC on Feb
+&gt; 1st, targeting for Feb 9th release.
+&gt;
+&gt; Please feel free to share your insights.
+&gt;
+&gt; [1] https://www.mail-archive.com/general@hadoop.apache.org/msg07757.html
+&gt; [2] https://issues.apache.org/jira/issues/?filter=12342842
+&gt;
+&gt; Best,
+&gt; --
+&gt; Lei (Eddy) Xu
+&gt; Software Engineer, Cloudera
+&gt;
+&gt; ---------------------------------------------------------------------
+&gt; To unsubscribe, e-mail: yarn-dev-unsubscribe@hadoop.apache.org
+&gt; For additional commands, e-mail: yarn-dev-help@hadoop.apache.org
+&gt;
+&gt;
+
+
+</body></email><email><emailId>20180501060003</emailId><senderName>"Xiao Chen (JIRA)"</senderName><senderEmail>jira@apache.org</senderEmail><timestampReceived>2018-05-01 06:00:03-0400</timestampReceived><subject>[jira] [Created] (HADOOP-15431) KMSTokenRenewer should work with KMS_DELEGATION_TOKEN which has ip:p</subject><body>
+
+Xiao Chen created HADOOP-15431:
+----------------------------------
+
+             Summary: KMSTokenRenewer should work with KMS_DELEGATION_TOKEN which has \
+ip:port as service  Key: HADOOP-15431
+                 URL: https://issues.apache.org/jira/browse/HADOOP-15431
+             Project: Hadoop Common
+          Issue Type: Bug
+          Components: kms
+    Affects Versions: 2.10.0, 2.8.4, 3.2.0, 3.1.1, 2.9.2, 3.0.3
+            Reporter: Xiao Chen
+            Assignee: Xiao Chen
+
+
+Seen a test failure where a MR job failed to submit.
+RM log has:
+{noformat}
+2018-04-30 15:00:17,864 WARN \
+org.apache.hadoop.yarn.server.resourcemanager.security.DelegationTokenRenewer: Unable \
+                to add the application to the delegation token renewer.
+java.lang.IllegalArgumentException: Invalid token service IP_ADDR:16000
+        at org.apache.hadoop.util.KMSUtil.createKeyProviderFromTokenService(KMSUtil.java:237)
+                
+        at org.apache.hadoop.crypto.key.kms.KMSTokenRenewer.createKeyProvider(KMSTokenRenewer.java:100)
+                
+        at org.apache.hadoop.crypto.key.kms.KMSTokenRenewer.renew(KMSTokenRenewer.java:57)
+  at org.apache.hadoop.security.token.Token.renew(Token.java:414)
+        at org.apache.hadoop.yarn.server.resourcemanager.security.DelegationTokenRenewer$1.run(DelegationTokenRenewer.java:590)
+                
+        at org.apache.hadoop.yarn.server.resourcemanager.security.DelegationTokenRenewer$1.run(DelegationTokenRenewer.java:587)
+  at java.security.AccessController.doPrivileged(Native Method)
+        at javax.security.auth.Subject.doAs(Subject.java:422)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1920)
+                
+        at org.apache.hadoop.yarn.server.resourcemanager.security.DelegationTokenRenewer.renewToken(DelegationTokenRenewer.java:585)
+                
+        at org.apache.hadoop.yarn.server.resourcemanager.security.DelegationTokenRenewer.handleAppSubmitEvent(DelegationTokenRenewer.java:463)
+                
+        at org.apache.hadoop.yarn.server.resourcemanager.security.DelegationTokenRenewer.access$800(DelegationTokenRenewer.java:79)
+  at org.apache.hadoop.yarn.server.resourcemanager.security.DelegationTokenRenewer$Del \
+egationTokenRenewerRunnable.handleDTRenewerAppSubmitEvent(DelegationTokenRenewer.java:894)
+                
+        at org.apache.hadoop.yarn.server.resourcemanager.security.DelegationTokenRenewer$DelegationTokenRenewerRunnable.run(DelegationTokenRenewer.java:871)
+                
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+                
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+  at java.lang.Thread.run(Thread.java:748)
+{noformat}
+
+while client log has
+
+{noformat}
+18/04/30 15:53:28 INFO mapreduce.JobSubmitter: Submitting tokens for job: \
+job_1525128478242_0001 18/04/30 15:53:28 INFO mapreduce.JobSubmitter: Kind: \
+HDFS_DELEGATION_TOKEN, Service: ha-hdfs:ns1, Ident: (token for systest: \
+HDFS_DELEGATION_TOKEN owner=systest@EXAMPLE.COM, renewer=yarn, realUser=, \
+issueDate25128807236, maxDate25733607236, sequenceNumber38, masterKeyId ) 18/04/30 \
+15:53:28 INFO mapreduce.JobSubmitter: Kind: HBASE_AUTH_TOKEN, Service: \
+621a942b-292f-493d-ba50-f9b783704359, Ident: \
+(org.apache.hadoop.hbase.security.token.AuthenticationTokenIdentifier@0) 18/04/30 \
+15:53:28 INFO mapreduce.JobSubmitter: Kind: KMS_DELEGATION_TOKEN, Service: \
+IP_ADDR:16000, Ident: 00 07 73 79 73 74 65 73 74 04 79 61 72 6e 00 8a 01 63 18 c2 c3 \
+d5 8a 01 63 3c cf 47 d5 8e 01 ec 10 18/04/30 15:53:29 INFO mapreduce.JobSubmitter: \
+Cleaning up the staging area /user/systest/.staging/job_1525128478242_0001 18/04/30 \
+15:53:29 WARN security.UserGroupInformation: PriviledgedActionException \
+as:systest@EXAMPLE.COM (auth:KERBEROS) cause:java.io.IOException: \
+org.apache.hadoop.yarn.exceptions.YarnException: Failed to submit \
+application_1525128478242_0001 to YARN : Invalid token service IP_ADDR:16000 18/04/30 \
+15:53:29 INFO client.ConnectionManager$HConnectionImplementation: Closing master \
+protocol: MasterService 18/04/30 15:53:29 INFO \
+client.ConnectionManager$HConnectionImplementation: Closing zookeeper \
+sessionid=0x1630ba2d0001cb5 18/04/30 15:53:29 INFO zookeeper.ZooKeeper: Session: \
+0x1630ba2d0001cb5 closed 18/04/30 15:53:29 INFO zookeeper.ClientCnxn: EventThread \
+shut down 18/04/30 15:53:29 ERROR util.AbstractHBaseTool: Error running command-line \
+                tool
+java.io.IOException: org.apache.hadoop.yarn.exceptions.YarnException: Failed to \
+submit application_1525128478242_0001 to YARN : Invalid token service IP_ADDR:16000  \
+at org.apache.hadoop.mapred.YARNRunner.submitJob(YARNRunner.java:336)  at \
+org.apache.hadoop.mapreduce.JobSubmitter.submitJobInternal(JobSubmitter.java:244)  at \
+org.apache.hadoop.mapreduce.Job$10.run(Job.java:1307)  at \
+org.apache.hadoop.mapreduce.Job$10.run(Job.java:1304)  at \
+java.security.AccessController.doPrivileged(Native Method)  at \
+javax.security.auth.Subject.doAs(Subject.java:422)  at \
+org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1920)  \
+at org.apache.hadoop.mapreduce.Job.submit(Job.java:1304)  at \
+org.apache.hadoop.mapreduce.Job.waitForCompletion(Job.java:1325)  at \
+org.apache.hadoop.hbase.mapreduce.IntegrationTestBulkLoad.runLinkedListMRJob(IntegrationTestBulkLoad.java:298)
+  at org.apache.hadoop.hbase.mapreduce.IntegrationTestBulkLoad.runLoad(IntegrationTestBulkLoad.java:225)
+  at org.apache.hadoop.hbase.mapreduce.IntegrationTestBulkLoad.testBulkLoad(IntegrationTestBulkLoad.java:215)
+  at org.apache.hadoop.hbase.mapreduce.IntegrationTestBulkLoad.runTestFromCommandLine(IntegrationTestBulkLoad.java:767)
+  at org.apache.hadoop.hbase.IntegrationTestBase.doWork(IntegrationTestBase.java:123)
+	at org.apache.hadoop.hbase.util.AbstractHBaseTool.run(AbstractHBaseTool.java:112)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:70)
+	at com.cloudera.itest.hbase.smoke.TestBulkLoad.testBulkLoad(TestBulkLoad.java:46)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+  at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+  at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+  at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+  at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+  at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:367)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:274)
+  at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+  at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:161)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:290)
+  at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:242)
+  at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:121)
+Caused by: org.apache.hadoop.yarn.exceptions.YarnException: Failed to submit \
+application_1525128478242_0001 to YARN : Invalid token service IP_ADDR:16000  at \
+org.apache.hadoop.yarn.client.api.impl.YarnClientImpl.submitApplication(YarnClientImpl.java:257)
+  at org.apache.hadoop.mapred.ResourceMgrDelegate.submitApplication(ResourceMgrDelegate.java:290)
+  at org.apache.hadoop.mapred.YARNRunner.submitJob(YARNRunner.java:320)
+	... 41 more
+{noformat}
+
+Further debugging shows that this fall into the category of:
+Server + renewer with HADOOP-14445, submitter without HADOOP-14445.
+Unfortunately, [my testing steps in \
+HADOOP-14445|https://issues.apache.org/jira/browse/HADOOP-14445?focusedCommentId42650 \
+1&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-16426501] \
+did not cover this scenario.
+
+
+
+--
+This message was sent by Atlassian JIRA
+(v7.6.3#76005)
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+
+</body></email><email><emailId>20180301144600</emailId><senderName>"Steve Loughran (JIRA)"</senderName><senderEmail>jira@apache.org</senderEmail><timestampReceived>2018-03-01 14:46:00-0400</timestampReceived><subject>[jira] [Resolved] (HADOOP-15269) S3 returning 400 on the directory /test/ GET of getFileStatus</subject><body>
+
+
+     [ https://issues.apache.org/jira/browse/HADOOP-15269?page=com.atlassian.jira.plugin.system.issuetabpanels:all-tabpanel \
+]
+
+Steve Loughran resolved HADOOP-15269.
+-------------------------------------
+       Resolution: Cannot Reproduce
+    Fix Version/s: 3.1.0
+
+&gt; S3 returning 400 on the directory /test/ GET of getFileStatus
+&gt; -------------------------------------------------------------
+&gt; 
+&gt; Key: HADOOP-15269
+&gt; URL: https://issues.apache.org/jira/browse/HADOOP-15269
+&gt; Project: Hadoop Common
+&gt; Issue Type: Sub-task
+&gt; Components: fs/s3
+&gt; Affects Versions: 3.1.0, 3.2.0
+&gt; Reporter: Steve Loughran
+&gt; Assignee: Steve Loughran
+&gt; Priority: Critical
+&gt; Fix For: 3.1.0
+&gt; 
+&gt; 
+&gt; Since Monday Feb 26, I'm getting intermittent failures of getFileStatus on a \
+&gt; directory # file path: {{/test}} is returning 404, as expected
+&gt; # directory path {{//test/}} is returning 400, so failing the entire operation
+&gt; S3 Ireland. 
+
+
+
+--
+This message was sent by Atlassian JIRA
+(v7.6.3#76005)
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+
+</body></email><email><emailId>20180318041108</emailId><senderName>Lei Xu</senderName><senderEmail>lei@apache.org</senderEmail><timestampReceived>2018-03-18 04:11:08-0400</timestampReceived><subject>[VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+Hi, all
+
+I've created release candidate RC-1 for Apache Hadoop 3.0.1
+
+Apache Hadoop 3.0.1 will be the first bug fix release for Apache
+Hadoop 3.0 release. It includes 49 bug fixes and security fixes, which
+include 12
+blockers and 17 are critical.
+
+Please note:
+* HDFS-12990. Change default NameNode RPC port back to 8020. It makes
+incompatible changes to Hadoop 3.0.0.  After 3.0.1 releases, Apache
+Hadoop 3.0.0 will be deprecated due to this change.
+
+The release page is:
+https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+3.0+Release
+
+New RC is available at: http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+
+The git tag is release-3.0.1-RC1, and the latest commit is
+496dc57cc2e4f4da117f7a8e3840aaeac0c1d2d0
+
+The maven artifacts are available at:
+https://repository.apache.org/content/repositories/orgapachehadoop-1081/
+
+Please try the release and vote; the vote will run for the usual 5
+days, ending on 3/22/2017 6pm PST time.
+
+Thanks!
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+</body></email><email><emailId>20180319010452</emailId><senderName>Akira Ajisaka</senderName><senderEmail>ajisakaa@oss.nttdata.co.jp</senderEmail><timestampReceived>2018-03-19 01:04:52-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+Hi Lei,
+
+Would you provide SHA checksum files instead of MD5?
+http://www.apache.org/dev/release-distribution#sigs-and-sums
+
+-Akira
+
+On 2018/03/18 13:11, Lei Xu wrote:
+&gt; Hi, all
+&gt; 
+&gt; I've created release candidate RC-1 for Apache Hadoop 3.0.1
+&gt; 
+&gt; Apache Hadoop 3.0.1 will be the first bug fix release for Apache
+&gt; Hadoop 3.0 release. It includes 49 bug fixes and security fixes, which
+&gt; include 12
+&gt; blockers and 17 are critical.
+&gt; 
+&gt; Please note:
+&gt; * HDFS-12990. Change default NameNode RPC port back to 8020. It makes
+&gt; incompatible changes to Hadoop 3.0.0.  After 3.0.1 releases, Apache
+&gt; Hadoop 3.0.0 will be deprecated due to this change.
+&gt; 
+&gt; The release page is:
+&gt; https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+3.0+Release
+&gt; 
+&gt; New RC is available at: http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+&gt; 
+&gt; The git tag is release-3.0.1-RC1, and the latest commit is
+&gt; 496dc57cc2e4f4da117f7a8e3840aaeac0c1d2d0
+&gt; 
+&gt; The maven artifacts are available at:
+&gt; https://repository.apache.org/content/repositories/orgapachehadoop-1081/
+&gt; 
+&gt; Please try the release and vote; the vote will run for the usual 5
+&gt; days, ending on 3/22/2017 6pm PST time.
+&gt; 
+&gt; Thanks!
+&gt; 
+&gt; ---------------------------------------------------------------------
+&gt; To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+&gt; For additional commands, e-mail: common-dev-help@hadoop.apache.org
+&gt; 
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+</body></email><email><emailId>20180319174542</emailId><senderName>Lei Xu</senderName><senderEmail>lei@cloudera.com</senderEmail><timestampReceived>2018-03-19 17:45:42-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+Sure, Akira
+
+.mds files are uploaded to http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+
+On Sun, Mar 18, 2018 at 6:04 PM, Akira Ajisaka
+&lt;ajisakaa@oss.nttdata.co.jp&gt; wrote:
+&gt; Hi Lei,
+&gt;
+&gt; Would you provide SHA checksum files instead of MD5?
+&gt; http://www.apache.org/dev/release-distribution#sigs-and-sums
+&gt;
+&gt; -Akira
+&gt;
+&gt;
+&gt; On 2018/03/18 13:11, Lei Xu wrote:
+&gt;&gt;
+&gt;&gt; Hi, all
+&gt;&gt;
+&gt;&gt; I've created release candidate RC-1 for Apache Hadoop 3.0.1
+&gt;&gt;
+&gt;&gt; Apache Hadoop 3.0.1 will be the first bug fix release for Apache
+&gt;&gt; Hadoop 3.0 release. It includes 49 bug fixes and security fixes, which
+&gt;&gt; include 12
+&gt;&gt; blockers and 17 are critical.
+&gt;&gt;
+&gt;&gt; Please note:
+&gt;&gt; * HDFS-12990. Change default NameNode RPC port back to 8020. It makes
+&gt;&gt; incompatible changes to Hadoop 3.0.0.  After 3.0.1 releases, Apache
+&gt;&gt; Hadoop 3.0.0 will be deprecated due to this change.
+&gt;&gt;
+&gt;&gt; The release page is:
+&gt;&gt; https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+3.0+Release
+&gt;&gt;
+&gt;&gt; New RC is available at: http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+&gt;&gt;
+&gt;&gt; The git tag is release-3.0.1-RC1, and the latest commit is
+&gt;&gt; 496dc57cc2e4f4da117f7a8e3840aaeac0c1d2d0
+&gt;&gt;
+&gt;&gt; The maven artifacts are available at:
+&gt;&gt; https://repository.apache.org/content/repositories/orgapachehadoop-1081/
+&gt;&gt;
+&gt;&gt; Please try the release and vote; the vote will run for the usual 5
+&gt;&gt; days, ending on 3/22/2017 6pm PST time.
+&gt;&gt;
+&gt;&gt; Thanks!
+&gt;&gt;
+&gt;&gt; ---------------------------------------------------------------------
+&gt;&gt; To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+&gt;&gt; For additional commands, e-mail: common-dev-help@hadoop.apache.org
+&gt;&gt;
+&gt;
+
+
+
+-- 
+Lei (Eddy) Xu
+Software Engineer, Cloudera
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+</body></email><email><emailId>20180320041439</emailId><senderName>Xiao Chen</senderName><senderEmail>xiao@cloudera.com</senderEmail><timestampReceived>2018-03-20 04:14:39-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+
+Thanks Eddy for the effort!
+
++1 (binding)
+
+   - Downloaded src tarball and verified checksums
+   - Built from src
+   - Started a pseudo distributed hdfs cluster
+   - Verified basic hdfs operations work
+   - Verified hdfs encryption basic operations work
+   - Sanity checked logs / webui
+
+
+-Xiao
+
+On Mon, Mar 19, 2018 at 10:45 AM, Lei Xu &lt;lei@cloudera.com&gt; wrote:
+
+&gt; Sure, Akira
+&gt;
+&gt; .mds files are uploaded to http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+&gt;
+&gt; On Sun, Mar 18, 2018 at 6:04 PM, Akira Ajisaka
+&gt; &lt;ajisakaa@oss.nttdata.co.jp&gt; wrote:
+&gt; &gt; Hi Lei,
+&gt; &gt;
+&gt; &gt; Would you provide SHA checksum files instead of MD5?
+&gt; &gt; http://www.apache.org/dev/release-distribution#sigs-and-sums
+&gt; &gt;
+&gt; &gt; -Akira
+&gt; &gt;
+&gt; &gt;
+&gt; &gt; On 2018/03/18 13:11, Lei Xu wrote:
+&gt; &gt;&gt;
+&gt; &gt;&gt; Hi, all
+&gt; &gt;&gt;
+&gt; &gt;&gt; I've created release candidate RC-1 for Apache Hadoop 3.0.1
+&gt; &gt;&gt;
+&gt; &gt;&gt; Apache Hadoop 3.0.1 will be the first bug fix release for Apache
+&gt; &gt;&gt; Hadoop 3.0 release. It includes 49 bug fixes and security fixes, which
+&gt; &gt;&gt; include 12
+&gt; &gt;&gt; blockers and 17 are critical.
+&gt; &gt;&gt;
+&gt; &gt;&gt; Please note:
+&gt; &gt;&gt; * HDFS-12990. Change default NameNode RPC port back to 8020. It makes
+&gt; &gt;&gt; incompatible changes to Hadoop 3.0.0.  After 3.0.1 releases, Apache
+&gt; &gt;&gt; Hadoop 3.0.0 will be deprecated due to this change.
+&gt; &gt;&gt;
+&gt; &gt;&gt; The release page is:
+&gt; &gt;&gt; https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+3.0+Release
+&gt; &gt;&gt;
+&gt; &gt;&gt; New RC is available at: http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+&gt; &gt;&gt;
+&gt; &gt;&gt; The git tag is release-3.0.1-RC1, and the latest commit is
+&gt; &gt;&gt; 496dc57cc2e4f4da117f7a8e3840aaeac0c1d2d0
+&gt; &gt;&gt;
+&gt; &gt;&gt; The maven artifacts are available at:
+&gt; &gt;&gt; https://repository.apache.org/content/repositories/
+&gt; orgapachehadoop-1081/
+&gt; &gt;&gt;
+&gt; &gt;&gt; Please try the release and vote; the vote will run for the usual 5
+&gt; &gt;&gt; days, ending on 3/22/2017 6pm PST time.
+&gt; &gt;&gt;
+&gt; &gt;&gt; Thanks!
+&gt; &gt;&gt;
+&gt; &gt;&gt; ---------------------------------------------------------------------
+&gt; &gt;&gt; To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+&gt; &gt;&gt; For additional commands, e-mail: common-dev-help@hadoop.apache.org
+&gt; &gt;&gt;
+&gt; &gt;
+&gt;
+&gt;
+&gt;
+&gt; --
+&gt; Lei (Eddy) Xu
+&gt; Software Engineer, Cloudera
+&gt;
+&gt; ---------------------------------------------------------------------
+&gt; To unsubscribe, e-mail: hdfs-dev-unsubscribe@hadoop.apache.org
+&gt; For additional commands, e-mail: hdfs-dev-help@hadoop.apache.org
+&gt;
+&gt;
+
+
+</body></email><email><emailId>20180320082202</emailId><senderName>Takanobu Asanuma</senderName><senderEmail>tasanuma@yahoo-corp.jp</senderEmail><timestampReceived>2018-03-20 08:22:02-0400</timestampReceived><subject>RE: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+VGhhbmtzIGZvciBhbGwgeW91ciBlZmZvcnRzLCBFZGR5Lg0KDQorMSAobm9uLWJpbmRpbmcpDQog
+ICAtIERvd25sb2FkZWQgc3JjIHRhcmJhbGwgYW5kIHZlcmlmaWVkIGNoZWNrc3Vtcw0KICAgLSBT
+dWNjZWVkZWQgIm12biBjbGVhbiBwYWNrYWdlIC1QZGlzdCxuYXRpdmUgLUR0YXIgLURza2lwVGVz
+dHMiDQogICAtIFN0YXJ0ZWQgZG9ja2VyIGhhZG9vcCBjbHVzdGVyIHdpdGggMSBtYXN0ZXIgYW5k
+IDUgc2xhdmVzDQogICAtIFZlcmlmaWVkIFRlcmFHZW4vVGVyYVNvcnQNCiAgIC0gVmVyaWZpZWQg
+c29tZSBlcmFzdXJlIGNvZGluZyBvcGVyYXRpb25zDQoNCi1UYWthbm9idSBBc2FudW1hDQoNCi0t
+LS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQpGcm9tOiBYaWFvIENoZW4gW21haWx0bzp4aWFvQGNs
+b3VkZXJhLmNvbV0gDQpTZW50OiBUdWVzZGF5LCBNYXJjaCAyMCwgMjAxOCAxOjE1IFBNDQpUbzog
+TGVpIFh1IDxsZWlAY2xvdWRlcmEuY29tPg0KQ2M6IEFraXJhIEFqaXNha2EgPGFqaXNha2FhQG9z
+cy5udHRkYXRhLmNvLmpwPjsgSGFkb29wIENvbW1vbiA8Y29tbW9uLWRldkBoYWRvb3AuYXBhY2hl
+Lm9yZz47IEhkZnMtZGV2IDxoZGZzLWRldkBoYWRvb3AuYXBhY2hlLm9yZz47IG1hcHJlZHVjZS1k
+ZXZAaGFkb29wLmFwYWNoZS5vcmc7IHlhcm4tZGV2QGhhZG9vcC5hcGFjaGUub3JnDQpTdWJqZWN0
+OiBSZTogW1ZPVEVdIFJlbGVhc2UgQXBhY2hlIEhhZG9vcCAzLjAuMSAoUkMxKQ0KDQpUaGFua3Mg
+RWRkeSBmb3IgdGhlIGVmZm9ydCENCg0KKzEgKGJpbmRpbmcpDQoNCiAgIC0gRG93bmxvYWRlZCBz
+cmMgdGFyYmFsbCBhbmQgdmVyaWZpZWQgY2hlY2tzdW1zDQogICAtIEJ1aWx0IGZyb20gc3JjDQog
+ICAtIFN0YXJ0ZWQgYSBwc2V1ZG8gZGlzdHJpYnV0ZWQgaGRmcyBjbHVzdGVyDQogICAtIFZlcmlm
+aWVkIGJhc2ljIGhkZnMgb3BlcmF0aW9ucyB3b3JrDQogICAtIFZlcmlmaWVkIGhkZnMgZW5jcnlw
+dGlvbiBiYXNpYyBvcGVyYXRpb25zIHdvcmsNCiAgIC0gU2FuaXR5IGNoZWNrZWQgbG9ncyAvIHdl
+YnVpDQoNCg0KLVhpYW8NCg0KT24gTW9uLCBNYXIgMTksIDIwMTggYXQgMTA6NDUgQU0sIExlaSBY
+dSA8bGVpQGNsb3VkZXJhLmNvbT4gd3JvdGU6DQoNCj4gU3VyZSwgQWtpcmENCj4NCj4gLm1kcyBm
+aWxlcyBhcmUgdXBsb2FkZWQgdG8gDQo+IGh0dHA6Ly9ob21lLmFwYWNoZS5vcmcvfmxlaS9oYWRv
+b3AtMy4wLjEtUkMxLw0KPg0KPiBPbiBTdW4sIE1hciAxOCwgMjAxOCBhdCA2OjA0IFBNLCBBa2ly
+YSBBamlzYWthIA0KPiA8YWppc2FrYWFAb3NzLm50dGRhdGEuY28uanA+IHdyb3RlOg0KPiA+IEhp
+IExlaSwNCj4gPg0KPiA+IFdvdWxkIHlvdSBwcm92aWRlIFNIQSBjaGVja3N1bSBmaWxlcyBpbnN0
+ZWFkIG9mIE1ENT8NCj4gPiBodHRwOi8vd3d3LmFwYWNoZS5vcmcvZGV2L3JlbGVhc2UtZGlzdHJp
+YnV0aW9uI3NpZ3MtYW5kLXN1bXMNCj4gPg0KPiA+IC1Ba2lyYQ0KPiA+DQo+ID4NCj4gPiBPbiAy
+MDE4LzAzLzE4IDEzOjExLCBMZWkgWHUgd3JvdGU6DQo+ID4+DQo+ID4+IEhpLCBhbGwNCj4gPj4N
+Cj4gPj4gSSd2ZSBjcmVhdGVkIHJlbGVhc2UgY2FuZGlkYXRlIFJDLTEgZm9yIEFwYWNoZSBIYWRv
+b3AgMy4wLjENCj4gPj4NCj4gPj4gQXBhY2hlIEhhZG9vcCAzLjAuMSB3aWxsIGJlIHRoZSBmaXJz
+dCBidWcgZml4IHJlbGVhc2UgZm9yIEFwYWNoZSANCj4gPj4gSGFkb29wIDMuMCByZWxlYXNlLiBJ
+dCBpbmNsdWRlcyA0OSBidWcgZml4ZXMgYW5kIHNlY3VyaXR5IGZpeGVzLCANCj4gPj4gd2hpY2gg
+aW5jbHVkZSAxMiBibG9ja2VycyBhbmQgMTcgYXJlIGNyaXRpY2FsLg0KPiA+Pg0KPiA+PiBQbGVh
+c2Ugbm90ZToNCj4gPj4gKiBIREZTLTEyOTkwLiBDaGFuZ2UgZGVmYXVsdCBOYW1lTm9kZSBSUEMg
+cG9ydCBiYWNrIHRvIDgwMjAuIEl0IA0KPiA+PiBtYWtlcyBpbmNvbXBhdGlibGUgY2hhbmdlcyB0
+byBIYWRvb3AgMy4wLjAuICBBZnRlciAzLjAuMSByZWxlYXNlcywgDQo+ID4+IEFwYWNoZSBIYWRv
+b3AgMy4wLjAgd2lsbCBiZSBkZXByZWNhdGVkIGR1ZSB0byB0aGlzIGNoYW5nZS4NCj4gPj4NCj4g
+Pj4gVGhlIHJlbGVhc2UgcGFnZSBpczoNCj4gPj4gaHR0cHM6Ly9jd2lraS5hcGFjaGUub3JnL2Nv
+bmZsdWVuY2UvZGlzcGxheS9IQURPT1AvSGFkb29wKzMuMCtSZWxlYQ0KPiA+PiBzZQ0KPiA+Pg0K
+PiA+PiBOZXcgUkMgaXMgYXZhaWxhYmxlIGF0OiANCj4gPj4gaHR0cDovL2hvbWUuYXBhY2hlLm9y
+Zy9+bGVpL2hhZG9vcC0zLjAuMS1SQzEvDQo+ID4+DQo+ID4+IFRoZSBnaXQgdGFnIGlzIHJlbGVh
+c2UtMy4wLjEtUkMxLCBhbmQgdGhlIGxhdGVzdCBjb21taXQgaXMNCj4gPj4gNDk2ZGM1N2NjMmU0
+ZjRkYTExN2Y3YThlMzg0MGFhZWFjMGMxZDJkMA0KPiA+Pg0KPiA+PiBUaGUgbWF2ZW4gYXJ0aWZh
+Y3RzIGFyZSBhdmFpbGFibGUgYXQ6DQo+ID4+IGh0dHBzOi8vcmVwb3NpdG9yeS5hcGFjaGUub3Jn
+L2NvbnRlbnQvcmVwb3NpdG9yaWVzLw0KPiBvcmdhcGFjaGVoYWRvb3AtMTA4MS8NCj4gPj4NCj4g
+Pj4gUGxlYXNlIHRyeSB0aGUgcmVsZWFzZSBhbmQgdm90ZTsgdGhlIHZvdGUgd2lsbCBydW4gZm9y
+IHRoZSB1c3VhbCA1IA0KPiA+PiBkYXlzLCBlbmRpbmcgb24gMy8yMi8yMDE3IDZwbSBQU1QgdGlt
+ZS4NCj4gPj4NCj4gPj4gVGhhbmtzIQ0KPiA+Pg0KPiA+PiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQo+ID4+IC0tIFRv
+IHVuc3Vic2NyaWJlLCBlLW1haWw6IGNvbW1vbi1kZXYtdW5zdWJzY3JpYmVAaGFkb29wLmFwYWNo
+ZS5vcmcNCj4gPj4gRm9yIGFkZGl0aW9uYWwgY29tbWFuZHMsIGUtbWFpbDogY29tbW9uLWRldi1o
+ZWxwQGhhZG9vcC5hcGFjaGUub3JnDQo+ID4+DQo+ID4NCj4NCj4NCj4NCj4gLS0NCj4gTGVpIChF
+ZGR5KSBYdQ0KPiBTb2Z0d2FyZSBFbmdpbmVlciwgQ2xvdWRlcmENCj4NCj4gLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+DQo+IFRvIHVuc3Vic2NyaWJlLCBlLW1haWw6IGhkZnMtZGV2LXVuc3Vic2NyaWJlQGhhZG9vcC5h
+cGFjaGUub3JnDQo+IEZvciBhZGRpdGlvbmFsIGNvbW1hbmRzLCBlLW1haWw6IGhkZnMtZGV2LWhl
+bHBAaGFkb29wLmFwYWNoZS5vcmcNCj4NCj4NCg==
+DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0NClRvIHVuc3Vic2NyaWJlLCBlLW1haWw6IGNvbW1vbi1kZXYt
+dW5zdWJzY3JpYmVAaGFkb29wLmFwYWNoZS5vcmcNCkZvciBhZGRpdGlvbmFsIGNvbW1hbmRz
+LCBlLW1haWw6IGNvbW1vbi1kZXYtaGVscEBoYWRvb3AuYXBhY2hlLm9yZw0K
+</body></email><email><emailId>20180320100233</emailId><senderName>Steve Loughran</senderName><senderEmail>stevel@hortonworks.com</senderEmail><timestampReceived>2018-03-20 10:02:33-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+
+Is this off the branch-3.0 branch (where've backported some things)?
+
+if so, I'm very supportive. Not in a position to do any testing until thursday though
+
+&gt; On 18 Mar 2018, at 05:11, Lei Xu &lt;lei@apache.org&gt; wrote:
+&gt; 
+&gt; Hi, all
+&gt; 
+&gt; I've created release candidate RC-1 for Apache Hadoop 3.0.1
+&gt; 
+&gt; Apache Hadoop 3.0.1 will be the first bug fix release for Apache
+&gt; Hadoop 3.0 release. It includes 49 bug fixes and security fixes, which
+&gt; include 12
+&gt; blockers and 17 are critical.
+&gt; 
+&gt; Please note:
+&gt; * HDFS-12990. Change default NameNode RPC port back to 8020. It makes
+&gt; incompatible changes to Hadoop 3.0.0.  After 3.0.1 releases, Apache
+&gt; Hadoop 3.0.0 will be deprecated due to this change.
+&gt; 
+&gt; The release page is:
+&gt; https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+3.0+Release
+&gt; 
+&gt; New RC is available at: http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+&gt; 
+&gt; The git tag is release-3.0.1-RC1, and the latest commit is
+&gt; 496dc57cc2e4f4da117f7a8e3840aaeac0c1d2d0
+&gt; 
+&gt; The maven artifacts are available at:
+&gt; https://repository.apache.org/content/repositories/orgapachehadoop-1081/
+&gt; 
+&gt; Please try the release and vote; the vote will run for the usual 5
+&gt; days, ending on 3/22/2017 6pm PST time.
+&gt; 
+&gt; Thanks!
+&gt; 
+&gt; ---------------------------------------------------------------------
+&gt; To unsubscribe, e-mail: mapreduce-dev-unsubscribe@hadoop.apache.org
+&gt; For additional commands, e-mail: mapreduce-dev-help@hadoop.apache.org
+&gt; 
+
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+</body></email><email><emailId>20180320112134</emailId><senderName>"Chen, Sammi"</senderName><senderEmail>sammi.chen@intel.com</senderEmail><timestampReceived>2018-03-20 11:21:34-0400</timestampReceived><subject>RE: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+VGhhbmtzIEVkZHkgZm9yIGRyaXZpbmcgMy4wLjEgcmVsZWFzZS4gDQoNCkknbSB0ZXN0aW5nIHRo
+ZSByZWxlYXNlIGFuZCB3aWxsIHZvdGUgbGF0ZXIuIA0KDQpPbmUgdGhpbmcgSSBub3RpY2VkIHRo
+YXQgdGhlIEpJUkEgbGlua3Mgb24gcGFnZSBodHRwczovL2N3aWtpLmFwYWNoZS5vcmcvY29uZmx1
+ZW5jZS9kaXNwbGF5L0hBRE9PUC9IYWRvb3ArMy4wK1JlbGVhc2UgaXMgbGlua2VkIHRvIHRoZSBw
+YWdlIGl0c2VsZiwgbm90IHRoZSBpbmRpdmlkdWFsIEpJUkEuICBJJ20gbm90IHN1cmUgaWYgaXQn
+cyB0aGUgZGVzaWduLiANCg0KDQpUaGFua3MsDQpTYW1taQ0KLS0tLS1PcmlnaW5hbCBNZXNzYWdl
+LS0tLS0NCkZyb206IExlaSBYdSBbbWFpbHRvOmxlaUBhcGFjaGUub3JnXSANClNlbnQ6IFN1bmRh
+eSwgTWFyY2ggMTgsIDIwMTggMTI6MTEgUE0NClRvOiBIYWRvb3AgQ29tbW9uIDxjb21tb24tZGV2
+QGhhZG9vcC5hcGFjaGUub3JnPjsgSGRmcy1kZXYgPGhkZnMtZGV2QGhhZG9vcC5hcGFjaGUub3Jn
+PjsgbWFwcmVkdWNlLWRldkBoYWRvb3AuYXBhY2hlLm9yZzsgeWFybi1kZXZAaGFkb29wLmFwYWNo
+ZS5vcmcNClN1YmplY3Q6IFtWT1RFXSBSZWxlYXNlIEFwYWNoZSBIYWRvb3AgMy4wLjEgKFJDMSkN
+Cg0KSGksIGFsbA0KDQpJJ3ZlIGNyZWF0ZWQgcmVsZWFzZSBjYW5kaWRhdGUgUkMtMSBmb3IgQXBh
+Y2hlIEhhZG9vcCAzLjAuMQ0KDQpBcGFjaGUgSGFkb29wIDMuMC4xIHdpbGwgYmUgdGhlIGZpcnN0
+IGJ1ZyBmaXggcmVsZWFzZSBmb3IgQXBhY2hlIEhhZG9vcCAzLjAgcmVsZWFzZS4gSXQgaW5jbHVk
+ZXMgNDkgYnVnIGZpeGVzIGFuZCBzZWN1cml0eSBmaXhlcywgd2hpY2ggaW5jbHVkZSAxMiBibG9j
+a2VycyBhbmQgMTcgYXJlIGNyaXRpY2FsLg0KDQpQbGVhc2Ugbm90ZToNCiogSERGUy0xMjk5MC4g
+Q2hhbmdlIGRlZmF1bHQgTmFtZU5vZGUgUlBDIHBvcnQgYmFjayB0byA4MDIwLiBJdCBtYWtlcyBp
+bmNvbXBhdGlibGUgY2hhbmdlcyB0byBIYWRvb3AgMy4wLjAuICBBZnRlciAzLjAuMSByZWxlYXNl
+cywgQXBhY2hlIEhhZG9vcCAzLjAuMCB3aWxsIGJlIGRlcHJlY2F0ZWQgZHVlIHRvIHRoaXMgY2hh
+bmdlLg0KDQpUaGUgcmVsZWFzZSBwYWdlIGlzOg0KaHR0cHM6Ly9jd2lraS5hcGFjaGUub3JnL2Nv
+bmZsdWVuY2UvZGlzcGxheS9IQURPT1AvSGFkb29wKzMuMCtSZWxlYXNlDQoNCk5ldyBSQyBpcyBh
+dmFpbGFibGUgYXQ6IGh0dHA6Ly9ob21lLmFwYWNoZS5vcmcvfmxlaS9oYWRvb3AtMy4wLjEtUkMx
+Lw0KDQpUaGUgZ2l0IHRhZyBpcyByZWxlYXNlLTMuMC4xLVJDMSwgYW5kIHRoZSBsYXRlc3QgY29t
+bWl0IGlzDQo0OTZkYzU3Y2MyZTRmNGRhMTE3ZjdhOGUzODQwYWFlYWMwYzFkMmQwDQoNClRoZSBt
+YXZlbiBhcnRpZmFjdHMgYXJlIGF2YWlsYWJsZSBhdDoNCmh0dHBzOi8vcmVwb3NpdG9yeS5hcGFj
+aGUub3JnL2NvbnRlbnQvcmVwb3NpdG9yaWVzL29yZ2FwYWNoZWhhZG9vcC0xMDgxLw0KDQpQbGVh
+c2UgdHJ5IHRoZSByZWxlYXNlIGFuZCB2b3RlOyB0aGUgdm90ZSB3aWxsIHJ1biBmb3IgdGhlIHVz
+dWFsIDUgZGF5cywgZW5kaW5nIG9uIDMvMjIvMjAxNyA2cG0gUFNUIHRpbWUuDQoNClRoYW5rcyEN
+Cg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tDQpUbyB1bnN1YnNjcmliZSwgZS1tYWlsOiBoZGZzLWRldi11bnN1YnNj
+cmliZUBoYWRvb3AuYXBhY2hlLm9yZw0KRm9yIGFkZGl0aW9uYWwgY29tbWFuZHMsIGUtbWFpbDog
+aGRmcy1kZXYtaGVscEBoYWRvb3AuYXBhY2hlLm9yZw0KDQo=
+DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0NClRvIHVuc3Vic2NyaWJlLCBlLW1haWw6IGNvbW1vbi1kZXYt
+dW5zdWJzY3JpYmVAaGFkb29wLmFwYWNoZS5vcmcNCkZvciBhZGRpdGlvbmFsIGNvbW1hbmRz
+LCBlLW1haWw6IGNvbW1vbi1kZXYtaGVscEBoYWRvb3AuYXBhY2hlLm9yZw0K
+</body></email><email><emailId>20180320163254</emailId><senderName>Eric Payne</senderName><senderEmail>erichadoop-1@yahoo.com.invalid</senderEmail><timestampReceived>2018-03-20 16:32:54-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+
+ Thanks for working on this release!
++1 (binding)
+I tested the following:
+- yarn distributed shell job
+
+- yarn streaming job
+
+- inter-queue preemption
+
+- compared behavior of fair and fifo ordering policy
+
+- both userlimit_first mode and priority_first mode of intra-queue preemption
+
+Eric Payne
+
+
+
+    On Saturday, March 17, 2018, 11:11:32 PM CDT, Lei Xu &lt;lei@apache.org&gt; wrote:  
+ 
+ Hi, all
+
+I've created release candidate RC-1 for Apache Hadoop 3.0.1
+
+Apache Hadoop 3.0.1 will be the first bug fix release for Apache
+Hadoop 3.0 release. It includes 49 bug fixes and security fixes, which
+include 12
+blockers and 17 are critical.
+
+Please note:
+* HDFS-12990. Change default NameNode RPC port back to 8020. It makes
+incompatible changes to Hadoop 3.0.0.   After 3.0.1 releases, Apache
+Hadoop 3.0.0 will be deprecated due to this change.
+
+The release page is:
+https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+3.0+Release
+
+New RC is available at: http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+
+The git tag is release-3.0.1-RC1, and the latest commit is
+496dc57cc2e4f4da117f7a8e3840aaeac0c1d2d0
+
+The maven artifacts are available at:
+https://repository.apache.org/content/repositories/orgapachehadoop-1081/
+
+Please try the release and vote; the vote will run for the usual 5
+days, ending on 3/22/2017 6pm PST time.
+
+Thanks!
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: mapreduce-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: mapreduce-dev-help@hadoop.apache.org
+
+  
+
+</body></email><email><emailId>20180320210737</emailId><senderName>Yufei Gu</senderName><senderEmail>flyrain000@gmail.com</senderEmail><timestampReceived>2018-03-20 21:07:37-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+
+Thanks Eddy!
+
++1 (non-binding)
+
+   - Downloaded the hadoop-3.0.1.tar.gz from
+http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+   - Started a pseudo cluster inside one docker container
+   - Verified distributed shell
+   - Verified mapreduce pi job
+   - Sanity check RM WebUI
+
+Best,
+
+Yufei
+
+On Tue, Mar 20, 2018 at 9:32 AM, Eric Payne &lt;erichadoop-1@yahoo.com.invalid&gt;
+wrote:
+
+&gt;  Thanks for working on this release!
+&gt; +1 (binding)
+&gt; I tested the following:
+&gt; - yarn distributed shell job
+&gt;
+&gt; - yarn streaming job
+&gt;
+&gt; - inter-queue preemption
+&gt;
+&gt; - compared behavior of fair and fifo ordering policy
+&gt;
+&gt; - both userlimit_first mode and priority_first mode of intra-queue
+&gt; preemption
+&gt;
+&gt; Eric Payne
+&gt;
+&gt;
+&gt;
+&gt;     On Saturday, March 17, 2018, 11:11:32 PM CDT, Lei Xu &lt;lei@apache.org&gt;
+&gt; wrote:
+&gt;
+&gt;  Hi, all
+&gt;
+&gt; I've created release candidate RC-1 for Apache Hadoop 3.0.1
+&gt;
+&gt; Apache Hadoop 3.0.1 will be the first bug fix release for Apache
+&gt; Hadoop 3.0 release. It includes 49 bug fixes and security fixes, which
+&gt; include 12
+&gt; blockers and 17 are critical.
+&gt;
+&gt; Please note:
+&gt; * HDFS-12990. Change default NameNode RPC port back to 8020. It makes
+&gt; incompatible changes to Hadoop 3.0.0.  After 3.0.1 releases, Apache
+&gt; Hadoop 3.0.0 will be deprecated due to this change.
+&gt;
+&gt; The release page is:
+&gt; https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+3.0+Release
+&gt;
+&gt; New RC is available at: http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+&gt;
+&gt; The git tag is release-3.0.1-RC1, and the latest commit is
+&gt; 496dc57cc2e4f4da117f7a8e3840aaeac0c1d2d0
+&gt;
+&gt; The maven artifacts are available at:
+&gt; https://repository.apache.org/content/repositories/orgapachehadoop-1081/
+&gt;
+&gt; Please try the release and vote; the vote will run for the usual 5
+&gt; days, ending on 3/22/2017 6pm PST time.
+&gt;
+&gt; Thanks!
+&gt;
+&gt; ---------------------------------------------------------------------
+&gt; To unsubscribe, e-mail: mapreduce-dev-unsubscribe@hadoop.apache.org
+&gt; For additional commands, e-mail: mapreduce-dev-help@hadoop.apache.org
+&gt;
+&gt;
+
+
+</body></email><email><emailId>20180320233535</emailId><senderName>Gabor Bota</senderName><senderEmail>gabor.bota@cloudera.com</senderEmail><timestampReceived>2018-03-20 23:35:35-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+
+Thanks for working on this Eddy!
+
++1 (non-binding)
+
+I've done the following:
+
+   - checked out git tag release-3.0.1-RC1
+   - built from source on Mac OS X 10.13.3, openjdk 1.8.0_144 (zulu)
+   - deployed on a 3 node cluster (HDFS HA, Non-HA YARN)
+   - verified example pi job
+   - ran teragen, terasort and teravalidate without errors
+
+Regards,
+Gabor Bota
+
+On Tue, Mar 20, 2018 at 2:07 PM, Yufei Gu &lt;flyrain000@gmail.com&gt; wrote:
+
+&gt; Thanks Eddy!
+&gt;
+&gt; +1 (non-binding)
+&gt;
+&gt;    - Downloaded the hadoop-3.0.1.tar.gz from
+&gt; http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+&gt;    - Started a pseudo cluster inside one docker container
+&gt;    - Verified distributed shell
+&gt;    - Verified mapreduce pi job
+&gt;    - Sanity check RM WebUI
+&gt;
+&gt; Best,
+&gt;
+&gt; Yufei
+&gt;
+&gt; On Tue, Mar 20, 2018 at 9:32 AM, Eric Payne &lt;erichadoop-1@yahoo.com.
+&gt; invalid&gt;
+&gt; wrote:
+&gt;
+&gt; &gt;  Thanks for working on this release!
+&gt; &gt; +1 (binding)
+&gt; &gt; I tested the following:
+&gt; &gt; - yarn distributed shell job
+&gt; &gt;
+&gt; &gt; - yarn streaming job
+&gt; &gt;
+&gt; &gt; - inter-queue preemption
+&gt; &gt;
+&gt; &gt; - compared behavior of fair and fifo ordering policy
+&gt; &gt;
+&gt; &gt; - both userlimit_first mode and priority_first mode of intra-queue
+&gt; &gt; preemption
+&gt; &gt;
+&gt; &gt; Eric Payne
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;     On Saturday, March 17, 2018, 11:11:32 PM CDT, Lei Xu &lt;lei@apache.org
+&gt; &gt;
+&gt; &gt; wrote:
+&gt; &gt;
+&gt; &gt;  Hi, all
+&gt; &gt;
+&gt; &gt; I've created release candidate RC-1 for Apache Hadoop 3.0.1
+&gt; &gt;
+&gt; &gt; Apache Hadoop 3.0.1 will be the first bug fix release for Apache
+&gt; &gt; Hadoop 3.0 release. It includes 49 bug fixes and security fixes, which
+&gt; &gt; include 12
+&gt; &gt; blockers and 17 are critical.
+&gt; &gt;
+&gt; &gt; Please note:
+&gt; &gt; * HDFS-12990. Change default NameNode RPC port back to 8020. It makes
+&gt; &gt; incompatible changes to Hadoop 3.0.0.  After 3.0.1 releases, Apache
+&gt; &gt; Hadoop 3.0.0 will be deprecated due to this change.
+&gt; &gt;
+&gt; &gt; The release page is:
+&gt; &gt; https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+3.0+Release
+&gt; &gt;
+&gt; &gt; New RC is available at: http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+&gt; &gt;
+&gt; &gt; The git tag is release-3.0.1-RC1, and the latest commit is
+&gt; &gt; 496dc57cc2e4f4da117f7a8e3840aaeac0c1d2d0
+&gt; &gt;
+&gt; &gt; The maven artifacts are available at:
+&gt; &gt; https://repository.apache.org/content/repositories/orgapachehadoop-1081/
+&gt; &gt;
+&gt; &gt; Please try the release and vote; the vote will run for the usual 5
+&gt; &gt; days, ending on 3/22/2017 6pm PST time.
+&gt; &gt;
+&gt; &gt; Thanks!
+&gt; &gt;
+&gt; &gt; ---------------------------------------------------------------------
+&gt; &gt; To unsubscribe, e-mail: mapreduce-dev-unsubscribe@hadoop.apache.org
+&gt; &gt; For additional commands, e-mail: mapreduce-dev-help@hadoop.apache.org
+&gt; &gt;
+&gt; &gt;
+&gt;
+
+
+</body></email><email><emailId>20180321033339</emailId><senderName>"Chen, Sammi"</senderName><senderEmail>sammi.chen@intel.com</senderEmail><timestampReceived>2018-03-21 03:33:39-0400</timestampReceived><subject>RE: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+VGhhbmtzIEVkZHkgZm9yIHRoZSBlZmZvcnQhDQoNCisxIChiaW5kaW5nKQ0KDQogICAtIERvd25s
+b2FkZWQgYmluYXJ5IHRhcmJhbGwsIHZlcmlmaWVkIGNoZWNrc3VtcywgdmVyaWZpZWQgc2lnbmF0
+dXJlDQogICAtIFN0YXJ0ZWQgYSBwc2V1ZG8gZGlzdHJpYnV0ZWQgaGRmcyBhbmQgWUFSTiBjbHVz
+dGVyIG9uIE1hYw0KICAgLSB2ZXJpZmllZCBoYWRvb3AgcnVudGltZSB2ZXJzaW9uDQogICAtIENo
+ZWNrIHdlYlVJDQogICAtIFJ1biBQaSANCiAgIC0gVmVyaWZpZWQgYmFzaWMgaGRmcyBvcGVyYXRp
+b25zDQogICAtIFZlcmlmaWVkIGJhc2ljIGVyYXN1cmUgY29kaW5nIGNvbW1hbmQob24gZGlyZWN0
+b3J5LCBub3QgZmlsZSkNCiAgIC0gVmVyaWZpZWQgY29weS9kb3dubG9hZCBmaWxlIGJldHdlZW4g
+SERGUyBhbmQgQWxpeXVuIE9TUw0KDQoNCkJlc3RzLA0KU2FtbWkgQ2hlbg0KDQotLS0tLU9yaWdp
+bmFsIE1lc3NhZ2UtLS0tLQ0KRnJvbTogR2Fib3IgQm90YSBbbWFpbHRvOmdhYm9yLmJvdGFAY2xv
+dWRlcmEuY29tXSANClNlbnQ6IFdlZG5lc2RheSwgTWFyY2ggMjEsIDIwMTggNzozNiBBTQ0KVG86
+IFl1ZmVpIEd1IDxmbHlyYWluMDAwQGdtYWlsLmNvbT4NCkNjOiBFcmljIFBheW5lIDxlcmljaGFk
+b29wLTFAeWFob28uY29tLmludmFsaWQ+OyBIYWRvb3AgQ29tbW9uIDxjb21tb24tZGV2QGhhZG9v
+cC5hcGFjaGUub3JnPjsgSGRmcy1kZXYgPGhkZnMtZGV2QGhhZG9vcC5hcGFjaGUub3JnPjsgbWFw
+cmVkdWNlLWRldkBoYWRvb3AuYXBhY2hlLm9yZzsgeWFybi1kZXZAaGFkb29wLmFwYWNoZS5vcmc7
+IExlaSBYdSA8bGVpQGFwYWNoZS5vcmc+DQpTdWJqZWN0OiBSZTogW1ZPVEVdIFJlbGVhc2UgQXBh
+Y2hlIEhhZG9vcCAzLjAuMSAoUkMxKQ0KDQpUaGFua3MgZm9yIHdvcmtpbmcgb24gdGhpcyBFZGR5
+IQ0KDQorMSAobm9uLWJpbmRpbmcpDQoNCkkndmUgZG9uZSB0aGUgZm9sbG93aW5nOg0KDQogICAt
+IGNoZWNrZWQgb3V0IGdpdCB0YWcgcmVsZWFzZS0zLjAuMS1SQzENCiAgIC0gYnVpbHQgZnJvbSBz
+b3VyY2Ugb24gTWFjIE9TIFggMTAuMTMuMywgb3BlbmpkayAxLjguMF8xNDQgKHp1bHUpDQogICAt
+IGRlcGxveWVkIG9uIGEgMyBub2RlIGNsdXN0ZXIgKEhERlMgSEEsIE5vbi1IQSBZQVJOKQ0KICAg
+LSB2ZXJpZmllZCBleGFtcGxlIHBpIGpvYg0KICAgLSByYW4gdGVyYWdlbiwgdGVyYXNvcnQgYW5k
+IHRlcmF2YWxpZGF0ZSB3aXRob3V0IGVycm9ycw0KDQpSZWdhcmRzLA0KR2Fib3IgQm90YQ0KDQpP
+biBUdWUsIE1hciAyMCwgMjAxOCBhdCAyOjA3IFBNLCBZdWZlaSBHdSA8Zmx5cmFpbjAwMEBnbWFp
+bC5jb20+IHdyb3RlOg0KDQo+IFRoYW5rcyBFZGR5IQ0KPg0KPiArMSAobm9uLWJpbmRpbmcpDQo+
+DQo+ICAgIC0gRG93bmxvYWRlZCB0aGUgaGFkb29wLTMuMC4xLnRhci5neiBmcm9tIA0KPiBodHRw
+Oi8vaG9tZS5hcGFjaGUub3JnL35sZWkvaGFkb29wLTMuMC4xLVJDMS8NCj4gICAgLSBTdGFydGVk
+IGEgcHNldWRvIGNsdXN0ZXIgaW5zaWRlIG9uZSBkb2NrZXIgY29udGFpbmVyDQo+ICAgIC0gVmVy
+aWZpZWQgZGlzdHJpYnV0ZWQgc2hlbGwNCj4gICAgLSBWZXJpZmllZCBtYXByZWR1Y2UgcGkgam9i
+DQo+ICAgIC0gU2FuaXR5IGNoZWNrIFJNIFdlYlVJDQo+DQo+IEJlc3QsDQo+DQo+IFl1ZmVpDQo+
+DQo+IE9uIFR1ZSwgTWFyIDIwLCAyMDE4IGF0IDk6MzIgQU0sIEVyaWMgUGF5bmUgPGVyaWNoYWRv
+b3AtMUB5YWhvby5jb20uDQo+IGludmFsaWQ+DQo+IHdyb3RlOg0KPg0KPiA+ICBUaGFua3MgZm9y
+IHdvcmtpbmcgb24gdGhpcyByZWxlYXNlIQ0KPiA+ICsxIChiaW5kaW5nKQ0KPiA+IEkgdGVzdGVk
+IHRoZSBmb2xsb3dpbmc6DQo+ID4gLSB5YXJuIGRpc3RyaWJ1dGVkIHNoZWxsIGpvYg0KPiA+DQo+
+ID4gLSB5YXJuIHN0cmVhbWluZyBqb2INCj4gPg0KPiA+IC0gaW50ZXItcXVldWUgcHJlZW1wdGlv
+bg0KPiA+DQo+ID4gLSBjb21wYXJlZCBiZWhhdmlvciBvZiBmYWlyIGFuZCBmaWZvIG9yZGVyaW5n
+IHBvbGljeQ0KPiA+DQo+ID4gLSBib3RoIHVzZXJsaW1pdF9maXJzdCBtb2RlIGFuZCBwcmlvcml0
+eV9maXJzdCBtb2RlIG9mIGludHJhLXF1ZXVlIA0KPiA+IHByZWVtcHRpb24NCj4gPg0KPiA+IEVy
+aWMgUGF5bmUNCj4gPg0KPiA+DQo+ID4NCj4gPiAgICAgT24gU2F0dXJkYXksIE1hcmNoIDE3LCAy
+MDE4LCAxMToxMTozMiBQTSBDRFQsIExlaSBYdSANCj4gPiA8bGVpQGFwYWNoZS5vcmcNCj4gPg0K
+PiA+IHdyb3RlOg0KPiA+DQo+ID4gIEhpLCBhbGwNCj4gPg0KPiA+IEkndmUgY3JlYXRlZCByZWxl
+YXNlIGNhbmRpZGF0ZSBSQy0xIGZvciBBcGFjaGUgSGFkb29wIDMuMC4xDQo+ID4NCj4gPiBBcGFj
+aGUgSGFkb29wIDMuMC4xIHdpbGwgYmUgdGhlIGZpcnN0IGJ1ZyBmaXggcmVsZWFzZSBmb3IgQXBh
+Y2hlIA0KPiA+IEhhZG9vcCAzLjAgcmVsZWFzZS4gSXQgaW5jbHVkZXMgNDkgYnVnIGZpeGVzIGFu
+ZCBzZWN1cml0eSBmaXhlcywgDQo+ID4gd2hpY2ggaW5jbHVkZSAxMiBibG9ja2VycyBhbmQgMTcg
+YXJlIGNyaXRpY2FsLg0KPiA+DQo+ID4gUGxlYXNlIG5vdGU6DQo+ID4gKiBIREZTLTEyOTkwLiBD
+aGFuZ2UgZGVmYXVsdCBOYW1lTm9kZSBSUEMgcG9ydCBiYWNrIHRvIDgwMjAuIEl0IA0KPiA+IG1h
+a2VzIGluY29tcGF0aWJsZSBjaGFuZ2VzIHRvIEhhZG9vcCAzLjAuMC4gIEFmdGVyIDMuMC4xIHJl
+bGVhc2VzLCANCj4gPiBBcGFjaGUgSGFkb29wIDMuMC4wIHdpbGwgYmUgZGVwcmVjYXRlZCBkdWUg
+dG8gdGhpcyBjaGFuZ2UuDQo+ID4NCj4gPiBUaGUgcmVsZWFzZSBwYWdlIGlzOg0KPiA+IGh0dHBz
+Oi8vY3dpa2kuYXBhY2hlLm9yZy9jb25mbHVlbmNlL2Rpc3BsYXkvSEFET09QL0hhZG9vcCszLjAr
+UmVsZWFzDQo+ID4gZQ0KPiA+DQo+ID4gTmV3IFJDIGlzIGF2YWlsYWJsZSBhdDogDQo+ID4gaHR0
+cDovL2hvbWUuYXBhY2hlLm9yZy9+bGVpL2hhZG9vcC0zLjAuMS1SQzEvDQo+ID4NCj4gPiBUaGUg
+Z2l0IHRhZyBpcyByZWxlYXNlLTMuMC4xLVJDMSwgYW5kIHRoZSBsYXRlc3QgY29tbWl0IGlzDQo+
+ID4gNDk2ZGM1N2NjMmU0ZjRkYTExN2Y3YThlMzg0MGFhZWFjMGMxZDJkMA0KPiA+DQo+ID4gVGhl
+IG1hdmVuIGFydGlmYWN0cyBhcmUgYXZhaWxhYmxlIGF0Og0KPiA+IGh0dHBzOi8vcmVwb3NpdG9y
+eS5hcGFjaGUub3JnL2NvbnRlbnQvcmVwb3NpdG9yaWVzL29yZ2FwYWNoZWhhZG9vcC0xDQo+ID4g
+MDgxLw0KPiA+DQo+ID4gUGxlYXNlIHRyeSB0aGUgcmVsZWFzZSBhbmQgdm90ZTsgdGhlIHZvdGUg
+d2lsbCBydW4gZm9yIHRoZSB1c3VhbCA1IA0KPiA+IGRheXMsIGVuZGluZyBvbiAzLzIyLzIwMTcg
+NnBtIFBTVCB0aW1lLg0KPiA+DQo+ID4gVGhhbmtzIQ0KPiA+DQo+ID4gLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCj4g
+PiAtIFRvIHVuc3Vic2NyaWJlLCBlLW1haWw6IA0KPiA+IG1hcHJlZHVjZS1kZXYtdW5zdWJzY3Jp
+YmVAaGFkb29wLmFwYWNoZS5vcmcNCj4gPiBGb3IgYWRkaXRpb25hbCBjb21tYW5kcywgZS1tYWls
+OiANCj4gPiBtYXByZWR1Y2UtZGV2LWhlbHBAaGFkb29wLmFwYWNoZS5vcmcNCj4gPg0KPiA+DQo+
+DQo=
+DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0NClRvIHVuc3Vic2NyaWJlLCBlLW1haWw6IGNvbW1vbi1kZXYt
+dW5zdWJzY3JpYmVAaGFkb29wLmFwYWNoZS5vcmcNCkZvciBhZGRpdGlvbmFsIGNvbW1hbmRz
+LCBlLW1haWw6IGNvbW1vbi1kZXYtaGVscEBoYWRvb3AuYXBhY2hlLm9yZw0K
+</body></email><email><emailId>20180321092152</emailId><senderName>Brahma Reddy Battula</senderName><senderEmail>brahmareddy.battula@huawei.com</senderEmail><timestampReceived>2018-03-21 09:21:52-0400</timestampReceived><subject>RE: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+VGhhbmtzIExlaSBYdSBmb3IgZHJpdmluZyB0aGlzLg0KDQorMShiaW5kaW5nKQ0KDQoNCi0tQnVp
+bHQgZnJvbSB0aGUgc291cmNlDQotLUluc3RhbGxlZCB0aGUgSEEgQ2x1c3Rlcg0KLS1WZXJpZmll
+ZCBoZGZzIG9wZXJhdGlvbnMNCi0tUmFuIHNhbXBsZSBqb2JzDQotLVZlcmlmaWVkIHRoZSBVSSdz
+DQoNCg0KDQotLUJyYWhtYSBSZWRkeSBCYXR0dWxhDQoNCg0KLS0tLS1PcmlnaW5hbCBNZXNzYWdl
+LS0tLS0NCkZyb206IExlaSBYdSBbbWFpbHRvOmxlaUBhcGFjaGUub3JnXSANClNlbnQ6IDE4IE1h
+cmNoIDIwMTggMTI6MTENClRvOiBIYWRvb3AgQ29tbW9uIDxjb21tb24tZGV2QGhhZG9vcC5hcGFj
+aGUub3JnPjsgSGRmcy1kZXYgPGhkZnMtZGV2QGhhZG9vcC5hcGFjaGUub3JnPjsgbWFwcmVkdWNl
+LWRldkBoYWRvb3AuYXBhY2hlLm9yZzsgeWFybi1kZXZAaGFkb29wLmFwYWNoZS5vcmcNClN1Ympl
+Y3Q6IFtWT1RFXSBSZWxlYXNlIEFwYWNoZSBIYWRvb3AgMy4wLjEgKFJDMSkNCg0KSGksIGFsbA0K
+DQpJJ3ZlIGNyZWF0ZWQgcmVsZWFzZSBjYW5kaWRhdGUgUkMtMSBmb3IgQXBhY2hlIEhhZG9vcCAz
+LjAuMQ0KDQpBcGFjaGUgSGFkb29wIDMuMC4xIHdpbGwgYmUgdGhlIGZpcnN0IGJ1ZyBmaXggcmVs
+ZWFzZSBmb3IgQXBhY2hlIEhhZG9vcCAzLjAgcmVsZWFzZS4gSXQgaW5jbHVkZXMgNDkgYnVnIGZp
+eGVzIGFuZCBzZWN1cml0eSBmaXhlcywgd2hpY2ggaW5jbHVkZSAxMiBibG9ja2VycyBhbmQgMTcg
+YXJlIGNyaXRpY2FsLg0KDQpQbGVhc2Ugbm90ZToNCiogSERGUy0xMjk5MC4gQ2hhbmdlIGRlZmF1
+bHQgTmFtZU5vZGUgUlBDIHBvcnQgYmFjayB0byA4MDIwLiBJdCBtYWtlcyBpbmNvbXBhdGlibGUg
+Y2hhbmdlcyB0byBIYWRvb3AgMy4wLjAuICBBZnRlciAzLjAuMSByZWxlYXNlcywgQXBhY2hlIEhh
+ZG9vcCAzLjAuMCB3aWxsIGJlIGRlcHJlY2F0ZWQgZHVlIHRvIHRoaXMgY2hhbmdlLg0KDQpUaGUg
+cmVsZWFzZSBwYWdlIGlzOg0KaHR0cHM6Ly9jd2lraS5hcGFjaGUub3JnL2NvbmZsdWVuY2UvZGlz
+cGxheS9IQURPT1AvSGFkb29wKzMuMCtSZWxlYXNlDQoNCk5ldyBSQyBpcyBhdmFpbGFibGUgYXQ6
+IGh0dHA6Ly9ob21lLmFwYWNoZS5vcmcvfmxlaS9oYWRvb3AtMy4wLjEtUkMxLw0KDQpUaGUgZ2l0
+IHRhZyBpcyByZWxlYXNlLTMuMC4xLVJDMSwgYW5kIHRoZSBsYXRlc3QgY29tbWl0IGlzDQo0OTZk
+YzU3Y2MyZTRmNGRhMTE3ZjdhOGUzODQwYWFlYWMwYzFkMmQwDQoNClRoZSBtYXZlbiBhcnRpZmFj
+dHMgYXJlIGF2YWlsYWJsZSBhdDoNCmh0dHBzOi8vcmVwb3NpdG9yeS5hcGFjaGUub3JnL2NvbnRl
+bnQvcmVwb3NpdG9yaWVzL29yZ2FwYWNoZWhhZG9vcC0xMDgxLw0KDQpQbGVhc2UgdHJ5IHRoZSBy
+ZWxlYXNlIGFuZCB2b3RlOyB0aGUgdm90ZSB3aWxsIHJ1biBmb3IgdGhlIHVzdWFsIDUgZGF5cywg
+ZW5kaW5nIG9uIDMvMjIvMjAxNyA2cG0gUFNUIHRpbWUuDQoNClRoYW5rcyENCg0KLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tDQpUbyB1bnN1YnNjcmliZSwgZS1tYWlsOiB5YXJuLWRldi11bnN1YnNjcmliZUBoYWRvb3Au
+YXBhY2hlLm9yZw0KRm9yIGFkZGl0aW9uYWwgY29tbWFuZHMsIGUtbWFpbDogeWFybi1kZXYtaGVs
+cEBoYWRvb3AuYXBhY2hlLm9yZw0KDQo=
+DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0NClRvIHVuc3Vic2NyaWJlLCBlLW1haWw6IGNvbW1vbi1kZXYt
+dW5zdWJzY3JpYmVAaGFkb29wLmFwYWNoZS5vcmcNCkZvciBhZGRpdGlvbmFsIGNvbW1hbmRz
+LCBlLW1haWw6IGNvbW1vbi1kZXYtaGVscEBoYWRvb3AuYXBhY2hlLm9yZw0K
+</body></email><email><emailId>20180322010823</emailId><senderName>Robert Kanter</senderName><senderEmail>rkanter@cloudera.com</senderEmail><timestampReceived>2018-03-22 01:08:23-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+
++1 (binding)
+
+- verified signatures and checksums
+- setup pseudo cluster using Fair Scheduler from binary tarball
+- ran some of the example jobs, clicked around the UI a bit
+
+By the way, ASF recommends using a 4096 bit key for signing, though 2048 is
+fine for now.
+https://www.apache.org/dev/release-signing.html#key-length
+
+
+thanks
+- Robert
+
+
+
+
+On Wed, Mar 21, 2018 at 2:21 AM, Brahma Reddy Battula &lt;
+brahmareddy.battula@huawei.com&gt; wrote:
+
+&gt; Thanks Lei Xu for driving this.
+&gt;
+&gt; +1(binding)
+&gt;
+&gt;
+&gt; --Built from the source
+&gt; --Installed the HA Cluster
+&gt; --Verified hdfs operations
+&gt; --Ran sample jobs
+&gt; --Verified the UI's
+&gt;
+&gt;
+&gt;
+&gt; --Brahma Reddy Battula
+&gt;
+&gt;
+&gt; -----Original Message-----
+&gt; From: Lei Xu [mailto:lei@apache.org]
+&gt; Sent: 18 March 2018 12:11
+&gt; To: Hadoop Common &lt;common-dev@hadoop.apache.org&gt;; Hdfs-dev &lt;
+&gt; hdfs-dev@hadoop.apache.org&gt;; mapreduce-dev@hadoop.apache.org;
+&gt; yarn-dev@hadoop.apache.org
+&gt; Subject: [VOTE] Release Apache Hadoop 3.0.1 (RC1)
+&gt;
+&gt; Hi, all
+&gt;
+&gt; I've created release candidate RC-1 for Apache Hadoop 3.0.1
+&gt;
+&gt; Apache Hadoop 3.0.1 will be the first bug fix release for Apache Hadoop
+&gt; 3.0 release. It includes 49 bug fixes and security fixes, which include 12
+&gt; blockers and 17 are critical.
+&gt;
+&gt; Please note:
+&gt; * HDFS-12990. Change default NameNode RPC port back to 8020. It makes
+&gt; incompatible changes to Hadoop 3.0.0.  After 3.0.1 releases, Apache Hadoop
+&gt; 3.0.0 will be deprecated due to this change.
+&gt;
+&gt; The release page is:
+&gt; https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+3.0+Release
+&gt;
+&gt; New RC is available at: http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+&gt;
+&gt; The git tag is release-3.0.1-RC1, and the latest commit is
+&gt; 496dc57cc2e4f4da117f7a8e3840aaeac0c1d2d0
+&gt;
+&gt; The maven artifacts are available at:
+&gt; https://repository.apache.org/content/repositories/orgapachehadoop-1081/
+&gt;
+&gt; Please try the release and vote; the vote will run for the usual 5 days,
+&gt; ending on 3/22/2017 6pm PST time.
+&gt;
+&gt; Thanks!
+&gt;
+&gt; ---------------------------------------------------------------------
+&gt; To unsubscribe, e-mail: yarn-dev-unsubscribe@hadoop.apache.org
+&gt; For additional commands, e-mail: yarn-dev-help@hadoop.apache.org
+&gt;
+&gt;
+
+
+</body></email><email><emailId>20180322112030</emailId><senderName>Akira Ajisaka</senderName><senderEmail>ajisakaa@oss.nttdata.com</senderEmail><timestampReceived>2018-03-22 11:20:30-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
++1 (binding)
+
+- verified signatures and checksums
+- built from source and setup 4 node cluster
+- ran some examples jobs
+- verified some HDFS operations
+
+Thanks,
+Akira
+
+On 2018/03/22 10:08, Robert Kanter wrote:
+&gt; +1 (binding)
+&gt; 
+&gt; - verified signatures and checksums
+&gt; - setup pseudo cluster using Fair Scheduler from binary tarball
+&gt; - ran some of the example jobs, clicked around the UI a bit
+&gt; 
+&gt; By the way, ASF recommends using a 4096 bit key for signing, though 2048 is
+&gt; fine for now.
+&gt; https://www.apache.org/dev/release-signing.html#key-length
+&gt; 
+&gt; 
+&gt; thanks
+&gt; - Robert
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; On Wed, Mar 21, 2018 at 2:21 AM, Brahma Reddy Battula &lt;
+&gt; brahmareddy.battula@huawei.com&gt; wrote:
+&gt; 
+&gt;&gt; Thanks Lei Xu for driving this.
+&gt;&gt;
+&gt;&gt; +1(binding)
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; --Built from the source
+&gt;&gt; --Installed the HA Cluster
+&gt;&gt; --Verified hdfs operations
+&gt;&gt; --Ran sample jobs
+&gt;&gt; --Verified the UI's
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; --Brahma Reddy Battula
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; -----Original Message-----
+&gt;&gt; From: Lei Xu [mailto:lei@apache.org]
+&gt;&gt; Sent: 18 March 2018 12:11
+&gt;&gt; To: Hadoop Common &lt;common-dev@hadoop.apache.org&gt;; Hdfs-dev &lt;
+&gt;&gt; hdfs-dev@hadoop.apache.org&gt;; mapreduce-dev@hadoop.apache.org;
+&gt;&gt; yarn-dev@hadoop.apache.org
+&gt;&gt; Subject: [VOTE] Release Apache Hadoop 3.0.1 (RC1)
+&gt;&gt;
+&gt;&gt; Hi, all
+&gt;&gt;
+&gt;&gt; I've created release candidate RC-1 for Apache Hadoop 3.0.1
+&gt;&gt;
+&gt;&gt; Apache Hadoop 3.0.1 will be the first bug fix release for Apache Hadoop
+&gt;&gt; 3.0 release. It includes 49 bug fixes and security fixes, which include 12
+&gt;&gt; blockers and 17 are critical.
+&gt;&gt;
+&gt;&gt; Please note:
+&gt;&gt; * HDFS-12990. Change default NameNode RPC port back to 8020. It makes
+&gt;&gt; incompatible changes to Hadoop 3.0.0.  After 3.0.1 releases, Apache Hadoop
+&gt;&gt; 3.0.0 will be deprecated due to this change.
+&gt;&gt;
+&gt;&gt; The release page is:
+&gt;&gt; https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+3.0+Release
+&gt;&gt;
+&gt;&gt; New RC is available at: http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+&gt;&gt;
+&gt;&gt; The git tag is release-3.0.1-RC1, and the latest commit is
+&gt;&gt; 496dc57cc2e4f4da117f7a8e3840aaeac0c1d2d0
+&gt;&gt;
+&gt;&gt; The maven artifacts are available at:
+&gt;&gt; https://repository.apache.org/content/repositories/orgapachehadoop-1081/
+&gt;&gt;
+&gt;&gt; Please try the release and vote; the vote will run for the usual 5 days,
+&gt;&gt; ending on 3/22/2017 6pm PST time.
+&gt;&gt;
+&gt;&gt; Thanks!
+&gt;&gt;
+&gt;&gt; ---------------------------------------------------------------------
+&gt;&gt; To unsubscribe, e-mail: yarn-dev-unsubscribe@hadoop.apache.org
+&gt;&gt; For additional commands, e-mail: yarn-dev-help@hadoop.apache.org
+&gt;&gt;
+&gt;&gt;
+&gt; 
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+</body></email><email><emailId>20180322170215</emailId><senderName>Ajay Kumar</senderName><senderEmail>ajay.kumar@hortonworks.com</senderEmail><timestampReceived>2018-03-22 17:02:15-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+KzEgKG5vbi1iaW5kaW5nKQ0KICAgIC0gdmVyaWZpZWQgc2lnbmF0dXJlcyBhbmQgY2hlY2tzdW1z
+DQogICAgLSBidWlsdCBmcm9tIHNvdXJjZSBhbmQgc2V0dXAgc2luZ2xlIG5vZGUgY2x1c3Rlcg0K
+ICAgIC0gcmFuIGJhc2ljIGhkZnMgb3BlcmF0aW9ucw0KICAgIC0gcmFuIFRlc3RERlNJTyhyZWFk
+L3dyaXRlKSwgd29yZGNvdW50LCBwaSBqb2JzLg0KICAgIC0gYmFzaWMgc2FuaXR5IGNoZWNrIG9m
+IE5OIFVJDQogICAgDQogVGhhbmtzLA0KIEFqYXkNCg0KDQrvu79PbiAzLzIyLzE4LCA0OjIwIEFN
+LCAiQWtpcmEgQWppc2FrYSIgPGFqaXNha2FhQG9zcy5udHRkYXRhLmNvbT4gd3JvdGU6DQoNCiAg
+ICArMSAoYmluZGluZykNCiAgICANCiAgICAtIHZlcmlmaWVkIHNpZ25hdHVyZXMgYW5kIGNoZWNr
+c3Vtcw0KICAgIC0gYnVpbHQgZnJvbSBzb3VyY2UgYW5kIHNldHVwIDQgbm9kZSBjbHVzdGVyDQog
+ICAgLSByYW4gc29tZSBleGFtcGxlcyBqb2JzDQogICAgLSB2ZXJpZmllZCBzb21lIEhERlMgb3Bl
+cmF0aW9ucw0KICAgIA0KICAgIFRoYW5rcywNCiAgICBBa2lyYQ0KICAgIA0KICAgIE9uIDIwMTgv
+MDMvMjIgMTA6MDgsIFJvYmVydCBLYW50ZXIgd3JvdGU6DQogICAgPiArMSAoYmluZGluZykNCiAg
+ICA+IA0KICAgID4gLSB2ZXJpZmllZCBzaWduYXR1cmVzIGFuZCBjaGVja3N1bXMNCiAgICA+IC0g
+c2V0dXAgcHNldWRvIGNsdXN0ZXIgdXNpbmcgRmFpciBTY2hlZHVsZXIgZnJvbSBiaW5hcnkgdGFy
+YmFsbA0KICAgID4gLSByYW4gc29tZSBvZiB0aGUgZXhhbXBsZSBqb2JzLCBjbGlja2VkIGFyb3Vu
+ZCB0aGUgVUkgYSBiaXQNCiAgICA+IA0KICAgID4gQnkgdGhlIHdheSwgQVNGIHJlY29tbWVuZHMg
+dXNpbmcgYSA0MDk2IGJpdCBrZXkgZm9yIHNpZ25pbmcsIHRob3VnaCAyMDQ4IGlzDQogICAgPiBm
+aW5lIGZvciBub3cuDQogICAgPiBodHRwczovL3d3dy5hcGFjaGUub3JnL2Rldi9yZWxlYXNlLXNp
+Z25pbmcuaHRtbCNrZXktbGVuZ3RoDQogICAgPiANCiAgICA+IA0KICAgID4gdGhhbmtzDQogICAg
+PiAtIFJvYmVydA0KICAgID4gDQogICAgPiANCiAgICA+IA0KICAgID4gDQogICAgPiBPbiBXZWQs
+IE1hciAyMSwgMjAxOCBhdCAyOjIxIEFNLCBCcmFobWEgUmVkZHkgQmF0dHVsYSA8DQogICAgPiBi
+cmFobWFyZWRkeS5iYXR0dWxhQGh1YXdlaS5jb20+IHdyb3RlOg0KICAgID4gDQogICAgPj4gVGhh
+bmtzIExlaSBYdSBmb3IgZHJpdmluZyB0aGlzLg0KICAgID4+DQogICAgPj4gKzEoYmluZGluZykN
+CiAgICA+Pg0KICAgID4+DQogICAgPj4gLS1CdWlsdCBmcm9tIHRoZSBzb3VyY2UNCiAgICA+PiAt
+LUluc3RhbGxlZCB0aGUgSEEgQ2x1c3Rlcg0KICAgID4+IC0tVmVyaWZpZWQgaGRmcyBvcGVyYXRp
+b25zDQogICAgPj4gLS1SYW4gc2FtcGxlIGpvYnMNCiAgICA+PiAtLVZlcmlmaWVkIHRoZSBVSSdz
+DQogICAgPj4NCiAgICA+Pg0KICAgID4+DQogICAgPj4gLS1CcmFobWEgUmVkZHkgQmF0dHVsYQ0K
+ICAgID4+DQogICAgPj4NCiAgICA+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KICAgID4+
+IEZyb206IExlaSBYdSBbbWFpbHRvOmxlaUBhcGFjaGUub3JnXQ0KICAgID4+IFNlbnQ6IDE4IE1h
+cmNoIDIwMTggMTI6MTENCiAgICA+PiBUbzogSGFkb29wIENvbW1vbiA8Y29tbW9uLWRldkBoYWRv
+b3AuYXBhY2hlLm9yZz47IEhkZnMtZGV2IDwNCiAgICA+PiBoZGZzLWRldkBoYWRvb3AuYXBhY2hl
+Lm9yZz47IG1hcHJlZHVjZS1kZXZAaGFkb29wLmFwYWNoZS5vcmc7DQogICAgPj4geWFybi1kZXZA
+aGFkb29wLmFwYWNoZS5vcmcNCiAgICA+PiBTdWJqZWN0OiBbVk9URV0gUmVsZWFzZSBBcGFjaGUg
+SGFkb29wIDMuMC4xIChSQzEpDQogICAgPj4NCiAgICA+PiBIaSwgYWxsDQogICAgPj4NCiAgICA+
+PiBJJ3ZlIGNyZWF0ZWQgcmVsZWFzZSBjYW5kaWRhdGUgUkMtMSBmb3IgQXBhY2hlIEhhZG9vcCAz
+LjAuMQ0KICAgID4+DQogICAgPj4gQXBhY2hlIEhhZG9vcCAzLjAuMSB3aWxsIGJlIHRoZSBmaXJz
+dCBidWcgZml4IHJlbGVhc2UgZm9yIEFwYWNoZSBIYWRvb3ANCiAgICA+PiAzLjAgcmVsZWFzZS4g
+SXQgaW5jbHVkZXMgNDkgYnVnIGZpeGVzIGFuZCBzZWN1cml0eSBmaXhlcywgd2hpY2ggaW5jbHVk
+ZSAxMg0KICAgID4+IGJsb2NrZXJzIGFuZCAxNyBhcmUgY3JpdGljYWwuDQogICAgPj4NCiAgICA+
+PiBQbGVhc2Ugbm90ZToNCiAgICA+PiAqIEhERlMtMTI5OTAuIENoYW5nZSBkZWZhdWx0IE5hbWVO
+b2RlIFJQQyBwb3J0IGJhY2sgdG8gODAyMC4gSXQgbWFrZXMNCiAgICA+PiBpbmNvbXBhdGlibGUg
+Y2hhbmdlcyB0byBIYWRvb3AgMy4wLjAuICBBZnRlciAzLjAuMSByZWxlYXNlcywgQXBhY2hlIEhh
+ZG9vcA0KICAgID4+IDMuMC4wIHdpbGwgYmUgZGVwcmVjYXRlZCBkdWUgdG8gdGhpcyBjaGFuZ2Uu
+DQogICAgPj4NCiAgICA+PiBUaGUgcmVsZWFzZSBwYWdlIGlzOg0KICAgID4+IGh0dHBzOi8vY3dp
+a2kuYXBhY2hlLm9yZy9jb25mbHVlbmNlL2Rpc3BsYXkvSEFET09QL0hhZG9vcCszLjArUmVsZWFz
+ZQ0KICAgID4+DQogICAgPj4gTmV3IFJDIGlzIGF2YWlsYWJsZSBhdDogaHR0cDovL2hvbWUuYXBh
+Y2hlLm9yZy9+bGVpL2hhZG9vcC0zLjAuMS1SQzEvDQogICAgPj4NCiAgICA+PiBUaGUgZ2l0IHRh
+ZyBpcyByZWxlYXNlLTMuMC4xLVJDMSwgYW5kIHRoZSBsYXRlc3QgY29tbWl0IGlzDQogICAgPj4g
+NDk2ZGM1N2NjMmU0ZjRkYTExN2Y3YThlMzg0MGFhZWFjMGMxZDJkMA0KICAgID4+DQogICAgPj4g
+VGhlIG1hdmVuIGFydGlmYWN0cyBhcmUgYXZhaWxhYmxlIGF0Og0KICAgID4+IGh0dHBzOi8vcmVw
+b3NpdG9yeS5hcGFjaGUub3JnL2NvbnRlbnQvcmVwb3NpdG9yaWVzL29yZ2FwYWNoZWhhZG9vcC0x
+MDgxLw0KICAgID4+DQogICAgPj4gUGxlYXNlIHRyeSB0aGUgcmVsZWFzZSBhbmQgdm90ZTsgdGhl
+IHZvdGUgd2lsbCBydW4gZm9yIHRoZSB1c3VhbCA1IGRheXMsDQogICAgPj4gZW5kaW5nIG9uIDMv
+MjIvMjAxNyA2cG0gUFNUIHRpbWUuDQogICAgPj4NCiAgICA+PiBUaGFua3MhDQogICAgPj4NCiAg
+ICA+PiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0NCiAgICA+PiBUbyB1bnN1YnNjcmliZSwgZS1tYWlsOiB5YXJuLWRl
+di11bnN1YnNjcmliZUBoYWRvb3AuYXBhY2hlLm9yZw0KICAgID4+IEZvciBhZGRpdGlvbmFsIGNv
+bW1hbmRzLCBlLW1haWw6IHlhcm4tZGV2LWhlbHBAaGFkb29wLmFwYWNoZS5vcmcNCiAgICA+Pg0K
+ICAgID4+DQogICAgPiANCiAgICANCiAgICAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCiAgICBUbyB1bnN1YnNjcmli
+ZSwgZS1tYWlsOiBjb21tb24tZGV2LXVuc3Vic2NyaWJlQGhhZG9vcC5hcGFjaGUub3JnDQogICAg
+Rm9yIGFkZGl0aW9uYWwgY29tbWFuZHMsIGUtbWFpbDogY29tbW9uLWRldi1oZWxwQGhhZG9vcC5h
+cGFjaGUub3JnDQogICAgDQogICAgDQoNCg==
+
+DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0NClRvIHVuc3Vic2NyaWJlLCBlLW1haWw6IGNvbW1vbi1kZXYt
+dW5zdWJzY3JpYmVAaGFkb29wLmFwYWNoZS5vcmcNCkZvciBhZGRpdGlvbmFsIGNvbW1hbmRz
+LCBlLW1haWw6IGNvbW1vbi1kZXYtaGVscEBoYWRvb3AuYXBhY2hlLm9yZw0K
+</body></email><email><emailId>20180322213222</emailId><senderName>Bharat Viswanadham</senderName><senderEmail>bviswanadham@hortonworks.com</senderEmail><timestampReceived>2018-03-22 21:32:22-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+KzEgKG5vbi1iaW5kaW5nKQ0KMS4gdmVyaWZpZWQgbWQ1IGNoZWNrc3VtLg0KMi4gQnVpbHQgZnJv
+bSBzb3VyY2UgYW5kIGRlcGxveWVkIGEgNSBub2RlIGNsdXN0ZXIuDQozLiBSYW4gZmV3IGJhc2lj
+IGNvbW1hbmRzIG9mIGhkZnMgb3BlcmF0aW9ucy4NCjQuIERlcGxveWVkIGEgZmVkZXJhdGVkIGNs
+dXN0ZXIgKDIgbmFtZW5vZGVzKSBhbmQgcmFuIGZldyBoZGZzIGJhc2ljIGNvbW1hbmRzDQo1LiBD
+aGVja2VkIE5OIHdlYiBVSS4NCg0KVGhhbmtzLA0KQmhhcmF0DQoNCg0KDQpPbiAzLzIyLzE4LCAx
+MDowMiBBTSwgIkFqYXkgS3VtYXIiIDxhamF5Lmt1bWFyQGhvcnRvbndvcmtzLmNvbT4gd3JvdGU6
+DQoNCiAgICB2ZXJpZmllZCBzaWduYXR1cmVzIGFuZCBjaGVja3N1bXMNCg0K
+
+DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0NClRvIHVuc3Vic2NyaWJlLCBlLW1haWw6IGNvbW1vbi1kZXYt
+dW5zdWJzY3JpYmVAaGFkb29wLmFwYWNoZS5vcmcNCkZvciBhZGRpdGlvbmFsIGNvbW1hbmRz
+LCBlLW1haWw6IGNvbW1vbi1kZXYtaGVscEBoYWRvb3AuYXBhY2hlLm9yZw0K
+</body></email><email><emailId>20180322222519</emailId><senderName>"Elek, Marton"</senderName><senderEmail>elek@apache.org</senderEmail><timestampReceived>2018-03-22 22:25:19-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+
++1 (non binding)
+
+I did a full build from source code, created a docker container and did 
+various basic level tests with robotframework based automation and 
+docker-compose based pseudo clusters[1].
+
+Including:
+
+* Hdfs federation smoke test
+* Basic ViewFS configuration
+* Yarn example jobs
+* Spark example jobs (with and without yarn)
+* Simple hive table creation
+
+Marton
+
+
+[1]: https://github.com/flokkr/runtime-compose
+
+On 03/18/2018 05:11 AM, Lei Xu wrote:
+&gt; Hi, all
+&gt; 
+&gt; I've created release candidate RC-1 for Apache Hadoop 3.0.1
+&gt; 
+&gt; Apache Hadoop 3.0.1 will be the first bug fix release for Apache
+&gt; Hadoop 3.0 release. It includes 49 bug fixes and security fixes, which
+&gt; include 12
+&gt; blockers and 17 are critical.
+&gt; 
+&gt; Please note:
+&gt; * HDFS-12990. Change default NameNode RPC port back to 8020. It makes
+&gt; incompatible changes to Hadoop 3.0.0.  After 3.0.1 releases, Apache
+&gt; Hadoop 3.0.0 will be deprecated due to this change.
+&gt; 
+&gt; The release page is:
+&gt; https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+3.0+Release
+&gt; 
+&gt; New RC is available at: http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+&gt; 
+&gt; The git tag is release-3.0.1-RC1, and the latest commit is
+&gt; 496dc57cc2e4f4da117f7a8e3840aaeac0c1d2d0
+&gt; 
+&gt; The maven artifacts are available at:
+&gt; https://repository.apache.org/content/repositories/orgapachehadoop-1081/
+&gt; 
+&gt; Please try the release and vote; the vote will run for the usual 5
+&gt; days, ending on 3/22/2017 6pm PST time.
+&gt; 
+&gt; Thanks!
+&gt; 
+&gt; ---------------------------------------------------------------------
+&gt; To unsubscribe, e-mail: hdfs-dev-unsubscribe@hadoop.apache.org
+&gt; For additional commands, e-mail: hdfs-dev-help@hadoop.apache.org
+&gt; 
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+</body></email><email><emailId>20180323121028</emailId><senderName>Kuhu Shukla</senderName><senderEmail>kshukla@oath.com.invalid</senderEmail><timestampReceived>2018-03-23 12:10:28-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+
++1 (non-binding)
+
+Built from source.
+Installed on a pseudo distributed cluster.
+Ran word count job and basic hdfs commands.
+
+Thank you for the effort on this release.
+
+Regards,
+Kuhu
+
+On Thu, Mar 22, 2018 at 5:25 PM, Elek, Marton &lt;elek@apache.org&gt; wrote:
+
+&gt;
+&gt; +1 (non binding)
+&gt;
+&gt; I did a full build from source code, created a docker container and did
+&gt; various basic level tests with robotframework based automation and
+&gt; docker-compose based pseudo clusters[1].
+&gt;
+&gt; Including:
+&gt;
+&gt; * Hdfs federation smoke test
+&gt; * Basic ViewFS configuration
+&gt; * Yarn example jobs
+&gt; * Spark example jobs (with and without yarn)
+&gt; * Simple hive table creation
+&gt;
+&gt; Marton
+&gt;
+&gt;
+&gt; [1]: https://github.com/flokkr/runtime-compose
+&gt;
+&gt; On 03/18/2018 05:11 AM, Lei Xu wrote:
+&gt;
+&gt;&gt; Hi, all
+&gt;&gt;
+&gt;&gt; I've created release candidate RC-1 for Apache Hadoop 3.0.1
+&gt;&gt;
+&gt;&gt; Apache Hadoop 3.0.1 will be the first bug fix release for Apache
+&gt;&gt; Hadoop 3.0 release. It includes 49 bug fixes and security fixes, which
+&gt;&gt; include 12
+&gt;&gt; blockers and 17 are critical.
+&gt;&gt;
+&gt;&gt; Please note:
+&gt;&gt; * HDFS-12990. Change default NameNode RPC port back to 8020. It makes
+&gt;&gt; incompatible changes to Hadoop 3.0.0.  After 3.0.1 releases, Apache
+&gt;&gt; Hadoop 3.0.0 will be deprecated due to this change.
+&gt;&gt;
+&gt;&gt; The release page is:
+&gt;&gt; https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+3.0+Release
+&gt;&gt;
+&gt;&gt; New RC is available at: http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+&gt;&gt;
+&gt;&gt; The git tag is release-3.0.1-RC1, and the latest commit is
+&gt;&gt; 496dc57cc2e4f4da117f7a8e3840aaeac0c1d2d0
+&gt;&gt;
+&gt;&gt; The maven artifacts are available at:
+&gt;&gt; https://repository.apache.org/content/repositories/orgapachehadoop-1081/
+&gt;&gt;
+&gt;&gt; Please try the release and vote; the vote will run for the usual 5
+&gt;&gt; days, ending on 3/22/2017 6pm PST time.
+&gt;&gt;
+&gt;&gt; Thanks!
+&gt;&gt;
+&gt;&gt; ---------------------------------------------------------------------
+&gt;&gt; To unsubscribe, e-mail: hdfs-dev-unsubscribe@hadoop.apache.org
+&gt;&gt; For additional commands, e-mail: hdfs-dev-help@hadoop.apache.org
+&gt;&gt;
+&gt;&gt;
+&gt; ---------------------------------------------------------------------
+&gt; To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+&gt; For additional commands, e-mail: common-dev-help@hadoop.apache.org
+&gt;
+&gt;
+
+
+</body></email><email><emailId>20180323132311</emailId><senderName>Steve Loughran</senderName><senderEmail>stevel@hortonworks.com</senderEmail><timestampReceived>2018-03-23 13:23:11-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+
+A belated +1, (binding)
+
+- ran the hadoop-aws tests with s3guard on and authoritative against s3 ire=
+land
+- ran the hadoop-azure tests against azure ireland, saw one error which loo=
+ks like an overloaded client (https://issues.apache.org/jira/browse/HADOOP-=
+15341)
+
++ https://issues.apache.org/jira/browse/HADOOP-14435 surfaced for me for th=
+e first time ever, looks like a cloudstore config
+
+
+On 18 Mar 2018, at 04:11, Lei Xu &lt;lei@apache.org&lt;mailto:lei@apache.org&gt;&gt; wr=
+ote:
+
+Hi, all
+
+I've created release candidate RC-1 for Apache Hadoop 3.0.1
+
+Apache Hadoop 3.0.1 will be the first bug fix release for Apache
+Hadoop 3.0 release. It includes 49 bug fixes and security fixes, which
+include 12
+blockers and 17 are critical.
+
+Please note:
+* HDFS-12990. Change default NameNode RPC port back to 8020. It makes
+incompatible changes to Hadoop 3.0.0.  After 3.0.1 releases, Apache
+Hadoop 3.0.0 will be deprecated due to this change.
+
+The release page is:
+https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+3.0+Release
+
+New RC is available at: http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+
+The git tag is release-3.0.1-RC1, and the latest commit is
+496dc57cc2e4f4da117f7a8e3840aaeac0c1d2d0
+
+The maven artifacts are available at:
+https://repository.apache.org/content/repositories/orgapachehadoop-1081/
+
+Please try the release and vote; the vote will run for the usual 5
+days, ending on 3/22/2017 6pm PST time.
+
+
+
+</body></email><email><emailId>20180403003135</emailId><senderName>Arpit Agarwal</senderName><senderEmail>aagarwal@hortonworks.com</senderEmail><timestampReceived>2018-04-03 00:31:35-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+SGkgTGVpLA0KDQpJdCBsb29rcyBsaWtlIHRoZSByZWxlYXNlIGFydGVmYWN0cyBoYXZlIGR1bW15
+IHNoYWRlZCBqYXJzLiBFLmcuDQoNClJlcG9zaXRvcnkgUGF0aDogIC9vcmcvYXBhY2hlL2hhZG9v
+cC9oYWRvb3AtY2xpZW50LXJ1bnRpbWUvMy4wLjEvaGFkb29wLWNsaWVudC1ydW50aW1lLTMuMC4x
+Lmphcg0KVXBsb2FkZWQgYnk6ICAgICAgbGVpDQpTaXplOiAgICAgICAgICAgICA0NC40NyBLQg0K
+VXBsb2FkZWQgRGF0ZTogICAgRnJpIE1hciAxNiAyMDE4IDE1OjUwOjQyIEdNVC0wNzAwIChQRFQp
+DQpMYXN0IE1vZGlmaWVkOiAgICBGcmkgTWFyIDE2IDIwMTggMTU6NTA6NDIgR01ULTA3MDAgKFBE
+VCkNCg0KaHR0cHM6Ly9yZXBvc2l0b3J5LmFwYWNoZS5vcmcvaW5kZXguaHRtbCN2aWV3LXJlcG9z
+aXRvcmllcztyZWxlYXNlc35icm93c2VzdG9yYWdlfi9vcmcvYXBhY2hlL2hhZG9vcC9oYWRvb3At
+Y2xpZW50LXJ1bnRpbWUvMy4wLjEvaGFkb29wLWNsaWVudC1ydW50aW1lLTMuMC4xLmphcg0KDQpB
+bSBJIGxvb2tpbmcgYXQgdGhpcyB3cm9uZyBvciBpcyB0aGlzIHN1cHBvc2VkIHRvIGJlIHRoZSBz
+aGFkZWQgamFyIHdoaWNoIGlzIH4yME1CPw0KDQpUaGFua3MsDQpBcnBpdA0KDQoNCg0K77u/T24g
+My8yMy8xOCwgMTA6MTggQU0sICJMZWkgWHUiIDxsZWlAY2xvdWRlcmEuY29tPiB3cm90ZToNCg0K
+ICAgIEhpLCBBbGwNCiAgICANCiAgICBUaGFua3MgZXZlcnlvbmUgZm9yIHZvdGluZyEgVGhlIHZv
+dGUgcGFzc2VzIHN1Y2Nlc3NmdWxseSB3aXRoIDYNCiAgICBiaW5kaW5nICsxcywgNyBub24tYmlu
+ZGluZyArMXMgYW5kIG5vIC0xcy4NCiAgICANCiAgICBJIHdpbGwgd29yayBvbiB0aGUgc3RhZ2lu
+ZyBhbmQgcmVsZWFzZXMuDQogICAgDQogICAgQmVzdCwNCiAgICANCiAgICANCiAgICBPbiBGcmks
+IE1hciAyMywgMjAxOCBhdCA1OjEwIEFNLCBLdWh1IFNodWtsYSA8a3NodWtsYUBvYXRoLmNvbS5p
+bnZhbGlkPiB3cm90ZToNCiAgICA+ICsxIChub24tYmluZGluZykNCiAgICA+DQogICAgPiBCdWls
+dCBmcm9tIHNvdXJjZS4NCiAgICA+IEluc3RhbGxlZCBvbiBhIHBzZXVkbyBkaXN0cmlidXRlZCBj
+bHVzdGVyLg0KICAgID4gUmFuIHdvcmQgY291bnQgam9iIGFuZCBiYXNpYyBoZGZzIGNvbW1hbmRz
+Lg0KICAgID4NCiAgICA+IFRoYW5rIHlvdSBmb3IgdGhlIGVmZm9ydCBvbiB0aGlzIHJlbGVhc2Uu
+DQogICAgPg0KICAgID4gUmVnYXJkcywNCiAgICA+IEt1aHUNCiAgICA+DQogICAgPiBPbiBUaHUs
+IE1hciAyMiwgMjAxOCBhdCA1OjI1IFBNLCBFbGVrLCBNYXJ0b24gPGVsZWtAYXBhY2hlLm9yZz4g
+d3JvdGU6DQogICAgPg0KICAgID4+DQogICAgPj4gKzEgKG5vbiBiaW5kaW5nKQ0KICAgID4+DQog
+ICAgPj4gSSBkaWQgYSBmdWxsIGJ1aWxkIGZyb20gc291cmNlIGNvZGUsIGNyZWF0ZWQgYSBkb2Nr
+ZXIgY29udGFpbmVyIGFuZCBkaWQNCiAgICA+PiB2YXJpb3VzIGJhc2ljIGxldmVsIHRlc3RzIHdp
+dGggcm9ib3RmcmFtZXdvcmsgYmFzZWQgYXV0b21hdGlvbiBhbmQNCiAgICA+PiBkb2NrZXItY29t
+cG9zZSBiYXNlZCBwc2V1ZG8gY2x1c3RlcnNbMV0uDQogICAgPj4NCiAgICA+PiBJbmNsdWRpbmc6
+DQogICAgPj4NCiAgICA+PiAqIEhkZnMgZmVkZXJhdGlvbiBzbW9rZSB0ZXN0DQogICAgPj4gKiBC
+YXNpYyBWaWV3RlMgY29uZmlndXJhdGlvbg0KICAgID4+ICogWWFybiBleGFtcGxlIGpvYnMNCiAg
+ICA+PiAqIFNwYXJrIGV4YW1wbGUgam9icyAod2l0aCBhbmQgd2l0aG91dCB5YXJuKQ0KICAgID4+
+ICogU2ltcGxlIGhpdmUgdGFibGUgY3JlYXRpb24NCiAgICA+Pg0KICAgID4+IE1hcnRvbg0KICAg
+ID4+DQogICAgPj4NCiAgICA+PiBbMV06IGh0dHBzOi8vZ2l0aHViLmNvbS9mbG9ra3IvcnVudGlt
+ZS1jb21wb3NlDQogICAgPj4NCiAgICA+PiBPbiAwMy8xOC8yMDE4IDA1OjExIEFNLCBMZWkgWHUg
+d3JvdGU6DQogICAgPj4NCiAgICA+Pj4gSGksIGFsbA0KICAgID4+Pg0KICAgID4+PiBJJ3ZlIGNy
+ZWF0ZWQgcmVsZWFzZSBjYW5kaWRhdGUgUkMtMSBmb3IgQXBhY2hlIEhhZG9vcCAzLjAuMQ0KICAg
+ID4+Pg0KICAgID4+PiBBcGFjaGUgSGFkb29wIDMuMC4xIHdpbGwgYmUgdGhlIGZpcnN0IGJ1ZyBm
+aXggcmVsZWFzZSBmb3IgQXBhY2hlDQogICAgPj4+IEhhZG9vcCAzLjAgcmVsZWFzZS4gSXQgaW5j
+bHVkZXMgNDkgYnVnIGZpeGVzIGFuZCBzZWN1cml0eSBmaXhlcywgd2hpY2gNCiAgICA+Pj4gaW5j
+bHVkZSAxMg0KICAgID4+PiBibG9ja2VycyBhbmQgMTcgYXJlIGNyaXRpY2FsLg0KICAgID4+Pg0K
+ICAgID4+PiBQbGVhc2Ugbm90ZToNCiAgICA+Pj4gKiBIREZTLTEyOTkwLiBDaGFuZ2UgZGVmYXVs
+dCBOYW1lTm9kZSBSUEMgcG9ydCBiYWNrIHRvIDgwMjAuIEl0IG1ha2VzDQogICAgPj4+IGluY29t
+cGF0aWJsZSBjaGFuZ2VzIHRvIEhhZG9vcCAzLjAuMC4gIEFmdGVyIDMuMC4xIHJlbGVhc2VzLCBB
+cGFjaGUNCiAgICA+Pj4gSGFkb29wIDMuMC4wIHdpbGwgYmUgZGVwcmVjYXRlZCBkdWUgdG8gdGhp
+cyBjaGFuZ2UuDQogICAgPj4+DQogICAgPj4+IFRoZSByZWxlYXNlIHBhZ2UgaXM6DQogICAgPj4+
+IGh0dHBzOi8vY3dpa2kuYXBhY2hlLm9yZy9jb25mbHVlbmNlL2Rpc3BsYXkvSEFET09QL0hhZG9v
+cCszLjArUmVsZWFzZQ0KICAgID4+Pg0KICAgID4+PiBOZXcgUkMgaXMgYXZhaWxhYmxlIGF0OiBo
+dHRwOi8vaG9tZS5hcGFjaGUub3JnL35sZWkvaGFkb29wLTMuMC4xLVJDMS8NCiAgICA+Pj4NCiAg
+ICA+Pj4gVGhlIGdpdCB0YWcgaXMgcmVsZWFzZS0zLjAuMS1SQzEsIGFuZCB0aGUgbGF0ZXN0IGNv
+bW1pdCBpcw0KICAgID4+PiA0OTZkYzU3Y2MyZTRmNGRhMTE3ZjdhOGUzODQwYWFlYWMwYzFkMmQw
+DQogICAgPj4+DQogICAgPj4+IFRoZSBtYXZlbiBhcnRpZmFjdHMgYXJlIGF2YWlsYWJsZSBhdDoN
+CiAgICA+Pj4gaHR0cHM6Ly9yZXBvc2l0b3J5LmFwYWNoZS5vcmcvY29udGVudC9yZXBvc2l0b3Jp
+ZXMvb3JnYXBhY2hlaGFkb29wLTEwODEvDQogICAgPj4+DQogICAgPj4+IFBsZWFzZSB0cnkgdGhl
+IHJlbGVhc2UgYW5kIHZvdGU7IHRoZSB2b3RlIHdpbGwgcnVuIGZvciB0aGUgdXN1YWwgNQ0KICAg
+ID4+PiBkYXlzLCBlbmRpbmcgb24gMy8yMi8yMDE3IDZwbSBQU1QgdGltZS4NCiAgICA+Pj4NCiAg
+ICA+Pj4gVGhhbmtzIQ0KICAgID4+Pg0KICAgID4+PiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCiAgICA+Pj4gVG8g
+dW5zdWJzY3JpYmUsIGUtbWFpbDogaGRmcy1kZXYtdW5zdWJzY3JpYmVAaGFkb29wLmFwYWNoZS5v
+cmcNCiAgICA+Pj4gRm9yIGFkZGl0aW9uYWwgY29tbWFuZHMsIGUtbWFpbDogaGRmcy1kZXYtaGVs
+cEBoYWRvb3AuYXBhY2hlLm9yZw0KICAgID4+Pg0KICAgID4+Pg0KICAgID4+IC0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LQ0KICAgID4+IFRvIHVuc3Vic2NyaWJlLCBlLW1haWw6IGNvbW1vbi1kZXYtdW5zdWJzY3JpYmVA
+aGFkb29wLmFwYWNoZS5vcmcNCiAgICA+PiBGb3IgYWRkaXRpb25hbCBjb21tYW5kcywgZS1tYWls
+OiBjb21tb24tZGV2LWhlbHBAaGFkb29wLmFwYWNoZS5vcmcNCiAgICA+Pg0KICAgID4+DQogICAg
+DQogICAgDQogICAgDQogICAgLS0gDQogICAgTGVpIChFZGR5KSBYdQ0KICAgIFNvZnR3YXJlIEVu
+Z2luZWVyLCBDbG91ZGVyYQ0KICAgIA0KICAgIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KICAgIFRvIHVuc3Vic2Ny
+aWJlLCBlLW1haWw6IHlhcm4tZGV2LXVuc3Vic2NyaWJlQGhhZG9vcC5hcGFjaGUub3JnDQogICAg
+Rm9yIGFkZGl0aW9uYWwgY29tbWFuZHMsIGUtbWFpbDogeWFybi1kZXYtaGVscEBoYWRvb3AuYXBh
+Y2hlLm9yZw0KICAgIA0KICAgIA0KDQo=
+
+DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0NClRvIHVuc3Vic2NyaWJlLCBlLW1haWw6IGNvbW1vbi1kZXYt
+dW5zdWJzY3JpYmVAaGFkb29wLmFwYWNoZS5vcmcNCkZvciBhZGRpdGlvbmFsIGNvbW1hbmRz
+LCBlLW1haWw6IGNvbW1vbi1kZXYtaGVscEBoYWRvb3AuYXBhY2hlLm9yZw0K
+</body></email><email><emailId>20180403010844</emailId><senderName>Lei Xu</senderName><senderEmail>lei@cloudera.com</senderEmail><timestampReceived>2018-04-03 01:08:44-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+Hi, Arpit
+
+I followed this instruction
+https://wiki.apache.org/hadoop/HowToRelease
+
+It instructs to use "mvn deploy -Psign -DskipTests -DskipShade".
+
+It seems wrong, given that 3.0.0 is a shaded jar.
+I will do another deploy to fix it.
+
+
+On Mon, Apr 2, 2018 at 5:31 PM, Arpit Agarwal &lt;aagarwal@hortonworks.com&gt; wrote:
+&gt; Hi Lei,
+&gt; 
+&gt; It looks like the release artefacts have dummy shaded jars. E.g.
+&gt; 
+&gt; Repository Path:  /org/apache/hadoop/hadoop-client-runtime/3.0.1/hadoop-client-runtime-3.0.1.jar
+&gt;  Uploaded by:      lei
+&gt; Size:             44.47 KB
+&gt; Uploaded Date:    Fri Mar 16 2018 15:50:42 GMT-0700 (PDT)
+&gt; Last Modified:    Fri Mar 16 2018 15:50:42 GMT-0700 (PDT)
+&gt; 
+&gt; https://repository.apache.org/index.html#view-repositories;releases~browsestorage~/org/apache/hadoop/hadoop-client-runtime/3.0.1/hadoop-client-runtime-3.0.1.jar
+&gt;  
+&gt; Am I looking at this wrong or is this supposed to be the shaded jar which is ~20MB?
+&gt; 
+&gt; Thanks,
+&gt; Arpit
+&gt; 
+&gt; 
+&gt; 
+&gt; ﻿On 3/23/18, 10:18 AM, "Lei Xu" &lt;lei@cloudera.com&gt; wrote:
+&gt; 
+&gt; Hi, All
+&gt; 
+&gt; Thanks everyone for voting! The vote passes successfully with 6
+&gt; binding +1s, 7 non-binding +1s and no -1s.
+&gt; 
+&gt; I will work on the staging and releases.
+&gt; 
+&gt; Best,
+&gt; 
+&gt; 
+&gt; On Fri, Mar 23, 2018 at 5:10 AM, Kuhu Shukla &lt;kshukla@oath.com.invalid&gt; wrote:
+&gt; &gt; +1 (non-binding)
+&gt; &gt; 
+&gt; &gt; Built from source.
+&gt; &gt; Installed on a pseudo distributed cluster.
+&gt; &gt; Ran word count job and basic hdfs commands.
+&gt; &gt; 
+&gt; &gt; Thank you for the effort on this release.
+&gt; &gt; 
+&gt; &gt; Regards,
+&gt; &gt; Kuhu
+&gt; &gt; 
+&gt; &gt; On Thu, Mar 22, 2018 at 5:25 PM, Elek, Marton &lt;elek@apache.org&gt; wrote:
+&gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; +1 (non binding)
+&gt; &gt; &gt; 
+&gt; &gt; &gt; I did a full build from source code, created a docker container and did
+&gt; &gt; &gt; various basic level tests with robotframework based automation and
+&gt; &gt; &gt; docker-compose based pseudo clusters[1].
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Including:
+&gt; &gt; &gt; 
+&gt; &gt; &gt; * Hdfs federation smoke test
+&gt; &gt; &gt; * Basic ViewFS configuration
+&gt; &gt; &gt; * Yarn example jobs
+&gt; &gt; &gt; * Spark example jobs (with and without yarn)
+&gt; &gt; &gt; * Simple hive table creation
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Marton
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; [1]: https://github.com/flokkr/runtime-compose
+&gt; &gt; &gt; 
+&gt; &gt; &gt; On 03/18/2018 05:11 AM, Lei Xu wrote:
+&gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; Hi, all
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; I've created release candidate RC-1 for Apache Hadoop 3.0.1
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; Apache Hadoop 3.0.1 will be the first bug fix release for Apache
+&gt; &gt; &gt; &gt; Hadoop 3.0 release. It includes 49 bug fixes and security fixes, which
+&gt; &gt; &gt; &gt; include 12
+&gt; &gt; &gt; &gt; blockers and 17 are critical.
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; Please note:
+&gt; &gt; &gt; &gt; * HDFS-12990. Change default NameNode RPC port back to 8020. It makes
+&gt; &gt; &gt; &gt; incompatible changes to Hadoop 3.0.0.  After 3.0.1 releases, Apache
+&gt; &gt; &gt; &gt; Hadoop 3.0.0 will be deprecated due to this change.
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; The release page is:
+&gt; &gt; &gt; &gt; https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+3.0+Release
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; New RC is available at: http://home.apache.org/~lei/hadoop-3.0.1-RC1/
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; The git tag is release-3.0.1-RC1, and the latest commit is
+&gt; &gt; &gt; &gt; 496dc57cc2e4f4da117f7a8e3840aaeac0c1d2d0
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; The maven artifacts are available at:
+&gt; &gt; &gt; &gt; https://repository.apache.org/content/repositories/orgapachehadoop-1081/
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; Please try the release and vote; the vote will run for the usual 5
+&gt; &gt; &gt; &gt; days, ending on 3/22/2017 6pm PST time.
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; Thanks!
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; ---------------------------------------------------------------------
+&gt; &gt; &gt; &gt; To unsubscribe, e-mail: hdfs-dev-unsubscribe@hadoop.apache.org
+&gt; &gt; &gt; &gt; For additional commands, e-mail: hdfs-dev-help@hadoop.apache.org
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; ---------------------------------------------------------------------
+&gt; &gt; &gt; To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+&gt; &gt; &gt; For additional commands, e-mail: common-dev-help@hadoop.apache.org
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; --
+&gt; Lei (Eddy) Xu
+&gt; Software Engineer, Cloudera
+&gt; 
+&gt; ---------------------------------------------------------------------
+&gt; To unsubscribe, e-mail: yarn-dev-unsubscribe@hadoop.apache.org
+&gt; For additional commands, e-mail: yarn-dev-help@hadoop.apache.org
+&gt; 
+&gt; 
+&gt; 
+
+
+
+-- 
+Lei (Eddy) Xu
+Software Engineer, Cloudera
+
+---------------------------------------------------------------------
+To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+For additional commands, e-mail: common-dev-help@hadoop.apache.org
+
+
+</body></email><email><emailId>20180403042139</emailId><senderName>Wangda Tan</senderName><senderEmail>wheeleast@gmail.com</senderEmail><timestampReceived>2018-04-03 04:21:39-0400</timestampReceived><subject>Re: [VOTE] Release Apache Hadoop 3.0.1 (RC1)</subject><body>
+
+
+Thanks Arpit for reporting this and helping investigate the issue offline!
+
+I follow the same tutorial so the previously RC1 maven repo has the same
+issue. Just deployed jars by removing -DskipShade and shaded jars have
+correct sizes.
+
+Will post an update to RC1 voting thread.
+
+- Wangda
+
+
+On Mon, Apr 2, 2018 at 6:08 PM, Lei Xu &lt;lei@cloudera.com&gt; wrote:
+
+&gt; Hi, Arpit
+&gt;
+&gt; I followed this instruction
+&gt; https://wiki.apache.org/hadoop/HowToRelease
+&gt;
+&gt; It instructs to use "mvn deploy -Psign -DskipTests -DskipShade".
+&gt;
+&gt; It seems wrong, given that 3.0.0 is a shaded jar.
+&gt; I will do another deploy to fix it.
+&gt;
+&gt;
+&gt; On Mon, Apr 2, 2018 at 5:31 PM, Arpit Agarwal &lt;aagarwal@hortonworks.com&gt;
+&gt; wrote:
+&gt; &gt; Hi Lei,
+&gt; &gt;
+&gt; &gt; It looks like the release artefacts have dummy shaded jars. E.g.
+&gt; &gt;
+&gt; &gt; Repository Path:  /org/apache/hadoop/hadoop-client-runtime/3.0.1/hadoop=
+-
+&gt; client-runtime-3.0.1.jar
+&gt; &gt; Uploaded by:      lei
+&gt; &gt; Size:             44.47 KB
+&gt; &gt; Uploaded Date:    Fri Mar 16 2018 15:50:42 GMT-0700 (PDT)
+&gt; &gt; Last Modified:    Fri Mar 16 2018 15:50:42 GMT-0700 (PDT)
+&gt; &gt;
+&gt; &gt; https://repository.apache.org/index.html#view-repositories;
+&gt; releases~browsestorage~/org/apache/hadoop/hadoop-client-
+&gt; runtime/3.0.1/hadoop-client-runtime-3.0.1.jar
+&gt; &gt;
+&gt; &gt; Am I looking at this wrong or is this supposed to be the shaded jar
+&gt; which is ~20MB?
+&gt; &gt;
+&gt; &gt; Thanks,
+&gt; &gt; Arpit
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt; =EF=BB=BFOn 3/23/18, 10:18 AM, "Lei Xu" &lt;lei@cloudera.com&gt; wrote:
+&gt; &gt;
+&gt; &gt;     Hi, All
+&gt; &gt;
+&gt; &gt;     Thanks everyone for voting! The vote passes successfully with 6
+&gt; &gt;     binding +1s, 7 non-binding +1s and no -1s.
+&gt; &gt;
+&gt; &gt;     I will work on the staging and releases.
+&gt; &gt;
+&gt; &gt;     Best,
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;     On Fri, Mar 23, 2018 at 5:10 AM, Kuhu Shukla
+&gt; &lt;kshukla@oath.com.invalid&gt; wrote:
+&gt; &gt;     &gt; +1 (non-binding)
+&gt; &gt;     &gt;
+&gt; &gt;     &gt; Built from source.
+&gt; &gt;     &gt; Installed on a pseudo distributed cluster.
+&gt; &gt;     &gt; Ran word count job and basic hdfs commands.
+&gt; &gt;     &gt;
+&gt; &gt;     &gt; Thank you for the effort on this release.
+&gt; &gt;     &gt;
+&gt; &gt;     &gt; Regards,
+&gt; &gt;     &gt; Kuhu
+&gt; &gt;     &gt;
+&gt; &gt;     &gt; On Thu, Mar 22, 2018 at 5:25 PM, Elek, Marton &lt;elek@apache.org&gt;
+&gt; wrote:
+&gt; &gt;     &gt;
+&gt; &gt;     &gt;&gt;
+&gt; &gt;     &gt;&gt; +1 (non binding)
+&gt; &gt;     &gt;&gt;
+&gt; &gt;     &gt;&gt; I did a full build from source code, created a docker container
+&gt; and did
+&gt; &gt;     &gt;&gt; various basic level tests with robotframework based automation a=
+nd
+&gt; &gt;     &gt;&gt; docker-compose based pseudo clusters[1].
+&gt; &gt;     &gt;&gt;
+&gt; &gt;     &gt;&gt; Including:
+&gt; &gt;     &gt;&gt;
+&gt; &gt;     &gt;&gt; * Hdfs federation smoke test
+&gt; &gt;     &gt;&gt; * Basic ViewFS configuration
+&gt; &gt;     &gt;&gt; * Yarn example jobs
+&gt; &gt;     &gt;&gt; * Spark example jobs (with and without yarn)
+&gt; &gt;     &gt;&gt; * Simple hive table creation
+&gt; &gt;     &gt;&gt;
+&gt; &gt;     &gt;&gt; Marton
+&gt; &gt;     &gt;&gt;
+&gt; &gt;     &gt;&gt;
+&gt; &gt;     &gt;&gt; [1]: https://github.com/flokkr/runtime-compose
+&gt; &gt;     &gt;&gt;
+&gt; &gt;     &gt;&gt; On 03/18/2018 05:11 AM, Lei Xu wrote:
+&gt; &gt;     &gt;&gt;
+&gt; &gt;     &gt;&gt;&gt; Hi, all
+&gt; &gt;     &gt;&gt;&gt;
+&gt; &gt;     &gt;&gt;&gt; I've created release candidate RC-1 for Apache Hadoop 3.0.1
+&gt; &gt;     &gt;&gt;&gt;
+&gt; &gt;     &gt;&gt;&gt; Apache Hadoop 3.0.1 will be the first bug fix release for Apach=
+e
+&gt; &gt;     &gt;&gt;&gt; Hadoop 3.0 release. It includes 49 bug fixes and security fixes=
+,
+&gt; which
+&gt; &gt;     &gt;&gt;&gt; include 12
+&gt; &gt;     &gt;&gt;&gt; blockers and 17 are critical.
+&gt; &gt;     &gt;&gt;&gt;
+&gt; &gt;     &gt;&gt;&gt; Please note:
+&gt; &gt;     &gt;&gt;&gt; * HDFS-12990. Change default NameNode RPC port back to 8020. It
+&gt; makes
+&gt; &gt;     &gt;&gt;&gt; incompatible changes to Hadoop 3.0.0.  After 3.0.1 releases,
+&gt; Apache
+&gt; &gt;     &gt;&gt;&gt; Hadoop 3.0.0 will be deprecated due to this change.
+&gt; &gt;     &gt;&gt;&gt;
+&gt; &gt;     &gt;&gt;&gt; The release page is:
+&gt; &gt;     &gt;&gt;&gt; https://cwiki.apache.org/confluence/display/HADOOP/
+&gt; Hadoop+3.0+Release
+&gt; &gt;     &gt;&gt;&gt;
+&gt; &gt;     &gt;&gt;&gt; New RC is available at: http://home.apache.org/~lei/
+&gt; hadoop-3.0.1-RC1/
+&gt; &gt;     &gt;&gt;&gt;
+&gt; &gt;     &gt;&gt;&gt; The git tag is release-3.0.1-RC1, and the latest commit is
+&gt; &gt;     &gt;&gt;&gt; 496dc57cc2e4f4da117f7a8e3840aaeac0c1d2d0
+&gt; &gt;     &gt;&gt;&gt;
+&gt; &gt;     &gt;&gt;&gt; The maven artifacts are available at:
+&gt; &gt;     &gt;&gt;&gt; https://repository.apache.org/content/repositories/
+&gt; orgapachehadoop-1081/
+&gt; &gt;     &gt;&gt;&gt;
+&gt; &gt;     &gt;&gt;&gt; Please try the release and vote; the vote will run for the usua=
+l
+&gt; 5
+&gt; &gt;     &gt;&gt;&gt; days, ending on 3/22/2017 6pm PST time.
+&gt; &gt;     &gt;&gt;&gt;
+&gt; &gt;     &gt;&gt;&gt; Thanks!
+&gt; &gt;     &gt;&gt;&gt;
+&gt; &gt;     &gt;&gt;&gt; ------------------------------------------------------------
+&gt; ---------
+&gt; &gt;     &gt;&gt;&gt; To unsubscribe, e-mail: hdfs-dev-unsubscribe@hadoop.apache.org
+&gt; &gt;     &gt;&gt;&gt; For additional commands, e-mail: hdfs-dev-help@hadoop.apache.or=
+g
+&gt; &gt;     &gt;&gt;&gt;
+&gt; &gt;     &gt;&gt;&gt;
+&gt; &gt;     &gt;&gt; ------------------------------------------------------------
+&gt; ---------
+&gt; &gt;     &gt;&gt; To unsubscribe, e-mail: common-dev-unsubscribe@hadoop.apache.org
+&gt; &gt;     &gt;&gt; For additional commands, e-mail: common-dev-help@hadoop.apache.
+&gt; org
+&gt; &gt;     &gt;&gt;
+&gt; &gt;     &gt;&gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;     --
+&gt; &gt;     Lei (Eddy) Xu
+&gt; &gt;     Software Engineer, Cloudera
+&gt; &gt;
+&gt; &gt;     ------------------------------------------------------------
+&gt; ---------
+&gt; &gt;     To unsubscribe, e-mail: yarn-dev-unsubscribe@hadoop.apache.org
+&gt; &gt;     For additional commands, e-mail: yarn-dev-help@hadoop.apache.org
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt;
+&gt;
+&gt;
+&gt; --
+&gt; Lei (Eddy) Xu
+&gt; Software Engineer, Cloudera
+&gt;
+&gt; ---------------------------------------------------------------------
+&gt; To unsubscribe, e-mail: yarn-dev-unsubscribe@hadoop.apache.org
+&gt; For additional commands, e-mail: yarn-dev-help@hadoop.apache.org
+&gt;
+&gt;
+
+
